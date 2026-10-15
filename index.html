@@ -1,0 +1,2644 @@
+<!doctype html>
+<html lang="fa" dir="rtl" class="dark h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>بازی دورهمی کلمات | Catchphrase & Alias Persian Party Game</title>
+    <meta name="description" content="بازی مهیج کلماتی گروهی و دورهمی به زبان فارسی با بیش از ۱۰۰۰ کلمه و دسته‌بندی‌های جذاب" />
+    <meta property="og:title" content="بازی دورهمی کلمات | Catchphrase & Alias Persian Party Game" />
+    <meta property="og:description" content="بازی مهیج کلماتی گروهی و دورهمی به زبان فارسی با بیش از ۱۰۰۰ کلمه و دسته‌بندی‌های جذاب" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Persian Web Fonts: Yekan Bakh (Primary) & Vazirmatn (Fallback) -->
+    <link href="https://fonts.cdnfonts.com/css/yekan-bakh" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/morteza/yekan-bakh@master/dist/font-face.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Early Theme Restoration -->
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('party_game_theme');
+          if (t === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Yekan Bakh"', 'YekanBakh', 'Yekan', 'BYekan', 'Vazirmatn', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+            colors: {
+              glass: {
+                DEFAULT: 'rgba(255, 255, 255, 0.07)',
+                card: 'rgba(22, 17, 45, 0.72)',
+                border: 'rgba(255, 255, 255, 0.12)',
+                highlight: 'rgba(255, 255, 255, 0.22)',
+              },
+              neon: {
+                green: '#10b981',
+                emerald: '#05df72',
+                amber: '#f59e0b',
+                rose: '#f43f5e',
+                violet: '#8b5cf6',
+                cyan: '#06b6d4',
+              }
+            },
+            animation: {
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'bounce-subtle': 'bounceSubtle 2s infinite',
+              'glow': 'glow 2s ease-in-out infinite alternate',
+            },
+            keyframes: {
+              bounceSubtle: {
+                '0%, 100%': { transform: 'translateY(-3%)' },
+                '50%': { transform: 'translateY(0)' },
+              },
+              glow: {
+                '0%': { filter: 'drop-shadow(0 0 10px rgba(139, 92, 246, 0.4))' },
+                '100%': { filter: 'drop-shadow(0 0 25px rgba(16, 185, 129, 0.7))' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      @import url('https://fonts.cdnfonts.com/css/yekan-bakh');
+      @import url('https://cdn.jsdelivr.net/gh/morteza/yekan-bakh@master/dist/font-face.css');
+
+      * {
+        font-family: 'Yekan Bakh', 'YekanBakh', 'Yekan', 'BYekan', 'Vazirmatn', system-ui, -apple-system, sans-serif !important;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+      }
+      body, button, input, select, textarea, div, span, p, h1, h2, h3, h4, h5, h6, table, th, td, label {
+        font-family: 'Yekan Bakh', 'YekanBakh', 'Yekan', 'BYekan', 'Vazirmatn', system-ui, -apple-system, sans-serif !important;
+      }
+      /* Dark Theme Body (Default) */
+      html.dark body {
+        background-color: #0b071a;
+        background-image: 
+          radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.25) 0%, transparent 40%),
+          radial-gradient(circle at 85% 25%, rgba(16, 185, 129, 0.2) 0%, transparent 40%),
+          radial-gradient(circle at 50% 80%, rgba(244, 63, 94, 0.18) 0%, transparent 50%),
+          linear-gradient(180deg, #090514 0%, #110c26 50%, #080d1a 100%);
+        background-attachment: fixed;
+        color: #f1f5f9;
+      }
+      /* Light High-Contrast Theme Body (Optimized for Outdoor / Daytime Play) */
+      html:not(.dark) body {
+        background-color: #f1f5f9;
+        background-image: 
+          radial-gradient(circle at 15% 15%, rgba(216, 180, 254, 0.45) 0%, transparent 45%),
+          radial-gradient(circle at 85% 25%, rgba(167, 243, 208, 0.45) 0%, transparent 45%),
+          radial-gradient(circle at 50% 80%, rgba(254, 205, 211, 0.4) 0%, transparent 50%),
+          linear-gradient(180deg, #f8fafc 0%, #edf2f7 50%, #e2e8f0 100%);
+        background-attachment: fixed;
+        color: #0f172a;
+      }
+
+      /* Glass Panels in Dark Mode */
+      html.dark .glass-panel {
+        background: rgba(26, 18, 56, 0.65);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+      }
+      /* Glass Panels in High-Contrast Light Mode */
+      html:not(.dark) .glass-panel {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1.5px solid #cbd5e1;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Glass Cards in Dark Mode */
+      html.dark .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      /* Glass Cards in Light Mode */
+      html:not(.dark) .glass-card {
+        background: #ffffff;
+        backdrop-filter: none;
+        border: 1.5px solid #cbd5e1;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .glass-button {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .glass-button:active {
+        transform: scale(0.97);
+      }
+
+      /* Light Mode High-Contrast Overrides for Direct Sunlight */
+      html:not(.dark) .text-white {
+        color: #090d16 !important;
+      }
+      html:not(.dark) .text-slate-100 {
+        color: #0f172a !important;
+      }
+      html:not(.dark) .text-slate-200 {
+        color: #1e293b !important;
+      }
+      html:not(.dark) .text-slate-300 {
+        color: #334155 !important;
+      }
+      html:not(.dark) .text-slate-400 {
+        color: #475569 !important;
+      }
+      html:not(.dark) .text-slate-500 {
+        color: #64748b !important;
+      }
+      html:not(.dark) .bg-black\/40,
+      html:not(.dark) .bg-black\/30 {
+        background-color: #f1f5f9 !important;
+        border-color: #cbd5e1 !important;
+      }
+      html:not(.dark) .bg-white\/5,
+      html:not(.dark) .bg-white\/10 {
+        background-color: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+      }
+      html:not(.dark) .bg-white\/5:hover,
+      html:not(.dark) .bg-white\/10:hover {
+        background-color: #e2e8f0 !important;
+      }
+      html:not(.dark) input {
+        background-color: #ffffff !important;
+        color: #090d16 !important;
+        border-color: #94a3b8 !important;
+        font-weight: 700 !important;
+      }
+      html:not(.dark) input:focus {
+        border-color: #7c3aed !important;
+        outline: none;
+      }
+      html:not(.dark) #current-word-text {
+        color: #020617 !important;
+        text-shadow: none !important;
+      }
+      html:not(.dark) #timer-display {
+        color: #090d16 !important;
+      }
+      html:not(.dark) #word-card-container {
+        background: #ffffff !important;
+        border-color: #7c3aed !important;
+        box-shadow: 0 15px 35px -5px rgba(124, 58, 237, 0.18) !important;
+      }
+      html:not(.dark) #modal-pass-phone {
+        background: rgba(241, 245, 249, 0.98) !important;
+      }
+      html:not(.dark) #modal-rules {
+        background: rgba(15, 23, 42, 0.65) !important;
+      }
+      html:not(.dark) header {
+        background: rgba(255, 255, 255, 0.96) !important;
+        border-bottom-color: #cbd5e1 !important;
+      }
+      html:not(.dark) .header-logo-bg {
+        background-color: #ffffff !important;
+      }
+      html:not(.dark) #seating-circle-diagram .rounded-full.bg-white\/5 {
+        background-color: #ffffff !important;
+        border-color: #cbd5e1 !important;
+      }
+      html:not(.dark) #seating-seats-container > div {
+        background-color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+      }
+      html:not(.dark) #btn-pass-word {
+        background-color: #f1f5f9 !important;
+        border-color: #cbd5e1 !important;
+        color: #0f172a !important;
+      }
+      html:not(.dark) #btn-pass-word:active {
+        background-color: #ffe4e6 !important;
+      }
+
+      /* Vibrant High Contrast Accent text in Light Mode */
+      html:not(.dark) .text-purple-300 { color: #6d28d9 !important; }
+      html:not(.dark) .text-purple-400 { color: #7c3aed !important; }
+      html:not(.dark) .text-emerald-300 { color: #047857 !important; }
+      html:not(.dark) .text-emerald-400 { color: #059669 !important; }
+      html:not(.dark) .text-amber-300 { color: #b45309 !important; }
+      html:not(.dark) .text-amber-400 { color: #d97706 !important; }
+      html:not(.dark) .text-rose-400 { color: #e11d48 !important; }
+      html:not(.dark) .text-cyan-400 { color: #0284c7 !important; }
+      html:not(.dark) .text-pink-300 { color: #be185d !important; }
+
+      /* Tinted Backgrounds in Light Mode */
+      html:not(.dark) .bg-purple-950\/40,
+      html:not(.dark) .bg-purple-950\/30,
+      html:not(.dark) .bg-purple-900\/30,
+      html:not(.dark) .bg-purple-900\/40,
+      html:not(.dark) .bg-purple-900\/50 {
+        background-color: #f5f3ff !important;
+        border-color: #c4b5fd !important;
+      }
+      html:not(.dark) .bg-emerald-950\/15,
+      html:not(.dark) .bg-emerald-950\/20,
+      html:not(.dark) .bg-emerald-900\/40,
+      html:not(.dark) .bg-emerald-900\/50 {
+        background-color: #ecfdf5 !important;
+        border-color: #a7f3d0 !important;
+      }
+      html:not(.dark) .bg-rose-950\/20,
+      html:not(.dark) .bg-rose-950\/40 {
+        background-color: #fff1f2 !important;
+        border-color: #fecdd3 !important;
+      }
+      html:not(.dark) .bg-purple-500\/10 {
+        background-color: #ede9fe !important;
+      }
+      html:not(.dark) .bg-purple-500\/20 {
+        background-color: #ddd6fe !important;
+      }
+      html:not(.dark) .bg-pink-500\/20 {
+        background-color: #fce7f3 !important;
+      }
+      html:not(.dark) .bg-emerald-500\/10 {
+        background-color: #d1fae5 !important;
+      }
+      html:not(.dark) .bg-amber-500\/20 {
+        background-color: #fef3c7 !important;
+      }
+
+      /* Background Music Popover Styling */
+      #music-volume-popover {
+        background: rgba(20, 14, 40, 0.95);
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+      }
+      html:not(.dark) #music-volume-popover {
+        background: #ffffff !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(139, 92, 246, 0.4);
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(139, 92, 246, 0.7);
+      }
+      /* Pulsing timer glow */
+      .timer-critical {
+        animation: criticalPulse 0.6s infinite alternate;
+      }
+      @keyframes criticalPulse {
+        0% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.5), inset 0 0 15px rgba(239, 68, 68, 0.3); border-color: #ef4444; }
+        100% { box-shadow: 0 0 35px rgba(239, 68, 68, 0.9), inset 0 0 25px rgba(239, 68, 68, 0.6); border-color: #f87171; }
+      }
+
+      /* Mobile First Ergonomics & Touch Performance */
+      button, input, a, select, label {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      /* Prevent iOS auto-zoom on input focus */
+      input[type="text"], input[type="number"] {
+        font-size: 16px !important;
+      }
+      .safe-bottom-padding {
+        padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0.75rem));
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="h-full text-slate-100 flex flex-col antialiased selection:bg-purple-500 selection:text-white overflow-x-hidden">
+
+    <!-- Top App Navigation Bar (Compact & Touch-Friendly on Mobile) -->
+    <header class="w-full glass-panel border-b border-white/10 px-3 py-2 sm:px-4 sm:py-3 sticky top-0 z-40 flex items-center justify-between">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-600 to-amber-500 p-0.5 flex items-center justify-center shadow-lg shadow-purple-500/30 flex-shrink-0">
+          <div class="header-logo-bg w-full h-full bg-[#140e2b] rounded-[10px] flex items-center justify-center">
+            <span class="text-base sm:text-xl">⚡</span>
+          </div>
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-base sm:text-lg font-black tracking-tight flex items-center gap-1.5 sm:gap-2 text-white truncate">
+            <span>کچ‌فریز فارسی</span>
+            <span class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 hidden xs:inline">دورهمی</span>
+          </h1>
+          <p class="text-[11px] text-slate-400 font-medium hidden sm:block truncate">بازی مهیج کلمات و چرخش سریع گوشی</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Icons (Optimized for Small Mobile Screens) -->
+      <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+        <!-- Theme Switcher: Dark Glassmorphism <-> High-Contrast Light Mode -->
+        <button id="btn-theme-toggle" aria-label="تغییر تم (حالت روز / شب)" title="تغییر حالت به روز یا شب برای دید بهتر در آفتاب" class="glass-button p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 flex items-center gap-1">
+          <!-- Sun Icon -->
+          <svg id="icon-theme-sun" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon Icon -->
+          <svg id="icon-theme-moon" class="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <span id="theme-label" class="text-[11px] font-bold hidden md:inline">حالت روز</span>
+        </button>
+
+        <!-- Audio Mute/Unmute Toggle (SFX) -->
+        <button id="btn-sound-toggle" aria-label="تنظیم افکت صوتی" title="قطع یا وصل افکت‌های صوتی" class="glass-button p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10">
+          <svg id="icon-sound-on" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <svg id="icon-sound-off" class="w-4 h-4 sm:w-5 sm:h-5 text-rose-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+        </button>
+
+        <!-- Background Music Controller: Volume Slider & Play Status -->
+        <div class="relative" id="music-control-wrapper">
+          <button id="btn-music-toggle" type="button" aria-label="تنظیم شدت صدای موسیقی پس‌زمینه" title="کنترل موسیقی ملایم و بی‌کلام پس‌زمینه" class="glass-button p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 flex items-center gap-1.5 transition-all">
+            <svg id="icon-music-playing" class="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+            <svg id="icon-music-muted" class="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+              <line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span id="music-vol-badge" class="text-[10px] sm:text-[11px] font-black px-1.5 py-0.5 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 font-mono">۴۰٪</span>
+            <span class="text-[11px] font-bold hidden xl:inline">موسیقی</span>
+          </button>
+
+          <!-- Interactive Volume Dropdown Popover -->
+          <div id="music-volume-popover" class="hidden absolute top-full left-0 sm:left-auto sm:right-0 mt-2 w-64 p-3.5 rounded-2xl glass-card border shadow-2xl z-50 flex flex-col gap-3 backdrop-blur-2xl">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-white">
+                <span class="text-base">🎵</span>
+                <span>موسیقی ملایم بازی</span>
+              </div>
+              <span id="music-status-indicator" class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-semibold border border-purple-500/30">
+                با شروع بازی فعال می‌شود
+              </span>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-400 font-medium">شدت صدا (ولوم):</span>
+                <span id="music-slider-val" class="font-bold text-amber-300 font-mono">۴۰٪</span>
+              </div>
+              <input type="range" id="music-volume-slider" min="0" max="100" value="40" class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500 focus:outline-none" />
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="grid grid-cols-4 gap-1.5 pt-1 border-t border-white/10">
+              <button type="button" class="btn-vol-preset py-1 rounded-lg text-[10px] font-bold bg-white/5 hover:bg-white/10 text-slate-300 text-center transition-colors" data-vol="0">بی‌صدا</button>
+              <button type="button" class="btn-vol-preset py-1 rounded-lg text-[10px] font-bold bg-white/5 hover:bg-white/10 text-slate-300 text-center transition-colors" data-vol="25">آرام</button>
+              <button type="button" class="btn-vol-preset py-1 rounded-lg text-[10px] font-bold bg-purple-600/40 text-purple-200 border border-purple-500/30 text-center transition-colors" data-vol="50">متوسط</button>
+              <button type="button" class="btn-vol-preset py-1 rounded-lg text-[10px] font-bold bg-white/5 hover:bg-white/10 text-slate-300 text-center transition-colors" data-vol="90">بلند</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rules / Help Button -->
+        <button id="btn-how-to-play" aria-label="راهنمای بازی" class="glass-button p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 flex items-center gap-1">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-[11px] font-semibold hidden md:inline">راهنما</span>
+        </button>
+
+        <!-- Fullscreen Toggle -->
+        <button id="btn-fullscreen-toggle" aria-label="تمام صفحه" class="glass-button p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10">
+          <svg id="icon-fs-enter" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+          </svg>
+          <svg id="icon-fs-exit" class="w-4 h-4 sm:w-5 sm:h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Application Container -->
+    <main class="flex-1 w-full max-w-4xl mx-auto p-3 sm:p-6 flex flex-col justify-center items-center">
+      
+      <!-- SCREEN 1: SETUP PHASE -->
+      <section id="screen-setup" class="w-full flex flex-col gap-6">
+        
+        <!-- Welcome Hero Banner -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden border border-purple-500/20">
+          <div class="absolute -top-16 -right-16 w-44 h-44 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-16 -left-16 w-44 h-44 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold mb-3">
+            <span>🎉 بازی دورهمی، کچ‌فریز و الیاس فارسی</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+            هیجان چرخش گوشی و حدس کلمات!
+          </h2>
+          <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
+            کلمه مخفی را برای هم‌تیمی خود بدون اشاره به ریشه آن توضیح دهید؛ به محض حدس درست، گوشی را سریع به تیم بعدی بسپارید! مبادا وقت تمام شود و گوشی دست شما بماند!
+          </p>
+        </div>
+
+        <!-- Team Configuration Box -->
+        <div class="glass-panel rounded-3xl p-5 sm:p-7 border border-white/10">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+            <div>
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="text-amber-400">👥</span>
+                <span>تعداد تیم‌ها و نام بازیکنان</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-1">هر تیم دقیقاً از ۲ بازیکن تشکیل می‌شود که روبروی هم می‌نشینند.</p>
+            </div>
+            
+            <!-- Quick Team Count Selector (2 to 6) -->
+            <div class="flex items-center gap-1.5 bg-black/40 p-1.5 rounded-2xl border border-white/10 overflow-x-auto no-scrollbar max-w-full">
+              <span class="text-xs font-medium text-slate-400 px-2 flex-shrink-0">تعداد تیم:</span>
+              <div class="flex gap-1 flex-nowrap" id="team-count-chips">
+                <button type="button" data-count="2" class="team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white flex-shrink-0 whitespace-nowrap">۲ تیم</button>
+                <button type="button" data-count="3" class="team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white flex-shrink-0 whitespace-nowrap">۳ تیم</button>
+                <button type="button" data-count="4" class="team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-purple-600 text-white shadow-md shadow-purple-600/40 flex-shrink-0 whitespace-nowrap">۴ تیم</button>
+                <button type="button" data-count="5" class="team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white flex-shrink-0 whitespace-nowrap">۵ تیم</button>
+                <button type="button" data-count="6" class="team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white flex-shrink-0 whitespace-nowrap">۶ تیم</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Team Cards Container -->
+          <div id="teams-input-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Injected by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Seating Circle Guide Card -->
+        <div class="glass-panel rounded-3xl p-5 sm:p-6 border border-emerald-500/20 bg-emerald-950/15">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">
+                🔄
+              </div>
+              <div>
+                <h4 class="text-base font-bold text-white">ترتیب نشستن دور دایره (Seating Order)</h4>
+                <p class="text-xs text-emerald-300/80">برای چرخش درست و عادلانه بازی، هم‌تیمی‌ها باید دقیقاً روبروی هم بنشینند!</p>
+              </div>
+            </div>
+            <button type="button" id="btn-toggle-seating-diagram" class="glass-button text-xs font-bold px-3 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+              <span>مشاهده نقشه دایره صندلی‌ها</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+          </div>
+
+          <!-- Collapsible Interactive Seating Visualizer -->
+          <div id="seating-diagram-wrapper" class="hidden mt-4 pt-4 border-t border-emerald-500/20">
+            <div class="text-center mb-3">
+              <p class="text-xs text-slate-300">مسیر گردش نوبت و پاس دادن گوشی بین صندلی‌ها ساعت‌گرد است:</p>
+            </div>
+            <div id="seating-circle-diagram" class="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto my-3 flex items-center justify-center">
+              <!-- Center table decoration -->
+              <div class="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center p-2 backdrop-blur-md shadow-inner">
+                <span class="text-2xl mb-1">📱</span>
+                <span class="text-[11px] font-bold text-slate-300">میز بازی</span>
+                <span class="text-[9px] text-slate-400">گوشی بین افراد می‌چرخد</span>
+              </div>
+              <!-- Seats will be rendered around circumference -->
+              <div id="seating-seats-container" class="absolute inset-0"></div>
+            </div>
+            <div class="bg-black/30 rounded-xl p-3 text-center text-xs text-slate-300 border border-white/5">
+              💡 <strong>فرمول بازی:</strong> نوبت اول با بازیکن ۱ تیم الف شروع می‌شود، کلمه را برای بازیکن ۲ تیم الف (روبرویش) توضیح می‌دهد، سپس گوشی به بازیکن ۱ تیم بعدی می‌رسد!
+            </div>
+          </div>
+        </div>
+
+        <!-- Game Settings: Timer & Categories -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Round Time & Rules (5 cols) -->
+          <div class="lg:col-span-5 glass-panel rounded-3xl p-5 sm:p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white flex items-center gap-2 mb-4">
+                <span class="text-cyan-400">⏱️</span>
+                <span>تنظیمات زمان و قوانین راند</span>
+              </h3>
+
+              <!-- Timer Duration -->
+              <div class="mb-5">
+                <label class="block text-xs font-semibold text-slate-300 mb-2">زمان کل هر راند:</label>
+                <div class="grid grid-cols-4 gap-2 mb-2" id="timer-presets">
+                  <button type="button" data-sec="60" class="time-btn py-2 px-2 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300">۶۰ ثانیه</button>
+                  <button type="button" data-sec="90" class="time-btn py-2 px-2 rounded-xl text-xs font-bold bg-purple-600 text-white border border-purple-500 shadow-md shadow-purple-600/30">۹۰ ثانیه</button>
+                  <button type="button" data-sec="120" class="time-btn py-2 px-2 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300">۱۲۰ ثانیه</button>
+                  <button type="button" data-sec="180" class="time-btn py-2 px-2 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300">۱۸۰ ثانیه</button>
+                </div>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-xs text-slate-400">یا زمان دلخواه:</span>
+                  <input type="number" id="input-custom-seconds" min="30" max="600" value="90" class="w-20 bg-black/40 border border-white/20 rounded-lg px-2.5 py-1 text-center text-sm font-bold text-white focus:outline-none focus:border-purple-400" />
+                  <span class="text-xs text-slate-400">ثانیه</span>
+                </div>
+              </div>
+
+              <!-- Pass Penalty Setting -->
+              <div class="mb-5">
+                <label class="block text-xs font-semibold text-slate-300 mb-2">قانون رد کردن کلمه (Pass):</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer">
+                    <input type="radio" name="pass-rule" value="0" checked class="accent-purple-500 w-4 h-4">
+                    <span class="text-xs text-slate-200">بدون کسر امتیاز (۰)</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer">
+                    <input type="radio" name="pass-rule" value="-1" class="accent-purple-500 w-4 h-4">
+                    <span class="text-xs text-slate-200">جریمه کسر ۱ امتیاز (-۱)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Turn Switch Rule Clarification -->
+              <div class="p-3 bg-purple-950/30 rounded-2xl border border-purple-500/20 text-xs text-purple-200 leading-relaxed">
+                🎯 <strong>روش نمره‌دهی:</strong> با هر حدس درست، تیم فعلی <strong>+۱ امتیاز</strong> می‌گیرد و فوراً گوشی به بازیکن تیم بعدی منتقل می‌شود!
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Selection (7 cols) -->
+          <div class="lg:col-span-7 glass-panel rounded-3xl p-5 sm:p-6 border border-white/10">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <span class="text-pink-400">📚</span>
+                <span>بانک کلمات و موضوعات</span>
+                <span id="badge-total-words" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">۱۱۰۰+ کلمه</span>
+              </h3>
+              <div class="flex items-center gap-2 text-xs">
+                <button type="button" id="btn-select-all-cats" class="text-purple-400 hover:text-purple-300 font-semibold underline">انتخاب همه</button>
+                <span class="text-slate-600">|</span>
+                <button type="button" id="btn-deselect-all-cats" class="text-slate-400 hover:text-slate-200 font-semibold underline">پاک کردن</button>
+              </div>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="categories-grid">
+              <!-- Rendered via JS -->
+            </div>
+            
+            <p id="cat-warning" class="text-xs text-rose-400 font-medium mt-3 hidden">⚠️ حداقل یک دسته‌بندی باید انتخاب شده باشد!</p>
+          </div>
+        </div>
+
+        <!-- Big Start Game Action Button -->
+        <div class="w-full pt-2">
+          <button type="button" id="btn-start-game-flow" class="glass-button w-full py-4 sm:py-5 px-8 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 font-black text-lg sm:text-xl shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 flex items-center justify-center gap-3 active:scale-[0.98] transition-transform">
+            <span>شروع مسابقه و نشستن دور میز</span>
+            <span class="text-2xl">🚀</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- SCREEN 2: PRE-ROUND SEATING & READY CHECK -->
+      <section id="screen-seating-ready" class="w-full flex flex-col gap-6 hidden">
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 text-center max-w-2xl mx-auto border border-purple-500/30 shadow-2xl">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500 to-emerald-500 flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-purple-500/40">
+            ⭕
+          </div>
+          
+          <h2 class="text-2xl sm:text-3xl font-black text-white mb-2">
+            آماده‌سازی دایره بازیکنان
+          </h2>
+          <p class="text-sm text-slate-300 mb-6">
+            لطفاً طبق ترتیب زیر دور میز بنشینید تا نوبت به صورت ضربدری و ساعت‌گرد بچرخد:
+          </p>
+
+          <!-- Seating Order Sequence Pills -->
+          <div id="ready-seating-list" class="flex flex-wrap items-center justify-center gap-2 mb-6">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Key Rules Checklist -->
+          <div class="bg-black/40 rounded-2xl p-4 sm:p-5 text-right border border-white/10 mb-6 space-y-2.5">
+            <h4 class="text-xs font-bold text-amber-400 mb-2">قوانین کلیدی کچ‌فریز در این راند:</h4>
+            <div class="flex items-start gap-2 text-xs text-slate-300">
+              <span class="text-emerald-400 font-bold">۱.</span>
+              <span>گوشی فقط در دست شخصی است که نوبت اوست.</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs text-slate-300">
+              <span class="text-emerald-400 font-bold">۲.</span>
+              <span>دارنده گوشی فقط برای <strong>هم‌تیمی مستقیم خود (روبروی میز)</strong> توضیح می‌دهد.</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs text-slate-300">
+              <span class="text-emerald-400 font-bold">۳.</span>
+              <span>گفتن ریشه کلمه، ترجمه کلمه به انگلیسی یا اشاره با دست <strong>ممنوع</strong> است!</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs text-slate-300">
+              <span class="text-emerald-400 font-bold">۴.</span>
+              <span>به محض حدس زدن هم‌تیمی، دکمه «درست (+۱)» را لمس کنید و <strong>فوراً گوشی را به نفر بغل‌دستی بدهید</strong>.</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs text-slate-300">
+              <span class="text-emerald-400 font-bold">۵.</span>
+              <span>وقتی صدای بوق پایان به صدا درمی‌آید، گوشی دست هر کس باشد، آن تیم بازنده نوبت آخر است!</span>
+            </div>
+          </div>
+
+          <!-- Who holds phone first -->
+          <div id="first-holder-card" class="p-4 rounded-2xl bg-gradient-to-r from-purple-900/40 to-emerald-900/40 border border-white/15 mb-6">
+            <span class="text-xs text-slate-300">شروع‌کننده راند اول:</span>
+            <div class="text-lg font-black text-white mt-1" id="first-holder-name">
+              رضا (تیم الف)
+            </div>
+            <div class="text-xs text-emerald-400 font-semibold mt-0.5" id="first-describer-target">
+              باید برای: سینا توضیح دهد
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button type="button" id="btn-back-to-setup" class="glass-button py-3 px-5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-300 text-sm font-bold flex-1">
+              بازگشت به تنظیمات
+            </button>
+            <button type="button" id="btn-confirm-start-round" class="glass-button py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-base shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 flex-2 flex items-center justify-center gap-2">
+              <span>همه نشستند! شروع بازی</span>
+              <span class="text-xl">🏁</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: ACTIVE GAMEPLAY (Mobile-First Viewport Fitting) -->
+      <section id="screen-gameplay" class="w-full flex flex-col gap-2.5 sm:gap-4 hidden max-w-xl mx-auto flex-1 justify-between w-full">
+        
+        <!-- Live Scores Ticker & Pause -->
+        <div class="glass-panel rounded-2xl px-3 py-2 sm:p-3 border border-white/10 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+          <div id="live-scores-ticker" class="flex items-center gap-1.5 sm:gap-2">
+            <!-- Injected via JS -->
+          </div>
+          <button type="button" id="btn-pause-game" class="glass-button p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white border border-white/10 flex-shrink-0" title="توقف موقت">
+            <svg id="icon-pause" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <svg id="icon-resume" class="w-4 h-4 sm:w-5 sm:h-5 hidden text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </button>
+        </div>
+
+        <!-- Sleek Unified Turn & Timer Status Bar (Saves 120px+ vertical space on mobile) -->
+        <div class="glass-panel rounded-2xl p-2.5 sm:p-4 border border-white/10 flex items-center justify-between gap-2 sm:gap-3 relative overflow-hidden">
+          <!-- Turn info on right -->
+          <div class="flex-1 text-right min-w-0 pr-1">
+            <div class="flex items-center gap-1.5 flex-wrap mb-0.5 sm:mb-1">
+              <span class="text-[10px] sm:text-xs text-slate-400 font-medium flex-shrink-0">گوشی در دست:</span>
+              <span id="current-holder-badge" class="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-black truncate max-w-[140px] sm:max-w-none border">
+                رضا (تیم الف)
+              </span>
+            </div>
+            <div class="text-xs sm:text-sm font-bold text-emerald-400 truncate" id="current-target-badge">
+              🎯 فقط برای سینا توضیح بده!
+            </div>
+            <div class="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1 truncate">
+              <span>نفر بعدی:</span>
+              <span id="next-player-preview" class="font-bold text-slate-300">نیما (تیم ب)</span>
+            </div>
+          </div>
+
+          <!-- Compact Circular Timer on left -->
+          <div class="flex-shrink-0 flex items-center justify-center pl-1">
+            <div id="timer-box" class="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300">
+              <svg viewBox="0 0 100 100" class="w-full h-full transform -rotate-90">
+                <circle cx="50" cy="50" r="42" stroke="rgba(255, 255, 255, 0.08)" stroke-width="8" fill="transparent" />
+                <circle id="timer-progress-ring" cx="50" cy="50" r="42" stroke="#10b981" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" fill="transparent" class="transition-all duration-200" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span id="timer-display" class="text-xl sm:text-2xl font-black tracking-tight text-white font-mono leading-none">90</span>
+                <span class="text-[7px] sm:text-[8px] text-slate-400 font-bold uppercase mt-0.5">ثانیه</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Secret Word Card (Mobile Hero Element) -->
+        <div id="word-card-container" class="glass-panel rounded-3xl p-4 sm:p-7 text-center border-2 border-purple-500/40 relative shadow-2xl flex-1 flex flex-col items-center justify-center transition-all duration-300 min-h-[170px] sm:min-h-[220px] select-none cursor-pointer" title="برای پنهان/آشکار کردن کلمه لمس کنید">
+          
+          <!-- Category Pill & Difficulty & Privacy Peek -->
+          <div class="flex items-center justify-center gap-2 mb-2 sm:mb-4">
+            <span id="word-category-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center gap-1">
+              <span>📦</span>
+              <span id="word-category-text">اشیاء و لوازم</span>
+            </span>
+            <span id="word-difficulty-badge" class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/10 text-slate-300">
+              متوسط
+            </span>
+            <!-- Peek shield icon -->
+            <button type="button" id="btn-toggle-peek" class="p-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white text-[10px]" title="مخفی کردن موقت کلمه">
+              👁️
+            </button>
+          </div>
+
+          <!-- The Secret Word / Phrase with fluid typography -->
+          <div class="w-full px-2 py-1 my-auto">
+            <h2 id="current-word-text" class="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200">
+              آچار فرانسه
+            </h2>
+          </div>
+
+          <!-- Footer hints & live round points -->
+          <div class="flex items-center justify-between w-full mt-2 pt-2 border-t border-white/5 text-[10px] sm:text-xs text-slate-400">
+            <span>بدون اشاره مستقیم و هم‌ریشه!</span>
+            <span>امتیاز این راند: <strong id="turn-correct-count" class="text-emerald-400 font-black text-sm">۰</strong></span>
+          </div>
+        </div>
+
+        <!-- Ergonomic Thumb Action Buttons (Large, Tactile, Thumb-Friendly) -->
+        <div class="grid grid-cols-12 gap-2.5 sm:gap-3 pt-1 safe-bottom-padding">
+          
+          <!-- Pass Button (4 cols) -->
+          <button type="button" id="btn-pass-word" class="col-span-4 glass-button py-3.5 sm:py-5 px-2 rounded-2xl bg-white/10 hover:bg-white/15 active:bg-rose-950/40 text-slate-200 border border-white/15 flex flex-col items-center justify-center gap-0.5 active:scale-95 transition-all select-none min-h-[64px] sm:min-h-[76px]">
+            <span class="text-2xl sm:text-3xl leading-none">⏭️</span>
+            <span class="text-xs sm:text-sm font-bold mt-0.5">رد کردن</span>
+            <span id="pass-penalty-hint" class="text-[9px] text-slate-400">بدون جریمه</span>
+          </button>
+
+          <!-- Correct Guess Button (8 cols) -->
+          <button type="button" id="btn-correct-word" class="col-span-8 glass-button py-3.5 sm:py-5 px-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 text-slate-950 font-black text-base sm:text-xl shadow-xl shadow-emerald-500/40 active:scale-95 transition-all flex items-center justify-center gap-2 select-none min-h-[64px] sm:min-h-[76px]">
+            <span class="text-2xl sm:text-3xl leading-none">✅</span>
+            <div class="flex flex-col text-right">
+              <span class="leading-tight">درست بود!</span>
+              <span class="text-[10px] sm:text-[11px] font-bold text-emerald-950 mt-0.5">+۱ امتیاز و پاس به نفر بعد</span>
+            </div>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- OVERLAY: PASS PHONE TO NEXT PLAYER (Full Viewport Focus on Mobile) -->
+      <div id="modal-pass-phone" class="fixed inset-0 z-50 bg-[#070414]/95 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="glass-panel w-full max-w-md rounded-3xl p-5 sm:p-8 text-center border-2 border-emerald-500/40 shadow-2xl relative my-auto">
+          
+          <!-- Glowing Icon -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-3xl sm:text-4xl mx-auto mb-3 animate-bounce-subtle">
+            📲
+          </div>
+
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-bold mb-2 border border-emerald-500/30">
+            <span>امتیاز ثبت شد! 🎉</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-black text-white mb-1">
+            گوشی را سریع تحویل دهید!
+          </h3>
+          <p class="text-xs text-slate-300 mb-4 sm:mb-6">
+            گوشی را فوراً به بازیکن بعدی برسانید:
+          </p>
+
+          <!-- Next Player Spotlight -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-tr from-purple-900/50 to-emerald-900/50 border border-white/20 mb-4 sm:mb-6 shadow-inner">
+            <span class="text-xs font-semibold text-slate-300 block mb-1">دارنده جدید گوشی:</span>
+            <div id="pass-modal-next-player" class="text-2xl sm:text-3xl font-black text-white">
+              نیما
+            </div>
+            <div id="pass-modal-next-team" class="text-sm font-bold text-purple-300 mt-1">
+              (تیم ب)
+            </div>
+            <div id="pass-modal-target-player" class="text-xs sm:text-sm text-emerald-400 mt-2 font-bold">
+              باید برای: سهراب توضیح دهد
+            </div>
+          </div>
+
+          <!-- Giant Easy-Tap Ready Button for thumbs -->
+          <button type="button" id="btn-modal-ready" class="glass-button w-full py-4 sm:py-5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-lg sm:text-xl shadow-lg shadow-emerald-500/40 active:scale-95 transition-all flex items-center justify-center gap-2 select-none safe-bottom-padding">
+            <span>من آماده‌ام! کلمه بعدی</span>
+            <span class="text-xl">⚡</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SCREEN 4: GAME OVER & PODIUM CELEBRATION -->
+      <section id="screen-game-over" class="w-full flex flex-col gap-6 hidden max-w-2xl mx-auto">
+        
+        <!-- Victory Trophy Box -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 text-center border-2 border-amber-500/30 relative overflow-hidden shadow-2xl">
+          
+          <div class="w-20 h-20 rounded-3xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-4xl mx-auto mb-4 animate-glow">
+            🏆
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl font-black text-white mb-2">
+            وقت تمام شد! پایان مسابقه
+          </h2>
+          <p class="text-sm text-slate-300 max-w-md mx-auto mb-6">
+            زنگ پایان به صدا درآمد! رتبه‌بندی تیم‌ها بر اساس مجموع کلمات حدس زده شده به شرح زیر است:
+          </p>
+
+          <!-- Podium 1st, 2nd, 3rd -->
+          <div id="podium-container" class="grid grid-cols-3 gap-2 sm:gap-4 items-end mb-8 pt-4">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Full Scoreboard Table -->
+          <div class="bg-black/40 rounded-2xl p-4 border border-white/10 mb-6 overflow-x-auto text-right">
+            <h4 class="text-xs font-bold text-slate-300 mb-3 flex items-center gap-1.5">
+              <span>📊</span>
+              <span>جدول کامل امتیازات و عملکرد تیم‌ها</span>
+            </h4>
+            <table class="w-full text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-white/10 text-slate-400 text-[11px]">
+                  <th class="py-2 pr-2 text-right">رتبه</th>
+                  <th class="py-2 text-right">تیم</th>
+                  <th class="py-2 text-right">بازیکنان</th>
+                  <th class="py-2 text-center">حدس درست</th>
+                  <th class="py-2 text-center">رد شده</th>
+                  <th class="py-2 pl-2 text-left">امتیاز نهایی</th>
+                </tr>
+              </thead>
+              <tbody id="gameover-scoreboard-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Words Review Accordion Toggle -->
+          <div class="mb-6">
+            <button type="button" id="btn-toggle-words-history" class="glass-button text-xs font-bold px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-300 border border-white/10 flex items-center justify-center gap-2 mx-auto">
+              <span>بررسی کلمات مطرح شده در این راند</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="words-history-container" class="hidden mt-3 text-right max-h-48 overflow-y-auto p-3 bg-black/40 rounded-xl border border-white/10 space-y-1.5">
+              <!-- Words list -->
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button type="button" id="btn-play-again-same" class="glass-button py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 flex items-center justify-center gap-2">
+              <span>بازی مجدد (همین تیم‌ها)</span>
+              <span class="text-lg">🔄</span>
+            </button>
+            <button type="button" id="btn-new-game-setup" class="glass-button py-3.5 px-6 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm border border-white/15 flex items-center justify-center gap-2">
+              <span>تنظیمات بازی جدید</span>
+              <span class="text-lg">⚙️</span>
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- MODAL: HOW TO PLAY (قوانین و راهنما) -->
+    <div id="modal-rules" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+      <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-7 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <button type="button" id="btn-close-rules" class="absolute top-5 left-5 text-slate-400 hover:text-white p-1 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="text-2xl">📖</span>
+          <h3 class="text-xl font-black text-white">راهنمای بازی کچ‌فریز (کلمات دورهمی)</h3>
+        </div>
+
+        <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed text-right">
+          <div class="p-3 bg-purple-900/30 rounded-xl border border-purple-500/30">
+            <h5 class="font-bold text-purple-300 mb-1">هدف بازی چیست؟</h5>
+            <p>سریع کلمه پنهان را به هم‌تیمی خود بفهمانید و گوشی را به نفر بعدی رد کنید تا وقتی تایمر صفر می‌شود و بوق می‌زند، گوشی دست شما و تیم شما نباشد!</p>
+          </div>
+
+          <div>
+            <h5 class="font-bold text-emerald-400 mb-1">۱. نحوه نشستن و چرخش گوشی:</h5>
+            <p>تیم‌ها ۲ نفره هستند. برای مثال در یک بازی ۴ تیمی، نفرات به گونه‌ای دور دایره می‌نشینند که هر شخص دقیقاً روبروی هم‌تیمی خودش باشد. گوشی به صورت ساعت‌گرد بین بازیکنان تیم‌های مختلف می‌چرخد.</p>
+          </div>
+
+          <div>
+            <h5 class="font-bold text-emerald-400 mb-1">۲. چه مواردی ممنوع است؟</h5>
+            <ul class="list-disc list-inside space-y-1 text-slate-300 pr-1">
+              <li>گفتن کلمه مخفی یا هر کدام از واژه‌های ریشه آن</li>
+              <li>گفتن معادل دقیق انگلیسی یا زبان دیگر کلمه</li>
+              <li>اشاره مستقیم فیزیکی یا لب‌زدن بی‌صدا</li>
+              <li>قافیه‌سازی با کلمه (مثلاً نگویید شبیه به «قاشق»!)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="font-bold text-emerald-400 mb-1">۳. چه کارهایی مجاز و عالی است؟</h5>
+            <p>توصیف داستان، کاربرد شیء، تقلید صدا، بازی با مفاهیم، ضرب‌المثل‌ها و کلمات متضاد و مترادف همگی مجاز و توصیه می‌شوند!</p>
+          </div>
+
+          <div>
+            <h5 class="font-bold text-amber-400 mb-1">۴. پایان بازی:</h5>
+            <p>در ۱۰ ثانیه آخر تپش و صدای هشدار پخش می‌شود. با اتمام زمان، تیمی که بیشترین امتیاز درست را ثبت کرده پیروز میدان می‌شود.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/10">
+          <button type="button" id="btn-close-rules-bottom" class="glass-button w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm">
+            متوجه شدم، بزن بریم!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confetti Canvas (Canvas celebration) -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 hidden"></canvas>
+
+    <!-- Pure Vanilla JavaScript Application Core -->
+    <script>
+      /**
+       * Catchphrase & Alias Persian Party Game
+       * Pure Vanilla JavaScript Game Engine with 1000+ Persian Words
+       */
+
+      // ==========================================
+      // 1. EXTENSIVE PERSIAN WORD BANK (1100+ WORDS)
+      // ==========================================
+      const WORD_DATABASE = {
+        objects: [
+          'آچار فرانسه', 'آبمیوه‌گیری', 'آباژور رومیزی', 'آسانسور شیشه‌ای', 'آینه قدی', 'اتو بخار', 'اره برقی نجاری', 'اسکوتر برقی',
+          'اسپیکر بلوتوثی', 'هدفون بی‌سیم', 'ساعت هوشمند', 'پاوربانک فست‌شارژ', 'تبلت لمسی', 'لپ‌تاپ گیمینگ', 'تردمیل خانگی', 'توپ والیبال',
+          'چرخ خیاطی قدیمی', 'جاروبرقی صنعتی', 'چمدان چرخ‌دار', 'دستکش بوکس چرمی', 'دمپایی ابری', 'دوربین عکاسی دیجیتال', 'زودپز برقی چندکاره', 'سشوار چرخشی',
+          'فلاسک چای کوهنوردی', 'قوری شاه‌عباسی', 'قلیان خوانسار', 'کلاه کاسکت موتور', 'کوله‌پشتی کوهنوردی', 'گوشت‌کوب برقی', 'مایکروفر لمسی', 'ماشین لباسشویی',
+          'ماگ سرامیکی حرارتی', 'نردبان آلومینیومی', 'واکمن کاست‌خور', 'ویدئو پروژکتور سینمایی', 'هلی‌کوپتر کنترلی', 'یخدان مسافرتی یونولیتی', 'بادکنک هلیومی', 'باربیکیو گازی',
+          'بالش پر غاز', 'بخاری نفتی علاءالدین', 'بوم نقاشی رنگ‌روغن', 'پتو گلبافت دورو', 'پنکه سقفی سه‌پره', 'ترازو دیجیتال آشپزخانه', 'تلویزیون منحنی هوشمند', 'تفنگ آب‌پاش پلاستیکی',
+          'جعبه ابزار فلزی', 'چتر بارانی تاشو', 'چشم‌بند خواب ابریشمی', 'چوب اسکی آلپاین', 'دستگاه بخور سرد', 'دستگیره در برنجی', 'دفتر خاطرات قفل‌دار', 'دوش حمام ماساژور',
+          'رادیو لامپی قدیمی', 'رنده چهارگوش استیل', 'زنگ اخبار مدرسه', 'سماور زغالی برنجی', 'سوپاپ اطمینان دیگ', 'سیخ کباب استیل', 'شانه چوبی ارگانیک', 'شمع معطر اسطوخودوس',
+          'صندلی گهواره‌ای مادربزرگ', 'سیبل دارت مغناطیسی', 'عینک آفتابی خلبانی', 'فندک اتمی زیپو', 'قابلمه مسی زنجان', 'قیچی باغبانی دسته بلند', 'کاسه بلور تراش‌خورده', 'کراوات ابریشمی دست‌دوز',
+          'کلید یدک ضدسرقت', 'کمربند چرمی مردانه', 'کنسول بازی پلی‌استیشن', 'کوسن مبل مخمل', 'کیسه خواب پر منفی ۱۰ درجه', 'گرامافون شیپوری عتیقه', 'گلدان سفالی لالجین', 'لوله پولیکا ساختمانی',
+          'مسواک برقی اولتراسونیک', 'موکاپات اسپرسو روگازی', 'میکروفون کندانسر استودیویی', 'نخ دندان نعنایی', 'کره زمین رومیزی', 'چراغ والور قدیمی', 'هاون برنجی قلم‌زنی', 'هونگ سنگی مشهد',
+          'پیپ چوبی دست‌ساز', 'تخت تاشو سفری', 'تلمبه دوچرخه پایی', 'تور والیبال ساحلی', 'جا قلمی چوبی خاتم', 'جعبه موسیقی کوکی', 'چراغ قوه پلیسی ضدآب', 'خط‌کش مهندسی تی',
+          'خمیردندان زغالی سفیدکننده', 'دمبل متغیر بدنسازی', 'ذره‌بین پایه‌دار کارگاهی', 'روروک کودک چرخ‌دار', 'ساک ورزشی باشگاهی', 'سرتاس بقالی استیل', 'سنباده لرزان نجاری', 'سوزن ته‌گرد خیاطی',
+          'سی‌دی خش‌دار نوستالژیک', 'شارژر فندکی فست ماشین', 'شلوارک ورزشی کشی', 'شومینه هیزمی مدرن', 'صندلی ماساژ تمام‌بدن', 'طناب کوهنوردی استاتیک', 'عطر گرمی جیبی', 'قایق بادی دو نفره',
+          'قفل کتابی فولادی', 'قلاب ماهیگیری اسپینینگ', 'کتری و قوری استیل سوت‌دار', 'کپسول آتش‌نشانی پودری', 'کیسه بوکس آویز چرمی', 'گیره لباس چوبی', 'لاستیک زاپاس خودرو', 'لباس غواصی نئوپرن',
+          'ماسک اکسیژن غواصی', 'دستگاه میخ‌کوب بادی', 'ننو مسافرتی دو نفره', 'ساز نی‌انبان جنوبی', 'همزن برقی کاسه‌دار', 'قوطی واکس کفش مشکی', 'ویلچر تاشو برقی', 'پرینتر سه‌بعدی رزینی',
+          'پرگار مهندسی دقیق', 'پیکسل سنجاقی کارتونی', 'تخته نرد چوب گردو', 'تخته گوشت چوبی بامبو', 'توستر نان دو خانه', 'جارو نپتون دستی دو محوره', 'جاسوییچی چرمی حکاکی‌شده', 'جوراب ساق‌بلند رنگین‌کمانی',
+          'چاقو ضامن‌دار زنجان', 'چوب‌لباسی ایستاده چوبی', 'حصیر ساحلی تاشو', 'ماشین خط‌زن مو شارژی', 'خاک‌انداز فلزی بادوام', 'دستمال مایکروفایبر نانو', 'دستگاه پاپ‌کورن‌ساز برقی', 'دوربین دید در شب نظامی',
+          'دیگ زودپز استیل دوقلو', 'راکت تنیس روی چمن', 'زیرسیگاری کریستال بوهمیا', 'سنگ پای قزوین', 'سنبه نجاری فولادی', 'شلنگ آب جمع‌شونده ژله‌ای', 'شیرجوش تفلون دسته‌دار', 'صافی چای استیل پایه‌دار',
+          'طبل کوچک مارش جنگی', 'عینک شنا ضدبخار حرفه‌ای', 'فرفره رنگی بادی', 'قاب عکس خانوادگی طلایی', 'قندان نقره اصفهان', 'دستگاه کارت‌خوان سیار بیسیم', 'کاغذ کادوی متالیک براق', 'کلمن آب یخ شیردار',
+          'کمربند ایمنی خودرو پراید', 'گاوصندوق رمزی ضدحریق', 'گوش‌گیر صدا برای خواب', 'لاستیک دور گلگیر ماشین', 'لنگ حمام سنتی یزد', 'لوستر کریستال چندطبقه', 'مت یوگا ضدلغزش تی‌پی‌ای', 'منگنه رومیزی بزرگ اداری',
+          'ناخن‌گیر استیل ذره‌بین‌دار', 'نمک‌پاش و فلفل‌پاش جفتی', 'وان حمام جکوزی‌دار', 'وردنه شیرینی‌پزی چوبی', 'یخ‌ساز خودکار حبه‌ای', 'پادری مخمل برجسته شیک', 'پارچ شیشه‌ای کریستالین', 'پاک‌کن عطری فانتزی'
+        ],
+        celebrities: [
+          'فردوسی توسی', 'حافظ شیرازی', 'سعدی شیرین‌سخن', 'عمر خیام نیشابوری', 'ابوعلی سینا', 'زکریای رازی', 'کوروش بزرگ هخامنشی', 'میرزا تقی‌خان امیرکبیر',
+          'ابوریحان بیرونی', 'دکتر محمد مصدق', 'پروین اعتصامی', 'سهراب سپهری', 'نیما یوشیج پدر شعر نو', 'فروغ فرخزاد', 'سیمین بهبهانی', 'صادق هدایت',
+          'استاد شهریار', 'جلال آل‌احمد', 'علی‌اکبر دهخدا', 'دکتر علی شریعتی', 'مهران مدیری', 'عادل فردوسی‌پور', 'علی دایی شهریار فوتبال', 'علی کریمی جادوگر فوتبال',
+          'جهان‌پهلوان تختی', 'علیرضا بیرانوند', 'جواد نکونام کاپیتان', 'هادی ساعی پرافتخار', 'حسن یزدانی پلنگ جویبار', 'مهدی طارمی آقای گل', 'بهداد سلیمی قوی‌ترین مرد', 'علیرضا دبیر',
+          'خسرو شکیبایی عمو خسرو', 'عزت‌الله انتظامی آقای بازیگر', 'علی نصیریان استاد بزرگ', 'داوود رشیدی', 'جمشید مشایخی کمال‌الملک', 'اصغر فرهادی برنده اسکار', 'عباس کیارستمی نخل طلا', 'شهاب حسینی نخل طلا',
+          'نوید محمدزاده ببر کردستان', 'ترانه علیدوستی', 'مریلا زارعی شیار ۱۴۳', 'رضا عطاران سلطان کمدی', 'جواد عزتی مالک زخم کاری', 'پیمان معادی', 'پژمان جمشیدی از فوتبال تا سینما', 'بهرام رادان سنتوری',
+          'لیلا حاتمی سیمین سینما', 'پرویز پرستویی حاج کاظم', 'اکبر عبدی مرد هزارچهره', 'هدیه تهرانی سوپراستار', 'فاطمه معتمدآریا سیمین', 'سحر دولتشاهی', 'محمدرضا شجریان خسرو آواز', 'همایون شجریان خداوندگار آواز',
+          'شهرام ناظری شوالیه آواز', 'محسن نامجو تلفیقی', 'محسن یگانه رگ خواب', 'شادمهر عقیلی ستاره پاپ', 'سیروان خسروی تنظیم‌کننده', 'رضا صادقی مشکی‌پوش', 'بهنام بانی قرص قمر', 'احسان خواجه‌امیری',
+          'آلبرت انیشتین فیزیکدان نسبیت', 'استیو جابز خالق اپل', 'بیل گیتس مایکروسافت', 'ایلان ماسک تسلا و اسپیس‌ایکس', 'لئوناردو داوینچی مونالیزا', 'پپ گواردیولا نابغه مربیگری', 'لیونل مسی قهرمان جهان', 'کریستیانو رونالدو سییی',
+          'دیگو مارادونا دست خدا', 'پله مروارید سیاه برزیل', 'مایکل جردن اسطوره بسکتبال', 'محمدعلی کلی اسطوره بوکس', 'رافائل نادال ماتادور تنیس', 'راجر فدرر استاد تنیس', 'چارلی چاپلین سلطان صامت', 'کریستوفر نولان نابغه سینما',
+          'کوئنتین تارانتینو فیلمساز خونین', 'استیون اسپیلبرگ ژوراسیک', 'آل پاچینو پدرخوانده دوم', 'رابرت دنیرو راننده تاکسی', 'لئوناردو دی‌کاپریو تایتانیک و گرگ', 'تام هنکس فارست گامپ', 'برد پیت باشگاه مشت‌زنی', 'جانی دپ کاپیتان جک اسپارو',
+          'آنجلینا جولی لاراکرافت', 'مریل استریپ ملکه اسکار', 'تام کروز ماموریت غیرممکن', 'کیانو ریوز نئو و جان ویک', 'ویلیام شکسپیر هملت', 'ارنست همینگوی پیرمرد و دریا', 'لئو تولستوی جنگ و صلح', 'فئودور داستایوفسکی جنایت و مکافات',
+          'گابریل گارسیا مارکز صد سال تنهایی', 'پابلو پیکاسو گرنیکا', 'ونسان ون‌گوگ شب پرستاره', 'لودویگ فان بتهوون سمفونی نهم', 'ولفگانگ آمادئوس موتزارت نابغه موسیقی', 'یوهان سباستین باخ پدر موسیقی', 'سر ایزاک نیوتون قانون جاذبه', 'توماس ادیسون مخترع لامپ',
+          'گالیلئو گالیله ستاره‌شناس', 'نیکولا تسلا برق متناوب', 'استیون هاوکینگ تاریخچه زمان', 'ماری کوری رادیواکتیو', 'چارلز داروین نظریه تکامل', 'زیگموند فروید پدر روانکاوی', 'نلسون ماندلا آپارتاید', 'مهاتما گاندی رهبر صلح هند',
+          'وینستون چرچیل نخست‌وزیر جنگ', 'ناپلئون بناپارت امپراتور فرانسه', 'ارسطو فیلسوف بزرگ یونان', 'افلاطون تمثیل غار', 'سقراط دانای رازها', 'ابن هیثم پدر نورشناسی', 'ابونصر فارابی معلم ثانی', 'خواجه نصیرالدین طوسی مراغه',
+          'ملاصدرا حکمت متعالیه', 'فریدالدین عطار نیشابوری منطق‌الطیر', 'باباطاهر عریان دوبیتی‌ها', 'سنایی غزنوی حدیقةالحقیقه', 'ناصرخسرو قبادیانی سفرنامه', 'مولانا جلال‌الدین رومی شمس', 'ناصر حجازی عقاب آسیا', 'احمدرضا عابدزاده عقاب خندان',
+          'خداداد عزیزی غزال تیزپا', 'کریم باقری شوت‌های مرگبار', 'مهدی مهدوی‌کیا موشک هامبورگ', 'سردار آزمون مهاجم تیم ملی', 'یحیی گل‌محمدی سرمربی', 'برانکو ایوانکوویچ پروفسور کروات', 'کارلوس کی‌روش سرمربی پرتغالی', 'سعید معروف پاسور طلایی',
+          'سید محمد موسوی مدافع روی تور', 'حمید سوریان نابغه کشتی فرنگی', 'امید نوروزی قهرمان المپیک', 'سهراب مرادی رکوردار وزنه‌برداری', 'کیمیا علیزاده مدال‌آور المپیک', 'الناز رکابی سنگ‌نورد ملی', 'سهراب پاکزاد خواننده نور چشمی', 'علیرضا قربانی روزگار غریب',
+          'محمد معتمدی آواز سنتی', 'رضا یزدانی کافه‌نادری', 'مازیار فلاحی یلدای غمگین', 'فرزاد فرزین مانکن و شوک', 'بابک جهانبخش سلطان احساس', 'بنیامین بهادری دنیا دیگه مثل تو نداره', 'فریدون فروغی آدمک و قوزک پا', 'فرهاد مهراد جمعه و مرد تنها'
+        ],
+        places: [
+          'میدان آزادی تهران', 'برج مخابراتی میلاد', 'تخت جمشید پرسپولیس', 'سی‌وسه‌پل زاینده‌رود', 'میدان نقش جهان اصفهان', 'پل خواجو اصفهان', 'آرامگاه حافظیه شیراز', 'آرامگاه سعدیه شیراز',
+          'آرامگاه حکیم ابوالقاسم فردوسی', 'قله سرافراز دماوند', 'دریاچه شور ارومیه', 'جنگل‌های باستانی هیرکانی', 'جزیره مرجانی کیش', 'جزیره پهناور قشم', 'دره شگفت‌انگیز ستارگان', 'روستای پلکانی ماسوله',
+          'روستای سرخ ابیانه نطنز', 'قلعه تاریخی رودخان فومن', 'کویر شنی مرنجاب کاشان', 'کویر سوزان لوت', 'بازار بزرگ سنتی تهران', 'کاخ موزه گلستان', 'پل طبیعت روی اتوبان مدرس', 'منطقه کوهستانی دربند',
+          'پیست اسکی توچال ایستگاه هفت', 'پیست اسکی بین‌المللی دیزین', 'گنبد فیروزه‌ای سلطانیه زنجان', 'آرامگاه کوروش در پاسارگاد', 'غار آبی شگفت‌انگیز علی‌صدر', 'باغ و حمام فین کاشان', 'خانه تاریخی بروجردی‌ها', 'آبشار زیبای مارگون سپیدان',
+          'تالاب بین‌المللی انزلی', 'دشت شقایق‌های لار دماوند', 'جنگل ابر تماشایی شاهرود', 'چشمه‌های پله‌ای باداب سورت', 'درکه و کلک‌چال تهران', 'دریاچه شهدای خلیج فارس چیتگر', 'مجموعه فرهنگی تاریخی سعدآباد', 'آثار تاریخی نقش رستم مرودشت',
+          'محوطه باستانی طاق بستان', 'سنگ‌نبشته جهانی بیستون کرمانشاه', 'ارگ خشتی بم کرمان', 'باغ مصفای شازده ماهان', 'سازه‌های آبی تاریخی شوشتر', 'زیگورات ایلامی چغازنبیل', 'کوه بیستون و فرهادتراش', 'دریاچه بکر زریبار مریوان',
+          'روستای صخره‌ای کندوان اسکو', 'تنگه شگفت‌انگیز هایقر فیروزآباد', 'گردنه مه‌آلود حیران آستارا', 'آبشار خروشان بیشه لرستان', 'تنگه اسرارآمیز شیرز کوهدشت', 'دریاچه نگین گهر دورود', 'برج آجری طغرل ری', 'کاخ موزه باشکوه نیاوران',
+          'موزه ملی ایران ایران‌باستان', 'قله آتشفشانی سبلان اردبیل', 'شهر چشمه‌های آبگرم سرعین', 'دریاچه تفریحی شورابیل اردبیل', 'جزیره خاک‌های سرخ هرمز', 'قله الوند سنگی همدان', 'غار آهکی کتله‌خور زنجان', 'مسجد نصیرالملک صورتی شیراز',
+          'باغ گیاه‌شناسی ارم شیراز', 'تخت سلیمان آتشکده آذرگشنسب', 'دشت سرسبز میشان الوند', 'کلیسای تاریخی وانک جلفا', 'منارجنبان لرزان اصفهان', 'کاخ چهل‌ستون نصف جهان', 'عمارت باشکوه عالی‌قاپو', 'آرامگاه حکیم عمر خیام',
+          'برج آجری قابوس گنبدکاووس', 'جنگل تونل درختی گیسوم تالش', 'دشت حاصلخیز مغان', 'گردنه اسدآباد همدان', 'بازار وکیل باصفای شیراز', 'دروازه قرآن ورودی شیراز', 'کلوت‌های بیابانی شهداد', 'کوه خواجه سیستان و زابل',
+          'آرامگاه فیلسوف بوعلی سینا همدان', 'کتیبه‌های تاریخی گنج‌نامه', 'غار تاریخی قوری‌قلعه روانسر', 'روستای هزارماسوله اورامان تخت', 'پل شاپوری شکسته خرم‌آباد', 'جنگل رویایی فندقلو نمین', 'چشمه آبگرم معدنی لاریجان', 'برج فلزی ایفل پاریس',
+          'مجسمه آزادی نیویورک منهتن', 'دیوار بزرگ و طولانی چین', 'اهرام ثلاثه و ابوالهول مصر', 'بنای مرمرین تاج محل آگرا', 'برج فوق‌بلند خلیفه دبی', 'آمفی‌تئاتر کولوسئوم رم', 'برج ساعت بیگ بن لندن', 'برج کج پیزا ایتالیا',
+          'شهر گمشده ماچو پیچو پرو', 'آبشارهای خروشان نیاگارا کانادا', 'بلندترین قله جهان اورست هیمالیا', 'آبراه استراتژیک کانال پاناما', 'دره شگفت‌انگیز گرند کانیون آمریکا', 'خانه اپرای بادبانی سیدنی استرالیا', 'کاخ کرملین میدان سرخ مسکو', 'موزه لوور و هرم شیشه‌ای',
+          'کشور کوچک شهر واتیکان', 'جزیره سفید و آبی سانتورینی یونان', 'جزیره رویایی و استوایی بالی', 'پارک ملی یلوستون چشمه آبگرم', 'جزایر مرجانی و مالدیو آبی', 'جنگل‌های بارانی آمازون برزیل', 'قاره یخ‌زده قطب جنوب', 'صحرای شنی بی‌پایان آفریقا',
+          'جزایر آتشفشانی هاوایی اقیانوس آرام', 'شهر روی آب و قایق‌های ونیز', 'برج‌های دوقلوی پتروناس کوالالامپور', 'بلوار معروف شانزلیزه فرانسه', 'آب‌های نیلگون خلیج همیشگی فارس', 'دریای پهناور خزر کاسپین', 'تنگه استراتژیک هرمز', 'جزیره بوموسی نگین خلیج فارس'
+        ],
+        media: [
+          'جدایی نادر از سیمین اسکاری', 'فروشنده شهاب حسینی و ترانه', 'درباره الی لب دریا', 'مارمولک با بازی پرویز پرستویی', 'اخراجی‌های ده‌نمکی و مجید سوزوکی', 'سنتوری علی سنتوری و داریوش مهرجویی', 'شوکران بهروز افخمی', 'مهمان مامان دور سفره شام',
+          'سگ‌کشی بهرام بیضایی', 'دایره زنگی پشت‌بام تهران', 'بوتیک گلشیفته و محمدرضا گلزار', 'ابد و یک روز و نوید محمدزاده', 'متری شیش و نیم سعید روستایی', 'سرخ‌پوست زندان قدیمی', 'شنای پروانه جنوب شهر تهران', 'برادران لیلا و سکه طلا',
+          'سریال پوست شیر نعیم و ساحل', 'سریال زخم کاری مالک و سمیرا', 'سریال قورباغه هومن سیدی', 'سریال شهرزاد بزرگ‌آقا و قباد', 'سریال پایتخت نقی معمولی و ارسطو', 'سریال نون خ نورالدین خانزاده', 'سریال ساختمان پزشکان نیما افشار', 'سریال شب‌های برره شیرفرهاد',
+          'سریال پاورچین سپندار و داوود برره', 'سریال مرد هزارچهره اشتباهی شدم', 'سریال قهوه تلخ جهانگیرشاه و بلوتوث', 'سریال پژمان جمشیدی و خسرو حیدری', 'سریال لیسانسه‌ها حبیب و مازیار', 'سریال زیرخاکی فریبرز باغ‌پیشه', 'سریال هم‌گناه مصطفی کیایی', 'سریال خاتون در بحبوحه جنگ',
+          'سریال یاغی جاوید کشتی‌گیر', 'سریال جیران سوگلی ناصرالدین‌شاه', 'سریال دفتر یادداشت رضا عطاران', 'سریال گناه فرشته شهاب حسینی', 'سریال در حاشیه بیمارستان دکتر صحرایی', 'سریال مسافران بهرام و فرید', 'سریال خانه به دوش آقا ماشاالله', 'سریال متهم گریخت هاشم‌آقا و شازده',
+          'سریال بزنگاه نادر و صابر پرور', 'سریال سه در چهار سیروس املشی', 'سریال خاطره‌انگیز خوش‌رکاب آتقی', 'سریال پدرسالار اسدالله خان', 'سریال فاخر امام علی داریوش ارجمند', 'سریال ماندگار مختارنامه فریبرز عرب‌نیا', 'سریال یوسف پیامبر مصطفی زمانی', 'سریال ولایت عشق امام رضا',
+          'سریال در چشم باد بیژن ایرانی', 'سریال وضعیت سفید امیر و ناهید', 'سریال همسران کمال و مهین', 'سریال نوستالژیک خانه سبز رضا صباحی', 'فیلم آژانس شیشه‌ای خیبر یا ایرباس', 'فیلم بازمانده سلیمه و فرحان', 'فیلم بوی پیراهن یوسف مجید مجیدی', 'فیلم دیده‌بان حاتمی‌کیا',
+          'فیلم لیلی با من است صادق مشکینی', 'فیلم پرهزینه دوئل احمدرضا درویش', 'فیلم شیار ۱۴۳ الفت چشم‌انتظار', 'فیلم ماجرای نیمروز رد خون', 'فیلم لاتاری ساعد سهیلی و حمید فرخ‌نژاد', 'فیلم ایستاده در غبار احمد متوسلیان', 'فیلم جهان با من برقص علی مصفا', 'فیلم کمدی فسیل اسماعیل کرمی',
+          'فیلم کمدی هتل پژمان و محسن کیایی', 'فیلم گشت ارشاد حسن و عطا و عباس', 'فیلم ورود آقایان ممنوع رضا عطاران', 'کلاه‌قرمزی و پسرخاله آقای مجری', 'فیلم نهنگ عنبر ارژنگ صنوبر', 'فیلم مصادره سوراخ توالت', 'فیلم هزارپا رضا عطاران و جواد عزتی', 'فیلم رحمان ۱۴۰۰ منوچهر هادی',
+          'فیلم دینامیت طلاب و دختران همسایه', 'فیلم سگ‌بند امیر جعفری و بهرام افشاری', 'فیلم تمساح خونی جواد عزتی', 'کشتی تایتانیک جک و رز', 'سه‌گانه پدرخوانده دون ویتو کورلئونه', 'شوالیه تاریکی بتمن و جوکر هیث لجر', 'پالپ فیکشن عامه‌پسند تارانتینو', 'رستگاری در شاوشنک اندی دوفرین',
+          'تلقین اینسپشن فرفره در خواب', 'میان‌ستاره‌ای اینترستلار سیاهچاله گارگانتوا', 'اوپنهایمر بمب اتمی کریستوفر نولان', 'ماتریکس قرص آبی و قرمز نئو', 'ارباب حلقه‌ها یاران حلقه فرودو', 'هری پاتر هاگوارتز و ولدمورت', 'دزدان دریایی کارائیب جک اسپارو', 'آواتار پاندورا جیمز کامرون',
+          'سریال بازی تاج و تخت وایت‌واکرها', 'سریال بریکینگ بد هایزنبرگ و جسی پینکمن', 'سریال پیکی بلایندرز تامی شلبی', 'سریال فرار از زندان نقشه مایکل اسکوفیلد', 'سریال لاست گمشدگان جزیره دود سیاه', 'سریال شرلوک هلمز بندیکت کامبربچ', 'سریال چیزهای عجیب استرنجر تینگز الون', 'سریال سرقت پول لاکاسا دپاپل پروفسور',
+          'سریال بازی مرکب چراغ سبز چراغ قرمز', 'سریال چرنوبیل انفجار رآکتور هسته‌ای', 'سریال وایکینگ‌ها رگنار لاثبروک', 'سریال فرندز چندلر و جوئی و مونیکا', 'انیمیشن پاندای کونگ‌فوکار پو اژدها', 'انیمیشن شیرشاه سیمبا و موفاسا', 'انیمیشن شرک و خر سخنگو در باتلاق', 'انیمیشن داستان اسباب‌بازی وودی و بازلایتر',
+          'انیمیشن در جستجوی نمو دلقک‌ماهی', 'انیمیشن شگفت‌انگیزان آقای شگفت‌انگیز', 'انیمیشن عصر یخبندان سید و مندی و سنجاب', 'انیمیشن راتاتویی موش سرآشپز رمی', 'انیمیشن وال-ای روبات عاشق ایوا', 'انیمیشن بالا خانه بادکنکی پیرمرد', 'انیمیشن کارخانه هیولاها سالیوان و مایک', 'انیمیشن من نفرت‌انگیز گرو و مینیون‌ها',
+          'انیمیشن فروزن السا و آنا آدم‌برفی', 'انیمیشن زوتوپیا خرگوش جودی هاپس', 'انیمیشن کوکو سرزمین مردگان گیتار', 'انیمیشن روح سول نوازنده پیانو', 'انیمیشن گربه چکمه‌پوش چشمان ملتمس', 'انیمیشن ماداگاسکار شیر الکس و گورخر مارتی', 'انیمیشن دیو و دلبر بل و شاهزاده', 'انیمیشن علاءالدین غول چراغ جادو آبی',
+          'انیمیشن پینوکیو و پدر ژپتو در شکم نهنگ', 'تام و جری موش و گربه نوستالژیک', 'پلنگ صورتی و بازرس کلوزو', 'باب اسفنجی شلوارمکعبی و پاتریک', 'کارتون فوتبالیست‌ها سوباسا و کاکرو', 'کارتون میتی کومان علامت مخصوص حاکم بزرگ', 'کارتون چوبین و برونکا شبح خبیث', 'کارتون هاچ زنبور عسل در جستجوی مادر'
+        ],
+        proverbs: [
+          'آشپز که دوتا شد غذا یا شور میشه یا بی‌نمک', 'آب در کوزه و ما تشنه‌لبان می‌گردیم', 'آش نخورده و دهن سوخته', 'از این ستون به آن ستون فرج است',
+          'از کوزه همان برون تراود که در اوست', 'از ماست که بر ماست', 'با دم شیر بازی نکن', 'با یک دست نمیشه دوتا هندوانه برداشت',
+          'با یک گل بهار نمیشه', 'بادمجون بم آفت نداره', 'بالاخره دستش برای همه رو شد', 'بالاتر از سیاهی هیچ رنگی نیست',
+          'بزک نمیر بهار میاد کمبزه با خیار میاد', 'بعد از نسترن بوی گل نیاید', 'به مرگ می‌گیره تا به تب راضی بشه', 'پا توی یک کفش کردن و اصرار ورزیدن',
+          'پایش لب گور و دهنش بوی حلوا میده', 'پیاز هم قاطی میوه‌ها شد', 'تا تنور گرم است باید نان را چسباند', 'تعارف شاه‌عبدالعظیمی تکه‌پاره کردن',
+          'تیرش به سنگ سفت خورد', 'جوجه را آخر پاییز می‌شمارند', 'چاه‌کن همیشه خودش ته چاه است', 'چراغی که به خانه رواست به مسجد حرام است',
+          'چشمش از این کار اصلاً آب نمی‌خورد', 'با حلوا حلوا گفتن دهن شیرین نمیشه', 'خر ما از کرگی دم نداشت', 'خود را به کوچه علی‌چپ زدن',
+          'خود کرده را تدبیر نیست', 'خون طرف را توی شیشه کردن', 'خیاط هم در کوزه افتاد', 'دست بالای دست بسیار است برادر',
+          'دست پیش را گرفتن که پس نیفتد', 'دل به دریا زدن و ریسک کردن', 'دندان روی جگر گذاشتن و صبر کردن', 'دیگ به دیگ میگه روت سیاه قابلمه میگه فدات',
+          'دیوار موش داره موش هم گوش داره', 'رودربایستی شدید گیر افتادن', 'زاغ سیاه کسی را چوب زدن', 'زبان سرخ سر سبز می‌دهد بر باد',
+          'زیر پای کسی نشستن و هوایی کردن', 'سالی که نکوست از بهارش پیداست', 'سر به زنگاه درست رسیدن', 'سر بی‌گناه پای دار میره اما بالای دار نمیره',
+          'سرش محکم به سنگ لحد خورده', 'سرنا را از سر گشادش باد زدن', 'سواره از پیاده خبر نداره سیر از گرسنه', 'سوزن توی انبار کاه بزرگ گشتن',
+          'شتر دیدی ندیدی اصلاً هیچی نگو', 'شاهنامه آخرش خوشه خواهیم دید', 'شتر در خواب بیند پنبه‌دانه گهی لپ‌لپ خورد', 'شترسواری دولا دولا هیچ‌وقت نمیشه',
+          'شیر یا خط انداختن برای تصمیم‌گیری', 'صابون طرف به تن ما هم خورده', 'صورتش را با سیلی سرخ نگه می‌داره', 'طبل توخالی بودن و ادعا داشتن',
+          'طوطی‌وار تکرار کردن بدون فهمیدن', 'عاقبت جوینده همیشه یابنده بود', 'عدو شود سبب خیر اگر خدا خواهد', 'فیلش دوباره یاد هندوستان کرده',
+          'کارد به استخوان مظلوم رسیدن', 'کاسه داغ‌تر از آش شدن بی‌مورد', 'کبکش بدجوری خروس می‌خونه این روزها', 'کفگیرش به ته دیگ خورده بی‌پول شده',
+          'کلاغ خواست راه رفتن کبک را یاد بگیره', 'کلاه خودت را قاضی کن و وجدان داشته باش', 'کلاه گشاد سر فلانی گذاشتن', 'کوه به کوه نمیرسه آدم به آدم میرسه',
+          'گاومان زایید و مصیبت شروع شد', 'گر صبر کنی ز غوره حلوا سازی', 'گرگ بالان‌دیده و سرد و گرم‌چشیده', 'گربه دستش به گوشت نمیرسه میگه بو میده',
+          'گربه را باید دم حجله کشت تا حساب ببرند', 'گل پشت و رو نداره عزیزم', 'گنجشک را رنگ می‌کنه جای قناری می‌فروشه', 'لنگه کفش کهنه در بیابان نعمت است',
+          'مار گزیده از ریسمان سیاه و سفید می‌ترسه', 'ماهی را هر وقت از آب بگیری تازه است', 'مرغ همسایه همیشه غازه برای بعضی‌ها', 'مشت نمونه خروار و نشانه کل است',
+          'مگه سر آوردی این‌قدر هول می‌زنی', 'موش تو سوراخ نمیرفت جارو به دمبش می‌بست', 'نان به نرخ روز خوردن و ریاکاری', 'نان کسی را آجر کردن نامردیه',
+          'نخود هر آشی شدن و دخالت کردن', 'نوشدارو بعد از مرگ سهراب چه فایده داره', 'هر گردی گردو نیست گول نخور', 'هر که بامش بیش برفش بیشتر است',
+          'هر که طاووس خواهد جور هندوستان کشد', 'هندوانه زیر بغل کسی گذاشتن با چرب‌زبانی', 'یکی به نعل و یکی به میخ زدن', 'یک دست صدا نداره باید متحد باشیم',
+          'یک کلاغ چهل کلاغ کردن شایعات', 'آب از آب تکان نخوردن بعد از ماجرا', 'آب پاکی روی دست منتظر ریختن', 'آب زیر کاه بودن و موذی‌گری',
+          'آتش بیار معرکه شدن و دعوا راه انداختن', 'از خجالت آب شدن و زمین رفتن', 'از سیر تا پیاز قضیه را با جزئیات گفتن', 'از کوره در رفتن و داد و بیداد کردن',
+          'با پنبه سر بریدن با سیاست نرم', 'بوی کباب شنیدن ولی خر داغ کردن', 'پوست خربزه زیر پای رفیق انداختن', 'پیه همه‌چیز را به تن خود مالیدن',
+          'تر و خشک را با هم سوزاندن در قضاوت', 'چشم‌بسته غیب گفتن شاهکار کردی', 'حساب حساب است کاکا برادر شوخی نداریم', 'خط و نشان کشیدن و تهدید توخالی',
+          'دست روی دست گذاشتن و بی‌عملی', 'دندان گرد کردن برای پول زیاد', 'دوری و دوستی برای حفظ احترام', 'رگ خواب کسی را پیدا کردن و نرم کردن',
+          'ریگی به کفش داشتن و پنهان‌کاری', 'زیر کاسه نیم‌کاسه‌ای مشکوک بودن', 'شستش زودتر از همه خبردار شد', 'غوره نشده مویز شدن و ادعای بزرگی',
+          'فوت کوزه‌گری را به هیچ‌کس یاد ندادن', 'قند توی دلش آب شدن از ذوق', 'کار هر بز نیست خرمن کوفتن کاردانه', 'کاسه کوزه را سر مظلوم شکستن'
+        ],
+        general: [
+          'پانتومیم ادابازی', 'ته‌دیگ زعفرانی برشته سیب‌زمینی', 'خورشت قورمه‌سبزی جاافتاده', 'دیزی سنگی با نان سنگک و ترشی', 'خورشت فسنجان ملس گردو و انار', 'باقالی‌پلو با ماهیچه مجلسی', 'کباب کوبیده دوبل زعفرانی', 'جوجه کباب با استخوان زغالی',
+          'آش رشته داغ با کشک و نعناداغ', 'میرزاقاسمی دودی گیلان', 'کشک بادمجان لذیذ با گردو', 'کله‌پاچه با چشم و زبان و بناگوش', 'سیرابی و شیردان فلفلی', 'سوهان گل کره‌ای اعلای قم', 'گز انگبین آردی اصفهان', 'نان خامه‌ای قنادی تازه',
+          'باقلوا لوز عسلی یزد', 'زولبیا و بامیه ماه رمضان', 'فالوده شیرازی با آبلیموی تازه', 'بستنی سنتی زعفرانی با خامه خشک', 'لواشک ترش انار و زرشک بازاری', 'ترشی هفت‌بیجار تند سنتی', 'آجیل چهارمغز شب یلدا', 'سبزه عید نوروز روبان‌پیچ',
+          'سفره هفت‌سین با سنجد و سیب', 'حاجی فیروز دایره‌زنگی به دست', 'عمو نوروز با ریش سفید و کلاه نمدی', 'چهارشنبه‌سوری و پریدن از روی آتش', 'قاشق‌زنی با چادر در تاریکی کوچه', 'سیزده‌بدر و گره زدن سبزه‌ها', 'فال حافظ شب چله', 'کرسی داغ زمستانی مادربزرگ',
+          'رقص محلی لری با دستمال‌های رنگی', 'چای دبش قندپهلو در استکان کمرباریک', 'نان بربری داغ خشخاشی کنجدی', 'نان سنگک دوآتیشه برشته', 'پنیر لیقوان اصیل تبریز', 'دوغ آبعلی گازدار ترش خنک', 'تخمه آفتابگردان شور شکستن', 'قاچ هندوانه خنک شب یلدا',
+          'دیپلمات کارکشته سازمان ملل', 'فضانورد معلق در ایستگاه بین‌المللی', 'غریق‌نجات تیزبین لب ساحل دریا', 'آتش‌نشان فداکار وسط شعله‌های آتش', 'باستان‌شناس جویای گنجینه‌های باستانی', 'کارآگاه خصوصی با ذره‌بین و پالتو', 'خلبان هواپیمای جنگی مافوق‌صوت', 'شعبده‌باز خرگوش از کلاه درآور',
+          'بندباز ماهر وسط رینگ سیرک', 'بدلکار سینما پریدن از ساختمان', 'زیردریایی اتمی غول‌پیکر در عمق اقیانوس', 'بالن هوای گرم بر فراز کوهستان', 'سفینه فضایی راهی مریخ', 'شهاب‌سنگ آتشین در حال سقوط', 'منظومه شمسی و سیارات هشتگانه', 'سیاه‌چاله مرموز بلعنده نور',
+          'مثلث برمودا ناپدیدکننده کشتی‌ها', 'طلوع دل‌انگیز آفتاب در کویر طلایی', 'شفق قطبی سبز در آسمان شب شمال', 'طوفان شن غافلگیرکننده بیابان', 'سونامی سهمگین در سواحل اقیانوس', 'بهمن برفی مهیب در دره‌های البرز', 'آتشفشان فعال مواد مذاب پرتاب‌کننده', 'زلزله شدید تکان‌دهنده زمین',
+          'گردباد پیچنده خانه خراب‌کننده', 'اسب تک‌شاخ یال‌طلایی افسانه‌ای', 'اژدهای هفت‌سر آتش‌نفس غارنشین', 'سیمرغ افسانه‌ای بر فراز کوه قاف', 'دیو سپید پای در بند دماوند', 'ققنوس برخاسته از خاکستر شعله‌ور', 'غول چراغ جادو با سه آرزو', 'پری دریایی نشسته روی صخره اقیانوس',
+          'مومیایی باستانی مومی‌شده در تابوت', 'دزد دریایی با چشم‌بند و طوطی', 'شوالیه زره‌پوش قرون وسطایی با سپر', 'سامورایی کاتانا به دست ژاپن باستان', 'گلادیاتور شمشیرزن کولوسئوم رم', 'نینجای سایه‌رو با ستاره پرتابی', 'دایناسور تیرانوسوروس رکس شکارچی', 'ماموت پشمالوی غول‌پیکر عصر یخبندان',
+          'نهنگ آبی بزرگ‌ترین موجود تاریخ کره زمین', 'کوسه سفید بزرگ اقیانوس‌نورد', 'پلنگ برفی خالدار کوهستان‌های هیمالیا', 'خرس قطبی شناگر ماهر میان یخ‌ها', 'یوزپلنگ تیزپای آسیایی دشت توران', 'شاهین تیزپرواز شکارچی آسمان‌ها', 'جغد شب‌بیدار دانا روی درخت کهنسال', 'طاووس هزاررنگ مغرور باغ بهشت',
+          'فلامینگوی صورتی ایستاده روی یک پا', 'آفتاب‌پرست تغییر رنگ‌دهنده روی شاخه', 'اختاپوس هشت‌پای هوشمند استتارگر', 'مار زنگی زهرآگین بیابان‌های خشک', 'عقرب سیاه کشنده زیر سنگ‌ها', 'کرگدن شاخ‌دار زره‌پوش آفریقایی', 'زرافه گردن‌دراز چراکننده از سر شاخه', 'کانگوروی استرالیایی بچه‌درکیسه',
+          'کوالای خواب‌آلود در آغوش اکالیپتوس', 'پنگوئن امپراتور سرمای منهای پنجاه درجه', 'وال گوژپشت خواننده اعماق آب‌ها', 'دلفین باهوش بازیگوش نمایش‌دهنده', 'شیر نر یال‌دار سلطان جنگل ساوانا', 'ببر بنگال راه‌راه خط‌دار شکارچی', 'گرگ خاکستری زوزه‌کش در شب مهتابی', 'روباه مکار با دم پشمالو نارنجی',
+          'خارپشت تیغ‌پرتاب‌کننده محافظ خود', 'لاک‌پشت دریایی صدساله اقیانوس‌پیما', 'سمور آبی ماهر سدساز رودخانه', 'سنجاب پرجنب‌وجوش پنهان‌کننده گردو', 'دارکوب پرصدا منقارزن به تنه درخت', 'عروس دریایی درخشان شفاف سمی', 'ستاره دریایی پنج‌پر کف صخره‌ها', 'حلزون بی‌صدای خانه‌به‌دوش شاخک‌دار',
+          'کرم شب‌تاب چراغ‌روشن‌کننده بوته‌ها', 'زنبور عسل گل‌نشین شهدآور پرکار', 'پروانه بال‌ابریشمی هزاررنگ باغ', 'عنکبوت هنرمند تارزن گوشه دیوار', 'اسب آبی دهان‌بزرگ خشمگین رودخانه', 'گورخر راه‌راه مشکی‌سفید آفریقایی', 'شتر دوکوهانه باربر جاده ابریشم', 'بوفالوی وحشی شاخ‌بلند دشت‌های دور',
+          'عقاب طلایی تیزچنگال حاکم صخره‌ها', 'لک‌لک سفید لانه‌ساز بر نوک گلدسته‌ها', 'قوی بال‌شکسته عاشق برکه آرام', 'پلاتیپوس نوک‌اردکی عجیب استرالیایی', 'پاندا غول‌پیکر بامبوجو چینی تنبل', 'میمون بازیگوش آویزان از شاخه‌های جنگل', 'گوریل پشت‌نقره‌ای قدرتمند مهربان', 'اورانگوتان متفکر جنگل‌های بارانی سوماترا',
+          'لمور دم‌حلقه‌ای جست‌وخیزکننده ماداگاسکار', 'چکش تخریب هیدرولیکی پر سر و صدا', 'بیل مکانیکی خاکبرداری گودبرداری عمیق', 'جرثقیل غول‌آسای برج‌ساز آسمان‌خراش', 'لودر راه‌سازی جاده‌های کوهستانی', 'بولدوزر پرقدرت تسطیح‌کننده زمین‌ها', 'تله‌کابین معلق روی کوهستان برفی', 'کشتی تفریحی کروز مجلل اقیانوس‌پیما',
+          'ترن هوایی سریع و جیغ‌آور شهربازی', 'چرخ و فلک غول‌پیکر دیدبان کل شهر', 'سرسره آبی پیچ‌درپیچ هیجان‌انگیز پارک', 'تاب زنجیری هوایی چرخان در آسمان', 'قایق پدالی دونفره دریاچه چیتگر', 'اسب‌سواری چوگان و پرش از مانع', 'تیراندازی با کمان کمانگیران باستانی', 'شمشیربازی المپیکی سابر و فلوره سریع'
+        ]
+      };
+
+      // Calculate total words in memory
+      let totalBankWords = 0;
+      Object.keys(WORD_DATABASE).forEach(cat => {
+        totalBankWords += WORD_DATABASE[cat].length;
+      });
+
+      // Category Metadata (Persian display names, icons, colors)
+      const CATEGORY_META = {
+        objects: { name: 'اشیاء و لوازم', en: 'Objects & Tools', icon: '📦', color: 'from-blue-600 to-indigo-600' },
+        celebrities: { name: 'مشاهیر و افراد معروف', en: 'Celebrities & Icons', icon: '🌟', color: 'from-amber-500 to-orange-600' },
+        places: { name: 'مکان‌ها و کشورها', en: 'Places & Countries', icon: '🌍', color: 'from-emerald-600 to-teal-600' },
+        media: { name: 'فیلم، سریال و انیمیشن', en: 'Movies, Shows & Cartoons', icon: '🎬', color: 'from-pink-600 to-rose-600' },
+        proverbs: { name: 'ضرب‌المثل‌ها و اصطلاحات', en: 'Idioms & Proverbs', icon: '💬', color: 'from-purple-600 to-violet-700' },
+        general: { name: 'عمومی و کلمات ترکیبی', en: 'General & Concepts', icon: '🔮', color: 'from-cyan-600 to-blue-700' },
+      };
+
+      // Default Team Colors Palette
+      const TEAM_COLORS = [
+        { name: 'سرخ‌پوشان', border: 'border-rose-500', bg: 'bg-rose-500/20', text: 'text-rose-400', badge: 'bg-rose-500', hex: '#f43f5e' },
+        { name: 'شاهین فیروزه‌ای', border: 'border-cyan-500', bg: 'bg-cyan-500/20', text: 'text-cyan-400', badge: 'bg-cyan-500', hex: '#06b6d4' },
+        { name: 'طوفان زرد', border: 'border-amber-500', bg: 'bg-amber-500/20', text: 'text-amber-400', badge: 'bg-amber-500', hex: '#f59e0b' },
+        { name: 'پلنگ بنفش', border: 'border-purple-500', bg: 'bg-purple-500/20', text: 'text-purple-400', badge: 'bg-purple-500', hex: '#a855f7' },
+        { name: 'زمرد سبز', border: 'border-emerald-500', bg: 'bg-emerald-500/20', text: 'text-emerald-400', badge: 'bg-emerald-500', hex: '#10b981' },
+        { name: 'سیمرغ نارنجی', border: 'border-orange-500', bg: 'bg-orange-500/20', text: 'text-orange-400', badge: 'bg-orange-500', hex: '#f97316' },
+      ];
+
+      // ==========================================
+      // 2. AUDIO SYNTHESIZER (WEB AUDIO API)
+      // ==========================================
+      class SoundController {
+        constructor() {
+          this.audioCtx = null;
+          this.isMuted = false;
+        }
+
+        initContext() {
+          if (!this.audioCtx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+              this.audioCtx = new AudioContext();
+            }
+          }
+          if (this.audioCtx && this.audioCtx.state === 'suspended') {
+            this.audioCtx.resume();
+          }
+        }
+
+        toggleMute() {
+          this.isMuted = !this.isMuted;
+          return this.isMuted;
+        }
+
+        playTone(freq, type = 'sine', duration = 0.15, startTime = 0, gainLevel = 0.2) {
+          if (this.isMuted) return;
+          this.initContext();
+          if (!this.audioCtx) return;
+
+          try {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            
+            const start = this.audioCtx.currentTime + startTime;
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, start);
+
+            gain.gain.setValueAtTime(gainLevel, start);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc.start(start);
+            osc.stop(start + duration);
+          } catch (e) {
+            console.error('Audio tone error', e);
+          }
+        }
+
+        playTick(isUrgent = false) {
+          if (this.isMuted) return;
+          if (isUrgent) {
+            // High double emergency pulse
+            this.playTone(880, 'triangle', 0.08, 0, 0.25);
+            this.playTone(1100, 'sine', 0.08, 0.09, 0.3);
+          } else {
+            // Calm woodblock click
+            this.playTone(480, 'sine', 0.04, 0, 0.15);
+          }
+        }
+
+        playSuccess() {
+          if (this.isMuted) return;
+          // Uplifting Major Chord Arpeggio (C5, E5, G5, C6)
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            this.playTone(freq, 'sine', 0.22, idx * 0.07, 0.22);
+          });
+          // Haptic Feedback if supported
+          if (navigator.vibrate) {
+            try { navigator.vibrate([35, 30, 45]); } catch(e){}
+          }
+        }
+
+        playPass() {
+          if (this.isMuted) return;
+          this.initContext();
+          if (!this.audioCtx) return;
+          try {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            const start = this.audioCtx.currentTime;
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(450, start);
+            osc.frequency.exponentialRampToValueAtTime(150, start + 0.18);
+            gain.gain.setValueAtTime(0.18, start);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.18);
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+            osc.start(start);
+            osc.stop(start + 0.18);
+          } catch(e){}
+        }
+
+        playBuzzer() {
+          if (this.isMuted) return;
+          this.initContext();
+          if (!this.audioCtx) return;
+          try {
+            // Classic party game loud buzzer
+            const osc1 = this.audioCtx.createOscillator();
+            const osc2 = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            const start = this.audioCtx.currentTime;
+
+            osc1.type = 'sawtooth';
+            osc2.type = 'sawtooth';
+            osc1.frequency.setValueAtTime(140, start);
+            osc2.frequency.setValueAtTime(145, start);
+
+            gain.gain.setValueAtTime(0.4, start);
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 1.2);
+
+            osc1.connect(gain);
+            osc2.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc1.start(start);
+            osc2.start(start);
+            osc1.stop(start + 1.2);
+            osc2.stop(start + 1.2);
+          } catch(e){}
+          if (navigator.vibrate) {
+            try { navigator.vibrate([200, 100, 400]); } catch(e){}
+          }
+        }
+
+        playFanfare() {
+          if (this.isMuted) return;
+          // Triumphant Fanfare arpeggios
+          const melody = [
+            { f: 523.25, t: 0.0, d: 0.15 },
+            { f: 523.25, t: 0.16, d: 0.15 },
+            { f: 523.25, t: 0.32, d: 0.15 },
+            { f: 659.25, t: 0.48, d: 0.35 },
+            { f: 587.33, t: 0.85, d: 0.15 },
+            { f: 783.99, t: 1.05, d: 0.6 }
+          ];
+          melody.forEach(item => {
+            this.playTone(item.f, 'triangle', item.d, item.t, 0.3);
+          });
+        }
+      }
+
+      const sounds = new SoundController();
+
+      // ==========================================
+      // 2.5 SOFT INSTRUMENTAL BACKGROUND MUSIC
+      // ==========================================
+      class BackgroundMusicController {
+        constructor(soundController) {
+          this.soundCtrl = soundController;
+          this.isPlaying = false;
+          this.isPaused = false;
+          this.volume = 0.4; // 0.0 to 1.0 (default 40%)
+          this.isMuted = false;
+          this.musicGain = null;
+          this.filterNode = null;
+          this.schedulerTimer = null;
+          this.nextNoteTime = 0;
+          this.currentChordIndex = 0;
+
+          // Restore saved volume
+          try {
+            const saved = localStorage.getItem('party_game_music_volume');
+            if (saved !== null) {
+              const parsed = parseFloat(saved);
+              if (!isNaN(parsed) && parsed >= 0 && parsed <= 1) {
+                this.volume = parsed;
+              }
+            }
+          } catch (e) {}
+
+          if (this.volume === 0) {
+            this.isMuted = true;
+          }
+
+          // Gentle, mellow instrumental acoustic chord progression
+          // Harmonically warm, joyful and subtle (Key of F / C / Am)
+          this.chords = [
+            // Bar 1: Fmaj9 (warm, soft)
+            { 
+              bass: 87.31, // F2
+              pad: [261.63, 329.63, 392.00, 440.00], // C4, E4, G4, A4
+              lead: [392.00, 523.25, 659.25, 523.25] // G4, C5, E5, C5
+            },
+            // Bar 2: G6/9 (gentle resolution)
+            { 
+              bass: 98.00, // G2
+              pad: [246.94, 293.66, 329.63, 392.00], // B3, D4, E4, G4
+              lead: [440.00, 493.88, 587.33, 440.00] // A4, B4, D5, A4
+            },
+            // Bar 3: Em7 (introspective, warm)
+            { 
+              bass: 82.41, // E2
+              pad: [196.00, 246.94, 293.66, 392.00], // G3, B3, D4, G4
+              lead: [329.63, 392.00, 493.88, 392.00] // E4, G4, B4, G4
+            },
+            // Bar 4: Am9 (peaceful, resolving loop)
+            { 
+              bass: 110.00, // A2
+              pad: [261.63, 329.63, 392.00, 493.88], // C4, E4, G4, B4
+              lead: [440.00, 523.25, 659.25, 783.99] // A4, C5, E5, G5
+            }
+          ];
+          this.barDuration = 2.4; // 2.4 seconds per bar
+        }
+
+        initMusicGain() {
+          this.soundCtrl.initContext();
+          const ctx = this.soundCtrl.audioCtx;
+          if (!ctx) return;
+          if (!this.musicGain) {
+            this.musicGain = ctx.createGain();
+            this.filterNode = ctx.createBiquadFilter();
+            this.filterNode.type = 'lowpass';
+            this.filterNode.frequency.setValueAtTime(850, ctx.currentTime);
+            this.filterNode.Q.setValueAtTime(0.8, ctx.currentTime);
+            this.filterNode.connect(this.musicGain);
+
+            const effectiveVol = this.isMuted ? 0.0001 : this.volume;
+            this.musicGain.gain.setValueAtTime(effectiveVol, ctx.currentTime);
+            this.musicGain.connect(ctx.destination);
+          }
+        }
+
+        setVolume(newVol) {
+          this.volume = Math.max(0, Math.min(1, newVol));
+          try {
+            localStorage.setItem('party_game_music_volume', this.volume.toString());
+          } catch (e) {}
+
+          this.isMuted = (this.volume === 0);
+
+          if (this.musicGain && this.soundCtrl.audioCtx) {
+            const now = this.soundCtrl.audioCtx.currentTime;
+            this.musicGain.gain.cancelScheduledValues(now);
+            const target = this.isMuted ? 0.0001 : this.volume;
+            this.musicGain.gain.linearRampToValueAtTime(target, now + 0.08);
+          }
+          this.updateUI();
+        }
+
+        toggleMute() {
+          if (this.isMuted || this.volume === 0) {
+            this.isMuted = false;
+            if (this.volume === 0) this.volume = 0.4;
+          } else {
+            this.isMuted = true;
+          }
+          this.setVolume(this.isMuted ? 0 : this.volume);
+        }
+
+        start() {
+          this.soundCtrl.initContext();
+          const ctx = this.soundCtrl.audioCtx;
+          if (!ctx) return;
+          this.initMusicGain();
+
+          if (this.isPlaying) return;
+          this.isPlaying = true;
+          this.isPaused = false;
+          this.currentChordIndex = 0;
+          this.nextNoteTime = ctx.currentTime + 0.06;
+
+          // Smooth fade in
+          const now = ctx.currentTime;
+          this.musicGain.gain.cancelScheduledValues(now);
+          this.musicGain.gain.setValueAtTime(0.0001, now);
+          const target = this.isMuted ? 0.0001 : this.volume;
+          this.musicGain.gain.linearRampToValueAtTime(target, now + 1.2);
+
+          this.scheduleLoop();
+          this.updateUI();
+        }
+
+        scheduleLoop() {
+          if (!this.isPlaying || this.isPaused) return;
+          const ctx = this.soundCtrl.audioCtx;
+          if (!ctx) return;
+
+          while (this.nextNoteTime < ctx.currentTime + 0.6) {
+            this.scheduleBar(this.nextNoteTime, this.chords[this.currentChordIndex]);
+            this.nextNoteTime += this.barDuration;
+            this.currentChordIndex = (this.currentChordIndex + 1) % this.chords.length;
+          }
+
+          this.schedulerTimer = setTimeout(() => this.scheduleLoop(), 120);
+        }
+
+        scheduleBar(time, barData) {
+          const ctx = this.soundCtrl.audioCtx;
+          if (!ctx || !this.filterNode) return;
+
+          // 1. Soft Warm Acoustic Bass Note
+          try {
+            const bassOsc = ctx.createOscillator();
+            const bassGain = ctx.createGain();
+            bassOsc.type = 'sine';
+            bassOsc.frequency.setValueAtTime(barData.bass, time);
+
+            bassGain.gain.setValueAtTime(0.0001, time);
+            bassGain.gain.linearRampToValueAtTime(0.18, time + 0.12);
+            bassGain.gain.exponentialRampToValueAtTime(0.0001, time + this.barDuration * 0.95);
+
+            bassOsc.connect(bassGain);
+            bassGain.connect(this.filterNode);
+            bassOsc.start(time);
+            bassOsc.stop(time + this.barDuration);
+          } catch (e) {}
+
+          // 2. Warm Polyphonic Electric Piano / Ambient Rhodes Chords
+          barData.pad.forEach((freq, idx) => {
+            try {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+              osc.frequency.setValueAtTime(freq, time);
+
+              const maxGain = 0.038;
+              const delay = idx * 0.025;
+              gain.gain.setValueAtTime(0.0001, time + delay);
+              gain.gain.linearRampToValueAtTime(maxGain, time + 0.2 + delay);
+              gain.gain.exponentialRampToValueAtTime(0.0001, time + this.barDuration * 0.92);
+
+              osc.connect(gain);
+              gain.connect(this.filterNode);
+              osc.start(time + delay);
+              osc.stop(time + this.barDuration);
+            } catch (e) {}
+          });
+
+          // 3. Delicate Acoustic Kalimba / Chime Notes
+          const step = this.barDuration / 4;
+          barData.lead.forEach((freq, idx) => {
+            try {
+              const noteTime = time + idx * step + 0.04;
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, noteTime);
+
+              gain.gain.setValueAtTime(0.0001, noteTime);
+              gain.gain.linearRampToValueAtTime(0.028, noteTime + 0.025);
+              gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.42);
+
+              osc.connect(gain);
+              gain.connect(this.filterNode);
+              osc.start(noteTime);
+              osc.stop(noteTime + 0.45);
+            } catch (e) {}
+          });
+        }
+
+        pause() {
+          if (!this.isPlaying || this.isPaused) return;
+          this.isPaused = true;
+          if (this.schedulerTimer) clearTimeout(this.schedulerTimer);
+          if (this.musicGain && this.soundCtrl.audioCtx) {
+            const now = this.soundCtrl.audioCtx.currentTime;
+            this.musicGain.gain.cancelScheduledValues(now);
+            this.musicGain.gain.linearRampToValueAtTime(0.0001, now + 0.25);
+          }
+          this.updateUI();
+        }
+
+        resume() {
+          if (!this.isPlaying || !this.isPaused) return;
+          this.isPaused = false;
+          const ctx = this.soundCtrl.audioCtx;
+          if (!ctx) return;
+          this.nextNoteTime = ctx.currentTime + 0.06;
+          if (this.musicGain) {
+            const now = ctx.currentTime;
+            this.musicGain.gain.cancelScheduledValues(now);
+            const target = this.isMuted ? 0.0001 : this.volume;
+            this.musicGain.gain.linearRampToValueAtTime(target, now + 0.4);
+          }
+          this.scheduleLoop();
+          this.updateUI();
+        }
+
+        stop() {
+          if (!this.isPlaying) return;
+          this.isPlaying = false;
+          this.isPaused = false;
+          if (this.schedulerTimer) clearTimeout(this.schedulerTimer);
+          if (this.musicGain && this.soundCtrl.audioCtx) {
+            const now = this.soundCtrl.audioCtx.currentTime;
+            this.musicGain.gain.cancelScheduledValues(now);
+            this.musicGain.gain.linearRampToValueAtTime(0.0001, now + 0.5);
+          }
+          this.updateUI();
+        }
+
+        updateUI() {
+          const badge = document.getElementById('music-vol-badge');
+          const slider = document.getElementById('music-volume-slider');
+          const sliderVal = document.getElementById('music-slider-val');
+          const iconPlaying = document.getElementById('icon-music-playing');
+          const iconMuted = document.getElementById('icon-music-muted');
+          const statusInd = document.getElementById('music-status-indicator');
+
+          const percent = Math.round(this.volume * 100);
+          const isSilent = this.isMuted || percent === 0;
+
+          if (badge) {
+            badge.textContent = isSilent ? 'خاموش' : `${percent}٪`;
+            if (isSilent) {
+              badge.className = 'text-[10px] sm:text-[11px] font-black px-1.5 py-0.5 rounded-md bg-slate-500/20 text-slate-400 border border-slate-500/30 font-mono';
+            } else {
+              badge.className = 'text-[10px] sm:text-[11px] font-black px-1.5 py-0.5 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 font-mono';
+            }
+          }
+
+          if (slider && parseInt(slider.value, 10) !== (isSilent ? 0 : percent)) {
+            slider.value = isSilent ? 0 : percent;
+          }
+          if (sliderVal) {
+            sliderVal.textContent = isSilent ? 'بی‌صدا' : `${percent}٪`;
+          }
+
+          if (iconPlaying && iconMuted) {
+            iconPlaying.classList.toggle('hidden', isSilent);
+            iconMuted.classList.toggle('hidden', !isSilent);
+            if (this.isPlaying && !this.isPaused && !isSilent) {
+              iconPlaying.classList.add('animate-pulse');
+            } else {
+              iconPlaying.classList.remove('animate-pulse');
+            }
+          }
+
+          if (statusInd) {
+            if (this.isPlaying && !this.isPaused && !isSilent) {
+              statusInd.textContent = 'در حال پخش 🎶';
+              statusInd.className = 'text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30';
+            } else if (this.isPaused) {
+              statusInd.textContent = 'متوقف موقت ⏸️';
+              statusInd.className = 'text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30';
+            } else if (isSilent) {
+              statusInd.textContent = 'بی‌صدا 🔇';
+              statusInd.className = 'text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-semibold border border-rose-500/30';
+            } else {
+              statusInd.textContent = 'آماده پخش با شروع بازی ✨';
+              statusInd.className = 'text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-semibold border border-purple-500/30';
+            }
+          }
+
+          // Preset buttons active highlight
+          document.querySelectorAll('.btn-vol-preset').forEach(btn => {
+            const v = parseInt(btn.dataset.vol, 10);
+            if ((isSilent && v === 0) || (!isSilent && Math.abs(percent - v) <= 15)) {
+              btn.className = 'btn-vol-preset py-1 rounded-lg text-[10px] font-bold bg-purple-600/40 text-purple-200 border border-purple-500/40 text-center transition-colors';
+            } else {
+              btn.className = 'btn-vol-preset py-1 rounded-lg text-[10px] font-bold bg-white/5 hover:bg-white/10 text-slate-300 text-center transition-colors';
+            }
+          });
+        }
+      }
+
+      const bgMusic = new BackgroundMusicController(sounds);
+
+      // ==========================================
+      // 3. GAME STATE MANAGEMENT
+      // ==========================================
+      const gameState = {
+        teamCount: 4,
+        teams: [],
+        roundSeconds: 90,
+        remainingSeconds: 90,
+        passPenalty: 0, // 0 or -1
+        selectedCategories: ['objects', 'celebrities', 'places', 'media', 'proverbs', 'general'],
+        
+        // Active Game Flow
+        timerId: null,
+        isPaused: false,
+        seatingCircle: [], // Array of player seat descriptors: [{ teamIndex, playerNumber, name, partnerName }]
+        currentSeatIndex: 0,
+        
+        // Words Pool & Current Turn
+        activeWordPool: [],
+        currentWord: null,
+        currentWordCategory: null,
+        currentWordDifficulty: 'متوسط',
+
+        // Stats & History
+        roundHistory: [], // [{ word, category, teamIndex, guessedBy, passed }]
+      };
+
+      // Default Team Presets Generator
+      function buildDefaultTeams(count) {
+        const defaultNames = [
+          { team: 'تیم سرخ‌پوشان', p1: 'رضا', p2: 'سینا' },
+          { team: 'تیم شاهین', p1: 'نیما', p2: 'سهراب' },
+          { team: 'تیم طوفان', p1: 'امیر', p2: 'مهدی' },
+          { team: 'تیم پلنگ', p1: 'سارا', p2: 'مریم' },
+          { team: 'تیم زمرد', p1: 'علی', p2: 'کامران' },
+          { team: 'تیم سیمرغ', p1: 'پویا', p2: 'آرش' },
+        ];
+
+        gameState.teams = [];
+        for (let i = 0; i < count; i++) {
+          const preset = defaultNames[i % defaultNames.length];
+          const colorMeta = TEAM_COLORS[i % TEAM_COLORS.length];
+          gameState.teams.push({
+            id: i,
+            name: preset.team,
+            p1: preset.p1,
+            p2: preset.p2,
+            score: 0,
+            correctCount: 0,
+            passCount: 0,
+            color: colorMeta
+          });
+        }
+      }
+
+      // Compute Alternating Seating Circle Order
+      // Position 0..N-1: Player 1 of Team 0..N-1
+      // Position N..2N-1: Player 2 of Team 0..N-1
+      // Consequently, player i and partner i+N are directly opposite each other!
+      function computeSeatingCircle() {
+        const N = gameState.teams.length;
+        const circle = [];
+        // First Half (Player 1 of each team)
+        for (let i = 0; i < N; i++) {
+          const t = gameState.teams[i];
+          circle.push({
+            seatIndex: i,
+            teamIndex: i,
+            playerNumber: 1,
+            playerName: t.p1,
+            partnerName: t.p2,
+            teamName: t.name,
+            color: t.color
+          });
+        }
+        // Second Half (Player 2 of each team)
+        for (let i = 0; i < N; i++) {
+          const t = gameState.teams[i];
+          circle.push({
+            seatIndex: i + N,
+            teamIndex: i,
+            playerNumber: 2,
+            playerName: t.p2,
+            partnerName: t.p1,
+            teamName: t.name,
+            color: t.color
+          });
+        }
+        gameState.seatingCircle = circle;
+        return circle;
+      }
+
+      // Build & Shuffle active word pool
+      function prepareWordPool() {
+        let pool = [];
+        gameState.selectedCategories.forEach(catKey => {
+          if (WORD_DATABASE[catKey]) {
+            WORD_DATABASE[catKey].forEach(word => {
+              pool.push({ word, category: catKey });
+            });
+          }
+        });
+        // Fisher-Yates Shuffle
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        gameState.activeWordPool = pool;
+      }
+
+      function getNextWord() {
+        if (gameState.activeWordPool.length === 0) {
+          prepareWordPool();
+        }
+        const item = gameState.activeWordPool.pop();
+        gameState.currentWord = item.word;
+        gameState.currentWordCategory = item.category;
+        
+        // Random difficulty tag for cosmetic flair
+        const diffs = ['ساده', 'متوسط', 'چالشی', 'شیرین', 'نوستالژیک'];
+        gameState.currentWordDifficulty = diffs[Math.floor(Math.random() * diffs.length)];
+        return item;
+      }
+
+      // ==========================================
+      // 4. UI RENDERERS & EVENT BINDINGS
+      // ==========================================
+
+      // Render Setup Screen: Teams Input Cards
+      function renderTeamsInput() {
+        const container = document.getElementById('teams-input-container');
+        container.innerHTML = '';
+
+        gameState.teams.forEach((team, idx) => {
+          const card = document.createElement('div');
+          card.className = `glass-card rounded-2xl p-4 border ${team.color.border} relative flex flex-col justify-between`;
+          card.innerHTML = `
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full ${team.color.badge} shadow-sm"></span>
+                <input type="text" data-team-name-idx="${idx}" value="${team.name}" class="bg-black/30 border border-white/10 rounded-lg px-2.5 py-1 text-sm font-bold text-white focus:outline-none focus:border-white/40 max-w-[170px]" />
+              </div>
+              <span class="text-[11px] font-semibold text-slate-400">تیم شماره ${idx + 1}</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <label class="block text-[10px] text-slate-400 mb-1">بازیکن ۱ (شروع‌کننده):</label>
+                <input type="text" data-p1-idx="${idx}" value="${team.p1}" class="w-full bg-black/40 border border-white/15 rounded-lg px-2.5 py-1.5 text-white font-medium focus:outline-none focus:border-purple-400 text-center" />
+              </div>
+              <div>
+                <label class="block text-[10px] text-slate-400 mb-1">بازیکن ۲ (روبروی میز):</label>
+                <input type="text" data-p2-idx="${idx}" value="${team.p2}" class="w-full bg-black/40 border border-white/15 rounded-lg px-2.5 py-1.5 text-white font-medium focus:outline-none focus:border-purple-400 text-center" />
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Attach input listeners
+        container.querySelectorAll('[data-team-name-idx]').forEach(input => {
+          input.addEventListener('input', (e) => {
+            const index = parseInt(e.target.dataset.teamNameIdx);
+            gameState.teams[index].name = e.target.value.trim() || `تیم ${index + 1}`;
+            renderSeatingDiagram();
+          });
+        });
+
+        container.querySelectorAll('[data-p1-idx]').forEach(input => {
+          input.addEventListener('input', (e) => {
+            const index = parseInt(e.target.dataset.p1Idx);
+            gameState.teams[index].p1 = e.target.value.trim() || `بازیکن ۱`;
+            renderSeatingDiagram();
+          });
+        });
+
+        container.querySelectorAll('[data-p2-idx]').forEach(input => {
+          input.addEventListener('input', (e) => {
+            const index = parseInt(e.target.dataset.p2Idx);
+            gameState.teams[index].p2 = e.target.value.trim() || `بازیکن ۲`;
+            renderSeatingDiagram();
+          });
+        });
+
+        renderSeatingDiagram();
+      }
+
+      // Render Interactive Seating Circle Diagram
+      function renderSeatingDiagram() {
+        computeSeatingCircle();
+        const seatsContainer = document.getElementById('seating-seats-container');
+        if (!seatsContainer) return;
+        seatsContainer.innerHTML = '';
+
+        const totalSeats = gameState.seatingCircle.length;
+        const radius = 100; // px in svg/container coordinates
+
+        gameState.seatingCircle.forEach((seat, idx) => {
+          // Angle in radians (0 at top, going clockwise)
+          const angle = (idx / totalSeats) * 2 * Math.PI - Math.PI / 2;
+          const x = 50 + 40 * Math.cos(angle); // percentage
+          const y = 50 + 40 * Math.sin(angle); // percentage
+
+          const seatPill = document.createElement('div');
+          seatPill.className = `absolute transform -translate-x-1/2 -translate-y-1/2 p-1.5 rounded-xl text-center shadow-lg transition-transform hover:scale-110 cursor-pointer border ${seat.color.border} bg-[#171033]/90 backdrop-blur-md`;
+          seatPill.style.left = `${x}%`;
+          seatPill.style.top = `${y}%`;
+          seatPill.innerHTML = `
+            <div class="flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full ${seat.color.badge}"></span>
+              <span class="text-[10px] font-bold text-white whitespace-nowrap">${seat.playerName}</span>
+            </div>
+            <div class="text-[8px] text-slate-400">صندلی ${idx + 1}</div>
+          `;
+          seatsContainer.appendChild(seatPill);
+        });
+      }
+
+      // Render Categories Grid
+      function renderCategoriesGrid() {
+        const grid = document.getElementById('categories-grid');
+        grid.innerHTML = '';
+
+        Object.keys(CATEGORY_META).forEach(key => {
+          const meta = CATEGORY_META[key];
+          const count = WORD_DATABASE[key] ? WORD_DATABASE[key].length : 0;
+          const isSelected = gameState.selectedCategories.includes(key);
+
+          const card = document.createElement('label');
+          card.className = `flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${
+            isSelected 
+              ? 'bg-purple-950/40 border-purple-500/60 shadow-md shadow-purple-950/50' 
+              : 'bg-white/5 border-white/10 opacity-70 hover:opacity-100'
+          }`;
+          card.innerHTML = `
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-lg border border-white/10">
+                ${meta.icon}
+              </div>
+              <div class="text-right">
+                <span class="text-xs sm:text-sm font-bold text-white block">${meta.name}</span>
+                <span class="text-[10px] text-slate-400">${count} کلمه</span>
+              </div>
+            </div>
+            <input type="checkbox" value="${key}" ${isSelected ? 'checked' : ''} class="cat-checkbox w-4 h-4 accent-purple-500 rounded">
+          `;
+
+          const checkbox = card.querySelector('.cat-checkbox');
+          checkbox.addEventListener('change', (e) => {
+            const cat = e.target.value;
+            if (e.target.checked) {
+              if (!gameState.selectedCategories.includes(cat)) {
+                gameState.selectedCategories.push(cat);
+              }
+            } else {
+              gameState.selectedCategories = gameState.selectedCategories.filter(c => c !== cat);
+            }
+            renderCategoriesGrid();
+            validateCategorySelection();
+          });
+
+          grid.appendChild(card);
+        });
+
+        // Update total word counter badge
+        const badge = document.getElementById('badge-total-words');
+        if (badge) {
+          badge.textContent = `${totalBankWords}+ کلمه`;
+        }
+      }
+
+      function validateCategorySelection() {
+        const warning = document.getElementById('cat-warning');
+        if (gameState.selectedCategories.length === 0) {
+          warning.classList.remove('hidden');
+          return false;
+        } else {
+          warning.classList.add('hidden');
+          return true;
+        }
+      }
+
+      // ==========================================
+      // 5. SCREEN TRANSITIONS & NAVIGATION
+      // ==========================================
+      const screenSetup = document.getElementById('screen-setup');
+      const screenSeatingReady = document.getElementById('screen-seating-ready');
+      const screenGameplay = document.getElementById('screen-gameplay');
+      const screenGameOver = document.getElementById('screen-game-over');
+
+      function switchScreen(target) {
+        [screenSetup, screenSeatingReady, screenGameplay, screenGameOver].forEach(s => {
+          if (s === target) {
+            s.classList.remove('hidden');
+          } else {
+            s.classList.add('hidden');
+          }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Setup -> Seating Confirmation Flow
+      function proceedToSeatingReady() {
+        if (!validateCategorySelection()) {
+          alert('لطفاً حداقل یک دسته‌بندی کلمات را انتخاب کنید!');
+          return;
+        }
+        sounds.initContext();
+
+        computeSeatingCircle();
+        const list = document.getElementById('ready-seating-list');
+        list.innerHTML = '';
+
+        gameState.seatingCircle.forEach((seat, idx) => {
+          const pill = document.createElement('div');
+          pill.className = `px-3 py-1.5 rounded-xl border ${seat.color.border} ${seat.color.bg} flex items-center gap-1.5 text-xs`;
+          pill.innerHTML = `
+            <span class="font-bold text-slate-300">${idx + 1}.</span>
+            <span class="font-black text-white">${seat.playerName}</span>
+            <span class="text-[10px] text-slate-400">(${seat.teamName})</span>
+          `;
+          list.appendChild(pill);
+        });
+
+        // Set who holds first
+        const first = gameState.seatingCircle[0];
+        document.getElementById('first-holder-name').textContent = `${first.playerName} (${first.teamName})`;
+        document.getElementById('first-describer-target').textContent = `🎯 باید برای: ${first.partnerName} توضیح دهد!`;
+
+        switchScreen(screenSeatingReady);
+      }
+
+      // Seating Ready -> Active Game Loop
+      function startActiveRound() {
+        sounds.initContext();
+        sounds.playSuccess();
+
+        gameState.remainingSeconds = gameState.roundSeconds;
+        gameState.currentSeatIndex = 0;
+        gameState.roundHistory = [];
+        gameState.isPaused = false;
+
+        // Reset scores for all teams
+        gameState.teams.forEach(t => {
+          t.score = 0;
+          t.correctCount = 0;
+          t.passCount = 0;
+        });
+
+        prepareWordPool();
+        renderLiveScoreTicker();
+        updateTurnDisplay();
+        loadNewWordCard();
+
+        switchScreen(screenGameplay);
+        bgMusic.start();
+        startCountdownTimer();
+      }
+
+      // ==========================================
+      // 6. ACTIVE GAMEPLAY ENGINE & TIMER
+      // ==========================================
+      function startCountdownTimer() {
+        clearInterval(gameState.timerId);
+        updateTimerDisplay();
+
+        gameState.timerId = setInterval(() => {
+          if (gameState.isPaused) return;
+
+          gameState.remainingSeconds--;
+          updateTimerDisplay();
+
+          // Sounds & cues
+          if (gameState.remainingSeconds <= 10 && gameState.remainingSeconds > 0) {
+            sounds.playTick(true);
+          } else if (gameState.remainingSeconds > 10) {
+            sounds.playTick(false);
+          }
+
+          if (gameState.remainingSeconds <= 0) {
+            clearInterval(gameState.timerId);
+            onTimerExpired();
+          }
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const display = document.getElementById('timer-display');
+        const ring = document.getElementById('timer-progress-ring');
+        const box = document.getElementById('timer-box');
+        if (!display || !ring) return;
+
+        display.textContent = Math.max(0, gameState.remainingSeconds);
+
+        // Dynamically compute circumference based on actual SVG radius
+        const r = parseFloat(ring.getAttribute('r')) || 42;
+        const circumference = 2 * Math.PI * r;
+        ring.style.strokeDasharray = circumference;
+        const progress = Math.max(0, gameState.remainingSeconds) / gameState.roundSeconds;
+        const offset = circumference - (progress * circumference);
+        ring.style.strokeDashoffset = offset;
+
+        // Visual urgency colors & mobile haptic pulse
+        if (gameState.remainingSeconds <= 10) {
+          ring.style.stroke = '#ef4444';
+          box.classList.add('timer-critical');
+          // Subtle heartbeat vibration on mobile
+          if (gameState.remainingSeconds <= 5 && navigator.vibrate) {
+            try { navigator.vibrate(25); } catch(e){}
+          }
+        } else if (gameState.remainingSeconds <= 25) {
+          ring.style.stroke = '#f59e0b';
+          box.classList.remove('timer-critical');
+        } else {
+          ring.style.stroke = '#10b981';
+          box.classList.remove('timer-critical');
+        }
+      }
+
+      function updateTurnDisplay() {
+        const curSeat = gameState.seatingCircle[gameState.currentSeatIndex];
+        const nextSeat = gameState.seatingCircle[(gameState.currentSeatIndex + 1) % gameState.seatingCircle.length];
+
+        const holderBadge = document.getElementById('current-holder-badge');
+        holderBadge.textContent = `${curSeat.playerName} (${curSeat.teamName})`;
+        holderBadge.className = `px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-black truncate max-w-[140px] sm:max-w-none border ${curSeat.color.border} ${curSeat.color.bg} ${curSeat.color.text}`;
+
+        const targetBadge = document.getElementById('current-target-badge');
+        targetBadge.innerHTML = `<span>🎯 فقط برای <strong>${curSeat.partnerName}</strong> توضیح بده!</span>`;
+
+        const nextPreview = document.getElementById('next-player-preview');
+        nextPreview.textContent = `${nextSeat.playerName} (${nextSeat.teamName})`;
+
+        // Current team score counter on card
+        const teamObj = gameState.teams[curSeat.teamIndex];
+        document.getElementById('turn-correct-count').textContent = teamObj.correctCount;
+      }
+
+      let isWordShielded = false;
+      function resetWordPeek() {
+        isWordShielded = false;
+        const wordText = document.getElementById('current-word-text');
+        const peekBtn = document.getElementById('btn-toggle-peek');
+        if (wordText) wordText.classList.remove('blur-md', 'opacity-25');
+        if (peekBtn) peekBtn.textContent = '👁️';
+      }
+
+      function toggleWordPeek() {
+        isWordShielded = !isWordShielded;
+        const wordText = document.getElementById('current-word-text');
+        const peekBtn = document.getElementById('btn-toggle-peek');
+        if (isWordShielded) {
+          if (wordText) wordText.classList.add('blur-md', 'opacity-25');
+          if (peekBtn) peekBtn.textContent = '🔒';
+        } else {
+          if (wordText) wordText.classList.remove('blur-md', 'opacity-25');
+          if (peekBtn) peekBtn.textContent = '👁️';
+        }
+        if (navigator.vibrate) {
+          try { navigator.vibrate(20); } catch(e){}
+        }
+      }
+
+      function loadNewWordCard() {
+        resetWordPeek();
+        const item = getNextWord();
+        const wordText = document.getElementById('current-word-text');
+        const catBadge = document.getElementById('word-category-text');
+        const diffBadge = document.getElementById('word-difficulty-badge');
+
+        wordText.textContent = item.word;
+        catBadge.textContent = CATEGORY_META[item.category].name;
+        diffBadge.textContent = gameState.currentWordDifficulty;
+
+        // Fluid font-size scaling for longer phrases on mobile
+        if (item.word.length > 25) {
+          wordText.className = 'text-xl sm:text-3xl md:text-4xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+        } else if (item.word.length > 15) {
+          wordText.className = 'text-2xl sm:text-4xl md:text-5xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+        } else {
+          wordText.className = 'text-3xl sm:text-5xl md:text-6xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+        }
+
+        // Subtle animation pop
+        const container = document.getElementById('word-card-container');
+        container.classList.add('scale-[0.98]');
+        setTimeout(() => container.classList.remove('scale-[0.98]'), 150);
+      }
+
+      function renderLiveScoreTicker() {
+        const ticker = document.getElementById('live-scores-ticker');
+        ticker.innerHTML = '';
+
+        gameState.teams.forEach(t => {
+          const pill = document.createElement('div');
+          pill.className = `px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xl border ${t.color.border} ${t.color.bg} flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs whitespace-nowrap`;
+          pill.innerHTML = `
+            <span class="w-2 h-2 rounded-full ${t.color.badge}"></span>
+            <span class="font-bold text-white">${t.name}:</span>
+            <span class="font-black text-amber-300 text-xs sm:text-sm">${t.score}</span>
+          `;
+          ticker.appendChild(pill);
+        });
+      }
+
+      // Handle "Correct" Button (+1 Point & Pass Phone)
+      function onWordCorrect() {
+        if (gameState.remainingSeconds <= 0 || gameState.isPaused) return;
+        sounds.playSuccess();
+        if (navigator.vibrate) {
+          try { navigator.vibrate([40, 25, 60]); } catch(e){}
+        }
+
+        const curSeat = gameState.seatingCircle[gameState.currentSeatIndex];
+        const team = gameState.teams[curSeat.teamIndex];
+        
+        team.score += 1;
+        team.correctCount += 1;
+
+        gameState.roundHistory.push({
+          word: gameState.currentWord,
+          category: gameState.currentWordCategory,
+          teamName: team.name,
+          guessedBy: curSeat.partnerName,
+          passed: false
+        });
+
+        renderLiveScoreTicker();
+        showPassModal();
+      }
+
+      // Handle "Pass / Skip" Button
+      function onWordPass() {
+        if (gameState.remainingSeconds <= 0 || gameState.isPaused) return;
+        sounds.playPass();
+        if (navigator.vibrate) {
+          try { navigator.vibrate(30); } catch(e){}
+        }
+
+        const curSeat = gameState.seatingCircle[gameState.currentSeatIndex];
+        const team = gameState.teams[curSeat.teamIndex];
+        
+        team.passCount += 1;
+        if (gameState.passPenalty < 0) {
+          team.score = Math.max(0, team.score - 1);
+        }
+
+        gameState.roundHistory.push({
+          word: gameState.currentWord,
+          category: gameState.currentWordCategory,
+          teamName: team.name,
+          guessedBy: '-',
+          passed: true
+        });
+
+        renderLiveScoreTicker();
+        loadNewWordCard();
+      }
+
+      // Quick Pass Phone Modal
+      const passModal = document.getElementById('modal-pass-phone');
+      function showPassModal() {
+        // Advance seat index to next player in circle
+        gameState.currentSeatIndex = (gameState.currentSeatIndex + 1) % gameState.seatingCircle.length;
+        const nextSeat = gameState.seatingCircle[gameState.currentSeatIndex];
+
+        document.getElementById('pass-modal-next-player').textContent = nextSeat.playerName;
+        document.getElementById('pass-modal-next-team').textContent = `(${nextSeat.teamName})`;
+        document.getElementById('pass-modal-target-player').textContent = `🎯 باید برای: ${nextSeat.partnerName} توضیح دهد!`;
+
+        passModal.classList.remove('hidden');
+      }
+
+      function onPassModalReady() {
+        passModal.classList.add('hidden');
+        sounds.initContext();
+        if (navigator.vibrate) {
+          try { navigator.vibrate(35); } catch(e){}
+        }
+        updateTurnDisplay();
+        loadNewWordCard();
+      }
+
+      // Pause/Resume game
+      function togglePauseGame() {
+        gameState.isPaused = !gameState.isPaused;
+        const iconPause = document.getElementById('icon-pause');
+        const iconResume = document.getElementById('icon-resume');
+
+        if (gameState.isPaused) {
+          iconPause.classList.add('hidden');
+          iconResume.classList.remove('hidden');
+          bgMusic.pause();
+        } else {
+          iconPause.classList.remove('hidden');
+          iconResume.classList.add('hidden');
+          bgMusic.resume();
+        }
+      }
+
+      // ==========================================
+      // 7. GAME OVER & PODIUM CELEBRATION
+      // ==========================================
+      function onTimerExpired() {
+        bgMusic.stop();
+        sounds.playBuzzer();
+        setTimeout(() => {
+          sounds.playFanfare();
+          launchConfetti();
+        }, 600);
+
+        // Hide pass modal if open
+        passModal.classList.add('hidden');
+
+        // Identify who was holding the phone when time expired (Penalty or status)
+        const holderSeat = gameState.seatingCircle[gameState.currentSeatIndex];
+
+        // Sort teams by final score descending
+        const rankedTeams = [...gameState.teams].sort((a, b) => b.score - a.score);
+
+        renderPodium(rankedTeams);
+        renderGameOverScoreboard(rankedTeams);
+        renderWordsHistory();
+
+        switchScreen(screenGameOver);
+      }
+
+      function renderPodium(ranked) {
+        const container = document.getElementById('podium-container');
+        container.innerHTML = '';
+
+        // Order on podium: 2nd (Silver, left), 1st (Gold, center high), 3rd (Bronze, right)
+        const podiumOrder = [
+          { rank: 2, team: ranked[1] || null, height: 'h-32 sm:h-40', badge: 'bg-slate-300 text-slate-900', label: 'دوم 🥈' },
+          { rank: 1, team: ranked[0] || null, height: 'h-40 sm:h-52', badge: 'bg-amber-400 text-amber-950 font-black', label: 'قهرمان 🥇' },
+          { rank: 3, team: ranked[2] || null, height: 'h-24 sm:h-32', badge: 'bg-amber-700 text-amber-100', label: 'سوم 🥉' }
+        ];
+
+        podiumOrder.forEach(item => {
+          const col = document.createElement('div');
+          col.className = 'flex flex-col items-center justify-end';
+
+          if (item.team) {
+            col.innerHTML = `
+              <div class="text-center mb-2">
+                <span class="text-xl sm:text-2xl">${item.rank === 1 ? '👑' : ''}</span>
+                <div class="text-xs sm:text-sm font-black text-white truncate max-w-[90px] sm:max-w-[130px]">${item.team.name}</div>
+                <div class="text-sm sm:text-lg font-black text-amber-300">${item.team.score} امتیاز</div>
+              </div>
+              <div class="w-full ${item.height} rounded-t-2xl bg-gradient-to-t from-purple-900/60 to-white/10 border-t-2 border-x-2 border-white/20 flex flex-col items-center justify-center p-2 shadow-xl">
+                <span class="text-xs sm:text-sm font-bold px-2 py-1 rounded-full ${item.badge}">${item.label}</span>
+              </div>
+            `;
+          } else {
+            col.innerHTML = `
+              <div class="w-full ${item.height} rounded-t-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-600 text-xs">
+                -
+              </div>
+            `;
+          }
+          container.appendChild(col);
+        });
+      }
+
+      function renderGameOverScoreboard(ranked) {
+        const tbody = document.getElementById('gameover-scoreboard-body');
+        tbody.innerHTML = '';
+
+        ranked.forEach((team, idx) => {
+          const tr = document.createElement('tr');
+          tr.className = 'border-b border-white/5 hover:bg-white/5';
+          tr.innerHTML = `
+            <td class="py-2.5 pr-2 font-bold text-amber-400 text-center">${idx + 1}</td>
+            <td class="py-2.5 font-bold text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full ${team.color.badge}"></span>
+              <span>${team.name}</span>
+            </td>
+            <td class="py-2.5 text-slate-400 text-xs">${team.p1} و ${team.p2}</td>
+            <td class="py-2.5 text-center text-emerald-400 font-bold">${team.correctCount}</td>
+            <td class="py-2.5 text-center text-rose-400 font-medium">${team.passCount}</td>
+            <td class="py-2.5 pl-2 text-left font-black text-amber-300 text-base">${team.score}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function renderWordsHistory() {
+        const container = document.getElementById('words-history-container');
+        container.innerHTML = '';
+
+        if (gameState.roundHistory.length === 0) {
+          container.innerHTML = '<div class="text-center text-xs text-slate-500 py-3">هیچ کلمه‌ای در این راند ثبت نشد.</div>';
+          return;
+        }
+
+        gameState.roundHistory.forEach(item => {
+          const row = document.createElement('div');
+          row.className = `p-2 rounded-lg text-xs flex items-center justify-between border ${item.passed ? 'bg-rose-950/20 border-rose-500/20 text-rose-300' : 'bg-emerald-950/20 border-emerald-500/20 text-emerald-300'}`;
+          row.innerHTML = `
+            <div class="flex items-center gap-2">
+              <span>${item.passed ? '❌' : '✅'}</span>
+              <strong class="text-white">${item.word}</strong>
+              <span class="text-[10px] text-slate-400">(${CATEGORY_META[item.category].name})</span>
+            </div>
+            <div class="text-[11px] text-slate-300">
+              ${item.teamName} ${item.passed ? '(رد شد)' : `(توسط: ${item.guessedBy})`}
+            </div>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      // Canvas Confetti Generator
+      function launchConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        if (!canvas) return;
+        canvas.classList.remove('hidden');
+
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const pieces = [];
+        const colors = ['#f43f5e', '#10b981', '#f59e0b', '#8b5cf6', '#06b6d4', '#e11d48', '#fbbf24'];
+
+        for (let i = 0; i < 140; i++) {
+          pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            size: Math.random() * 8 + 4,
+            speedY: Math.random() * 4 + 2,
+            speedX: Math.random() * 4 - 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 8 - 4
+          });
+        }
+
+        let animationFrame;
+        let elapsed = 0;
+
+        function renderFrame() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          pieces.forEach(p => {
+            p.y += p.speedY;
+            p.x += p.speedX;
+            p.rotation += p.rotationSpeed;
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.restore();
+          });
+
+          elapsed++;
+          if (elapsed < 240) {
+            animationFrame = requestAnimationFrame(renderFrame);
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.classList.add('hidden');
+          }
+        }
+
+        renderFrame();
+      }
+
+      // ==========================================
+      // 8. EVENT LISTENERS & INITIALIZATION
+      // ==========================================
+      document.addEventListener('DOMContentLoaded', () => {
+        
+        // Build initial default 4 teams
+        buildDefaultTeams(4);
+        renderTeamsInput();
+        renderCategoriesGrid();
+
+        // Team count buttons (2 to 6)
+        document.querySelectorAll('.team-count-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const count = parseInt(e.target.dataset.count);
+            gameState.teamCount = count;
+            
+            document.querySelectorAll('.team-count-btn').forEach(b => {
+              b.className = 'team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white';
+            });
+            e.target.className = 'team-count-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-purple-600 text-white shadow-md shadow-purple-600/40';
+
+            buildDefaultTeams(count);
+            renderTeamsInput();
+          });
+        });
+
+        // Round Time presets
+        document.querySelectorAll('.time-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const sec = parseInt(e.target.dataset.sec);
+            gameState.roundSeconds = sec;
+            document.getElementById('input-custom-seconds').value = sec;
+
+            document.querySelectorAll('.time-btn').forEach(b => {
+              b.className = 'time-btn py-2 px-2 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300';
+            });
+            e.target.className = 'time-btn py-2 px-2 rounded-xl text-xs font-bold bg-purple-600 text-white border border-purple-500 shadow-md shadow-purple-600/30';
+          });
+        });
+
+        // Custom seconds input
+        document.getElementById('input-custom-seconds').addEventListener('input', (e) => {
+          const val = Math.max(20, Math.min(600, parseInt(e.target.value) || 90));
+          gameState.roundSeconds = val;
+          document.querySelectorAll('.time-btn').forEach(b => {
+            b.className = 'time-btn py-2 px-2 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300';
+          });
+        });
+
+        // Pass rule radio options
+        document.querySelectorAll('input[name="pass-rule"]').forEach(radio => {
+          radio.addEventListener('change', (e) => {
+            gameState.passPenalty = parseInt(e.target.value);
+            const hint = document.getElementById('pass-penalty-hint');
+            hint.textContent = gameState.passPenalty === 0 ? 'بدون جریمه' : 'جریمه: -۱ امتیاز';
+          });
+        });
+
+        // Toggle Seating Diagram Visualizer
+        document.getElementById('btn-toggle-seating-diagram').addEventListener('click', () => {
+          const wrapper = document.getElementById('seating-diagram-wrapper');
+          wrapper.classList.toggle('hidden');
+        });
+
+        // Select All / Deselect All Categories
+        document.getElementById('btn-select-all-cats').addEventListener('click', () => {
+          gameState.selectedCategories = Object.keys(CATEGORY_META);
+          renderCategoriesGrid();
+          validateCategorySelection();
+        });
+
+        document.getElementById('btn-deselect-all-cats').addEventListener('click', () => {
+          gameState.selectedCategories = [];
+          renderCategoriesGrid();
+          validateCategorySelection();
+        });
+
+        // Flow Buttons
+        document.getElementById('btn-start-game-flow').addEventListener('click', proceedToSeatingReady);
+        document.getElementById('btn-back-to-setup').addEventListener('click', () => {
+          bgMusic.stop();
+          switchScreen(screenSetup);
+        });
+        document.getElementById('btn-confirm-start-round').addEventListener('click', startActiveRound);
+
+        // Gameplay Buttons
+        document.getElementById('btn-correct-word').addEventListener('click', onWordCorrect);
+        document.getElementById('btn-pass-word').addEventListener('click', onWordPass);
+        document.getElementById('btn-modal-ready').addEventListener('click', onPassModalReady);
+        document.getElementById('btn-pause-game').addEventListener('click', togglePauseGame);
+
+        // Word Card Peek / Shield Toggle on tap for privacy
+        const peekBtn = document.getElementById('btn-toggle-peek');
+        if (peekBtn) {
+          peekBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleWordPeek();
+          });
+        }
+        const wordCard = document.getElementById('word-card-container');
+        if (wordCard) {
+          wordCard.addEventListener('click', (e) => {
+            if (e.target.closest('button')) return;
+            toggleWordPeek();
+          });
+        }
+
+        // Game Over Buttons
+        document.getElementById('btn-play-again-same').addEventListener('click', () => {
+          startActiveRound();
+        });
+        document.getElementById('btn-new-game-setup').addEventListener('click', () => {
+          bgMusic.stop();
+          switchScreen(screenSetup);
+        });
+
+        // Toggle Words History in Game Over
+        document.getElementById('btn-toggle-words-history').addEventListener('click', () => {
+          const box = document.getElementById('words-history-container');
+          box.classList.toggle('hidden');
+        });
+
+        // Rules Modal
+        const modalRules = document.getElementById('modal-rules');
+        document.getElementById('btn-how-to-play').addEventListener('click', () => {
+          sounds.initContext();
+          modalRules.classList.remove('hidden');
+        });
+        document.getElementById('btn-close-rules').addEventListener('click', () => modalRules.classList.add('hidden'));
+        document.getElementById('btn-close-rules-bottom').addEventListener('click', () => modalRules.classList.add('hidden'));
+
+        // Theme Switcher Controller
+        const btnThemeToggle = document.getElementById('btn-theme-toggle');
+        if (btnThemeToggle) {
+          btnThemeToggle.addEventListener('click', () => {
+            sounds.initContext();
+            toggleTheme();
+          });
+        }
+        // Initialize theme UI state
+        initTheme();
+
+        // Sound Mute Toggle (SFX)
+        document.getElementById('btn-sound-toggle').addEventListener('click', () => {
+          sounds.initContext();
+          const muted = sounds.toggleMute();
+          document.getElementById('icon-sound-on').classList.toggle('hidden', muted);
+          document.getElementById('icon-sound-off').classList.toggle('hidden', !muted);
+        });
+
+        // Background Music Volume Controller & Popover
+        const btnMusicToggle = document.getElementById('btn-music-toggle');
+        const musicPopover = document.getElementById('music-volume-popover');
+        const musicSlider = document.getElementById('music-volume-slider');
+
+        if (btnMusicToggle && musicPopover) {
+          btnMusicToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sounds.initContext();
+            bgMusic.initMusicGain();
+            musicPopover.classList.toggle('hidden');
+          });
+
+          // Clicking outside closes the popover
+          document.addEventListener('click', (e) => {
+            const wrapper = document.getElementById('music-control-wrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+              musicPopover.classList.add('hidden');
+            }
+          });
+        }
+
+        if (musicSlider) {
+          musicSlider.addEventListener('input', (e) => {
+            sounds.initContext();
+            const val = parseInt(e.target.value, 10) / 100;
+            bgMusic.setVolume(val);
+          });
+        }
+
+        document.querySelectorAll('.btn-vol-preset').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sounds.initContext();
+            const val = parseInt(btn.dataset.vol, 10) / 100;
+            bgMusic.setVolume(val);
+          });
+        });
+
+        // Initialize music UI display
+        bgMusic.updateUI();
+
+        // Fullscreen Toggle
+        document.getElementById('btn-fullscreen-toggle').addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+            document.getElementById('icon-fs-enter').classList.add('hidden');
+            document.getElementById('icon-fs-exit').classList.remove('hidden');
+          } else {
+            if (document.exitFullscreen) {
+              document.exitFullscreen().catch(() => {});
+              document.getElementById('icon-fs-enter').classList.remove('hidden');
+              document.getElementById('icon-fs-exit').classList.add('hidden');
+            }
+          }
+        });
+
+        // Keyboard Shortcuts for desktop/host play: Space -> Correct, Right/Left Arrow -> Pass
+        window.addEventListener('keydown', (e) => {
+          if (screenGameplay.classList.contains('hidden')) return;
+          if (e.code === 'Space') {
+            e.preventDefault();
+            if (!passModal.classList.contains('hidden')) {
+              onPassModalReady();
+            } else {
+              onWordCorrect();
+            }
+          } else if (e.code === 'ArrowRight' || e.code === 'ArrowLeft') {
+            if (passModal.classList.contains('hidden')) {
+              onWordPass();
+            }
+          }
+        });
+
+      });
+
+      // ==========================================
+      // 9. THEME CONTROLLER (DARK <-> DAYTIME LIGHT)
+      // ==========================================
+      function initTheme() {
+        try {
+          const savedTheme = localStorage.getItem('party_game_theme');
+          if (savedTheme === 'light') {
+            applyTheme('light');
+          } else {
+            applyTheme('dark');
+          }
+        } catch (e) {
+          applyTheme('dark');
+        }
+      }
+
+      function applyTheme(theme) {
+        const html = document.documentElement;
+        const iconSun = document.getElementById('icon-theme-sun');
+        const iconMoon = document.getElementById('icon-theme-moon');
+        const label = document.getElementById('theme-label');
+
+        if (theme === 'light') {
+          html.classList.remove('dark');
+          if (iconSun) iconSun.classList.add('hidden');
+          if (iconMoon) iconMoon.classList.remove('hidden');
+          if (label) label.textContent = 'حالت روز';
+          try { localStorage.setItem('party_game_theme', 'light'); } catch(e) {}
+        } else {
+          html.classList.add('dark');
+          if (iconSun) iconSun.classList.remove('hidden');
+          if (iconMoon) iconMoon.classList.add('hidden');
+          if (label) label.textContent = 'حالت شب';
+          try { localStorage.setItem('party_game_theme', 'dark'); } catch(e) {}
+        }
+      }
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(isDark ? 'light' : 'dark');
+      }
+    </script>
+  </body>
+</html>

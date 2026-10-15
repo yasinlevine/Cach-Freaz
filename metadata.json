@@ -1,0 +1,6 @@
+{
+  "name": "بازی دورهمی کلمات | Catchphrase & Alias Persian Party Game",
+  "description": "بازی مهیج کلماتی گروهی و دورهمی به زبان فارسی با بیش از ۱۰۰۰ کلمه و دسته‌بندی‌های جذاب",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
