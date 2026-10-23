@@ -245,9 +245,14 @@
       html:not(.dark) .text-emerald-400 { color: #059669 !important; }
       html:not(.dark) .text-amber-300 { color: #b45309 !important; }
       html:not(.dark) .text-amber-400 { color: #d97706 !important; }
+      html:not(.dark) .text-rose-300 { color: #be123c !important; }
       html:not(.dark) .text-rose-400 { color: #e11d48 !important; }
       html:not(.dark) .text-cyan-400 { color: #0284c7 !important; }
       html:not(.dark) .text-pink-300 { color: #be185d !important; }
+      html:not(.dark) .bg-rose-500\/15 {
+        background-color: #ffe4e6 !important;
+        border-color: #fca5a5 !important;
+      }
 
       /* Tinted Backgrounds in Light Mode */
       html:not(.dark) .bg-purple-950\/40,
@@ -364,6 +369,15 @@
 
       <!-- Quick Action Icons (Optimized for Small Mobile Screens) -->
       <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+        <!-- Quick Exit Button for In-Game (Header Sticky) -->
+        <button id="header-btn-quit" type="button" aria-label="خروج از بازی" title="انصراف و خروج از بازی به صفحه اصلی" class="hidden glass-button py-1.5 px-2.5 sm:px-3 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 active:bg-rose-600/40 text-rose-300 hover:text-rose-100 border border-rose-500/40 text-xs font-black flex items-center gap-1.5 shadow-sm transition-all select-none">
+          <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          <span class="hidden xs:inline">خروج از بازی</span>
+          <span class="xs:hidden">خروج</span>
+        </button>
+
         <!-- Theme Switcher: Dark Glassmorphism <-> High-Contrast Light Mode -->
         <button id="btn-theme-toggle" aria-label="تغییر تم (حالت روز / شب)" title="تغییر حالت به روز یا شب برای دید بهتر در آفتاب" class="glass-button p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 flex items-center gap-1">
           <!-- Sun Icon -->
@@ -586,6 +600,28 @@
                 </div>
               </div>
 
+              <!-- Vibration Feedback Intensity Setting -->
+              <div class="mb-5">
+                <div class="flex items-center justify-between mb-2">
+                  <label class="block text-xs font-semibold text-slate-300">
+                    📳 شدت لرزش گوشی (Haptic):
+                  </label>
+                  <button type="button" id="btn-test-vibration" class="text-[11px] font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 bg-cyan-500/10 hover:bg-cyan-500/20 px-2.5 py-0.5 rounded-lg border border-cyan-500/30 transition-colors" title="تست لرزش گوشی شما">
+                    <span>تست ویبره</span>
+                    <span class="text-xs">⚡</span>
+                  </button>
+                </div>
+                <div class="grid grid-cols-4 gap-1.5" id="vibration-intensity-selector">
+                  <button type="button" data-vibe="off" class="vibe-btn py-2 px-1 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all text-center">خاموش</button>
+                  <button type="button" data-vibe="soft" class="vibe-btn py-2 px-1 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all text-center">ملایم</button>
+                  <button type="button" data-vibe="medium" class="vibe-btn py-2 px-1 rounded-xl text-xs font-bold bg-purple-600 text-white border border-purple-500 shadow-md shadow-purple-600/30 transition-all text-center">متوسط</button>
+                  <button type="button" data-vibe="strong" class="vibe-btn py-2 px-1 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all text-center">قوی</button>
+                </div>
+                <p id="vibe-desc" class="text-[10px] text-slate-400 mt-1.5 pr-0.5">
+                  حالت متوسط: لرزش استاندارد و دلنشین، هماهنگ با انواع گوشی‌ها.
+                </p>
+              </div>
+
               <!-- Turn Switch Rule Clarification -->
               <div class="p-3 bg-purple-950/30 rounded-2xl border border-purple-500/20 text-xs text-purple-200 leading-relaxed">
                 🎯 <strong>روش نمره‌دهی:</strong> با هر حدس درست، تیم فعلی <strong>+۱ امتیاز</strong> می‌گیرد و فوراً گوشی به بازیکن تیم بعدی منتقل می‌شود!
@@ -599,7 +635,7 @@
               <h3 class="text-base font-bold text-white flex items-center gap-2">
                 <span class="text-pink-400">📚</span>
                 <span>بانک کلمات و موضوعات</span>
-                <span id="badge-total-words" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">۱۱۰۰+ کلمه</span>
+                <span id="badge-total-words" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">۱۰۰۰+ کلمه</span>
               </h3>
               <div class="flex items-center gap-2 text-xs">
                 <button type="button" id="btn-select-all-cats" class="text-purple-400 hover:text-purple-300 font-semibold underline">انتخاب همه</button>
@@ -698,100 +734,122 @@
       <!-- SCREEN 3: ACTIVE GAMEPLAY (Mobile-First Viewport Fitting) -->
       <section id="screen-gameplay" class="w-full flex flex-col gap-2.5 sm:gap-4 hidden max-w-xl mx-auto flex-1 justify-between w-full">
         
-        <!-- Live Scores Ticker & Pause -->
-        <div class="glass-panel rounded-2xl px-3 py-2 sm:p-3 border border-white/10 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
-          <div id="live-scores-ticker" class="flex items-center gap-1.5 sm:gap-2">
-            <!-- Injected via JS -->
+        <!-- Live Scores & High-Touch In-Game Controls Bar -->
+        <div class="glass-panel rounded-2xl p-2 sm:p-2.5 border border-white/10 flex items-center justify-between gap-2 shadow-lg">
+          <!-- Scores Ticker (Smoothly scrolls horizontally without pushing buttons away) -->
+          <div class="flex-1 min-w-0 overflow-x-auto no-scrollbar py-0.5">
+            <div id="live-scores-ticker" class="flex items-center gap-1.5 sm:gap-2">
+              <!-- Injected via JS -->
+            </div>
           </div>
-          <button type="button" id="btn-pause-game" class="glass-button p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white border border-white/10 flex-shrink-0" title="توقف موقت">
-            <svg id="icon-pause" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <svg id="icon-resume" class="w-4 h-4 sm:w-5 sm:h-5 hidden text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </button>
+
+          <!-- Fixed, Always-Accessible High-Contrast Controls -->
+          <div class="flex items-center gap-1.5 flex-shrink-0">
+            <!-- Pause / Resume Button -->
+            <button type="button" id="btn-pause-game" class="glass-button min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-slate-200 hover:text-white border border-white/15 flex items-center gap-1.5 select-none shadow-sm transition-all" title="توقف موقت بازی">
+              <svg id="icon-pause" class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <svg id="icon-resume" class="w-4 h-4 hidden text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span id="label-pause-game" class="text-xs font-black">توقف</span>
+            </button>
+
+            <!-- Exit / Quit Game Button (Prominent, High-Contrast Rose) -->
+            <button type="button" id="btn-quit-game" class="glass-button min-h-[38px] px-3 sm:px-3.5 py-1.5 rounded-xl bg-rose-500/25 hover:bg-rose-500/35 active:bg-rose-600/45 text-rose-200 hover:text-white border-2 border-rose-500/50 hover:border-rose-400 flex items-center gap-1.5 shadow-md shadow-rose-950/40 select-none transition-all" title="انصراف و خروج از بازی به صفحه اصلی">
+              <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              <span class="text-xs font-black">خروج</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Sleek Unified Turn & Timer Status Bar (Saves 120px+ vertical space on mobile) -->
-        <div class="glass-panel rounded-2xl p-2.5 sm:p-4 border border-white/10 flex items-center justify-between gap-2 sm:gap-3 relative overflow-hidden">
-          <!-- Turn info on right -->
+        <!-- Dedicated Pause Banner Overlay (Appears when paused with large Resume & Exit buttons) -->
+        <div id="pause-banner-overlay" class="hidden glass-panel p-3.5 sm:p-4 rounded-2xl border-2 border-amber-500/40 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center gap-2.5 text-center shadow-2xl">
+          <div class="flex items-center gap-2 text-amber-400 font-black text-sm">
+            <span class="text-lg">⏸️</span>
+            <span>بازی در حالت توقف موقت است</span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-slate-300">
+            تایمر متوقف شد. می‌توانید بازی را ادامه دهید یا کاملاً به صفحه اصلی بازگردید:
+          </p>
+          <div class="grid grid-cols-2 gap-2.5 w-full max-w-xs pt-1">
+            <button type="button" id="btn-pause-resume" class="glass-button py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs shadow-md flex items-center justify-center gap-1 active:scale-95 transition-transform">
+              <span>▶️ ادامه</span>
+            </button>
+            <button type="button" id="btn-pause-quit" class="glass-button py-2.5 px-3 rounded-xl bg-rose-600/30 hover:bg-rose-600/40 text-rose-200 border border-rose-500/50 font-black text-xs flex items-center justify-center gap-1 active:scale-95 transition-transform">
+              <span>🚪 خروج به خانه</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sleek Turn & Timer Status Bar -->
+        <div class="glass-panel rounded-2xl p-2 sm:p-3 border border-white/10 flex items-center justify-between gap-2 relative overflow-hidden">
+          <!-- Turn info: Who is explaining to whom, clean & uncluttered -->
           <div class="flex-1 text-right min-w-0 pr-1">
-            <div class="flex items-center gap-1.5 flex-wrap mb-0.5 sm:mb-1">
-              <span class="text-[10px] sm:text-xs text-slate-400 font-medium flex-shrink-0">گوشی در دست:</span>
-              <span id="current-holder-badge" class="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-black truncate max-w-[140px] sm:max-w-none border">
-                رضا (تیم الف)
+            <div class="flex items-center gap-1.5 mb-1 text-xs text-slate-300">
+              <span class="text-slate-400 font-medium text-[11px]">نوبت:</span>
+              <span id="current-holder-badge" class="px-2 py-0.5 rounded-lg text-xs font-bold border">
+                رضا
+              </span>
+              <span id="current-holder-team" class="text-slate-400 text-[11px] truncate">
+                (تیم الف)
               </span>
             </div>
-            <div class="text-xs sm:text-sm font-bold text-emerald-400 truncate" id="current-target-badge">
-              🎯 فقط برای سینا توضیح بده!
-            </div>
-            <div class="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1 truncate">
-              <span>نفر بعدی:</span>
-              <span id="next-player-preview" class="font-bold text-slate-300">نیما (تیم ب)</span>
+            <div id="current-target-badge" class="flex items-center gap-1 text-xs sm:text-sm truncate">
+              <span class="text-slate-400 font-medium">توضیح برای:</span>
+              <strong class="text-emerald-400 font-black text-sm sm:text-base">سینا</strong>
             </div>
           </div>
 
-          <!-- Compact Circular Timer on left -->
+          <!-- Minimal Circular Timer -->
           <div class="flex-shrink-0 flex items-center justify-center pl-1">
-            <div id="timer-box" class="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300">
+            <div id="timer-box" class="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center transition-all duration-300">
               <svg viewBox="0 0 100 100" class="w-full h-full transform -rotate-90">
                 <circle cx="50" cy="50" r="42" stroke="rgba(255, 255, 255, 0.08)" stroke-width="8" fill="transparent" />
                 <circle id="timer-progress-ring" cx="50" cy="50" r="42" stroke="#10b981" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" fill="transparent" class="transition-all duration-200" />
               </svg>
-              <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <div class="absolute inset-0 flex items-center justify-center">
                 <span id="timer-display" class="text-xl sm:text-2xl font-black tracking-tight text-white font-mono leading-none">90</span>
-                <span class="text-[7px] sm:text-[8px] text-slate-400 font-bold uppercase mt-0.5">ثانیه</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- The Secret Word Card (Mobile Hero Element) -->
-        <div id="word-card-container" class="glass-panel rounded-3xl p-4 sm:p-7 text-center border-2 border-purple-500/40 relative shadow-2xl flex-1 flex flex-col items-center justify-center transition-all duration-300 min-h-[170px] sm:min-h-[220px] select-none cursor-pointer" title="برای پنهان/آشکار کردن کلمه لمس کنید">
+        <!-- The Secret Word Card (Minimal, Focused Hero Element) -->
+        <div id="word-card-container" class="glass-panel rounded-3xl p-4 sm:p-8 text-center border-2 border-purple-500/40 relative shadow-2xl flex-1 flex flex-col items-center justify-center transition-all duration-300 min-h-[180px] sm:min-h-[230px] select-none cursor-pointer" title="برای پنهان/آشکار کردن کلمه لمس کنید">
           
-          <!-- Category Pill & Difficulty & Privacy Peek -->
-          <div class="flex items-center justify-center gap-2 mb-2 sm:mb-4">
-            <span id="word-category-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center gap-1">
+          <!-- Category Pill & Privacy Peek (Difficulty text removed for maximum clarity) -->
+          <div class="flex items-center justify-center gap-2 mb-2 sm:mb-3">
+            <span id="word-category-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
               <span>📦</span>
               <span id="word-category-text">اشیاء و لوازم</span>
             </span>
-            <span id="word-difficulty-badge" class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/10 text-slate-300">
-              متوسط
-            </span>
             <!-- Peek shield icon -->
-            <button type="button" id="btn-toggle-peek" class="p-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white text-[10px]" title="مخفی کردن موقت کلمه">
+            <button type="button" id="btn-toggle-peek" class="p-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white text-xs" title="مخفی کردن موقت کلمه">
               👁️
             </button>
           </div>
 
           <!-- The Secret Word / Phrase with fluid typography -->
-          <div class="w-full px-2 py-1 my-auto">
-            <h2 id="current-word-text" class="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200">
+          <div class="w-full px-2 py-3 my-auto flex items-center justify-center">
+            <h2 id="current-word-text" class="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200">
               آچار فرانسه
             </h2>
           </div>
-
-          <!-- Footer hints & live round points -->
-          <div class="flex items-center justify-between w-full mt-2 pt-2 border-t border-white/5 text-[10px] sm:text-xs text-slate-400">
-            <span>بدون اشاره مستقیم و هم‌ریشه!</span>
-            <span>امتیاز این راند: <strong id="turn-correct-count" class="text-emerald-400 font-black text-sm">۰</strong></span>
-          </div>
         </div>
 
-        <!-- Ergonomic Thumb Action Buttons (Large, Tactile, Thumb-Friendly) -->
+        <!-- Ergonomic Thumb Action Buttons (Clean & Focused) -->
         <div class="grid grid-cols-12 gap-2.5 sm:gap-3 pt-1 safe-bottom-padding">
           
           <!-- Pass Button (4 cols) -->
-          <button type="button" id="btn-pass-word" class="col-span-4 glass-button py-3.5 sm:py-5 px-2 rounded-2xl bg-white/10 hover:bg-white/15 active:bg-rose-950/40 text-slate-200 border border-white/15 flex flex-col items-center justify-center gap-0.5 active:scale-95 transition-all select-none min-h-[64px] sm:min-h-[76px]">
-            <span class="text-2xl sm:text-3xl leading-none">⏭️</span>
-            <span class="text-xs sm:text-sm font-bold mt-0.5">رد کردن</span>
-            <span id="pass-penalty-hint" class="text-[9px] text-slate-400">بدون جریمه</span>
+          <button type="button" id="btn-pass-word" class="col-span-4 glass-button py-4 sm:py-5 px-2 rounded-2xl bg-white/10 hover:bg-white/15 active:bg-rose-950/40 text-slate-200 border border-white/15 flex items-center justify-center gap-1.5 active:scale-95 transition-all select-none min-h-[60px] sm:min-h-[72px]">
+            <span class="text-xl sm:text-2xl leading-none">⏭️</span>
+            <span class="text-xs sm:text-sm font-black">رد کردن</span>
           </button>
 
           <!-- Correct Guess Button (8 cols) -->
-          <button type="button" id="btn-correct-word" class="col-span-8 glass-button py-3.5 sm:py-5 px-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 text-slate-950 font-black text-base sm:text-xl shadow-xl shadow-emerald-500/40 active:scale-95 transition-all flex items-center justify-center gap-2 select-none min-h-[64px] sm:min-h-[76px]">
+          <button type="button" id="btn-correct-word" class="col-span-8 glass-button py-4 sm:py-5 px-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 text-slate-950 font-black text-base sm:text-xl shadow-xl shadow-emerald-500/40 active:scale-95 transition-all flex items-center justify-center gap-2 select-none min-h-[60px] sm:min-h-[72px]">
             <span class="text-2xl sm:text-3xl leading-none">✅</span>
-            <div class="flex flex-col text-right">
-              <span class="leading-tight">درست بود!</span>
-              <span class="text-[10px] sm:text-[11px] font-bold text-emerald-950 mt-0.5">+۱ امتیاز و پاس به نفر بعد</span>
-            </div>
+            <span class="font-black text-base sm:text-lg">درست (+۱)</span>
           </button>
         </div>
 
@@ -832,10 +890,41 @@
           </div>
 
           <!-- Giant Easy-Tap Ready Button for thumbs -->
-          <button type="button" id="btn-modal-ready" class="glass-button w-full py-4 sm:py-5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-lg sm:text-xl shadow-lg shadow-emerald-500/40 active:scale-95 transition-all flex items-center justify-center gap-2 select-none safe-bottom-padding">
+          <button type="button" id="btn-modal-ready" class="glass-button w-full py-4 sm:py-5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-lg sm:text-xl shadow-lg shadow-emerald-500/40 active:scale-95 transition-all flex items-center justify-center gap-2 select-none">
             <span>من آماده‌ام! کلمه بعدی</span>
             <span class="text-xl">⚡</span>
           </button>
+
+          <!-- Fast Exit Button during Pass Phase -->
+          <button type="button" id="btn-quit-from-pass" class="w-full mt-2.5 py-2.5 px-4 rounded-xl bg-white/5 hover:bg-rose-500/15 active:bg-rose-500/25 text-rose-300 hover:text-rose-100 border border-white/10 hover:border-rose-500/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 select-none" title="انصراف و پایان دادن به مسابقه">
+            <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span>انصراف و خروج از بازی</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- MODAL: CONFIRM QUIT TO HOME (انصراف و بازگشت به صفحه اصلی) -->
+      <div id="modal-confirm-quit" class="fixed inset-0 z-50 bg-[#070414]/90 backdrop-blur-xl flex items-center justify-center p-4 hidden">
+        <div class="glass-panel w-full max-w-sm rounded-3xl p-5 sm:p-6 text-center border-2 border-rose-500/30 shadow-2xl relative my-auto">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-3">
+            🚪
+          </div>
+          <h3 class="text-lg sm:text-xl font-black text-white mb-2">
+            انصراف و خروج از بازی؟
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+            آیا مطمئن هستید که می‌خواهید از بازی خارج شده و به صفحه اصلی (تنظیمات) بازگردید؟
+          </p>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button type="button" id="btn-cancel-quit" class="glass-button py-3 px-4 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 text-xs sm:text-sm font-bold border border-white/10">
+              ادامه بازی
+            </button>
+            <button type="button" id="btn-confirm-quit" class="glass-button py-3 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white text-xs sm:text-sm font-bold shadow-lg shadow-rose-600/30">
+              بله، خروج به خانه
+            </button>
+          </div>
         </div>
       </div>
 
@@ -980,136 +1069,189 @@
       // ==========================================
       const WORD_DATABASE = {
         objects: [
-          'آچار فرانسه', 'آبمیوه‌گیری', 'آباژور رومیزی', 'آسانسور شیشه‌ای', 'آینه قدی', 'اتو بخار', 'اره برقی نجاری', 'اسکوتر برقی',
-          'اسپیکر بلوتوثی', 'هدفون بی‌سیم', 'ساعت هوشمند', 'پاوربانک فست‌شارژ', 'تبلت لمسی', 'لپ‌تاپ گیمینگ', 'تردمیل خانگی', 'توپ والیبال',
-          'چرخ خیاطی قدیمی', 'جاروبرقی صنعتی', 'چمدان چرخ‌دار', 'دستکش بوکس چرمی', 'دمپایی ابری', 'دوربین عکاسی دیجیتال', 'زودپز برقی چندکاره', 'سشوار چرخشی',
-          'فلاسک چای کوهنوردی', 'قوری شاه‌عباسی', 'قلیان خوانسار', 'کلاه کاسکت موتور', 'کوله‌پشتی کوهنوردی', 'گوشت‌کوب برقی', 'مایکروفر لمسی', 'ماشین لباسشویی',
-          'ماگ سرامیکی حرارتی', 'نردبان آلومینیومی', 'واکمن کاست‌خور', 'ویدئو پروژکتور سینمایی', 'هلی‌کوپتر کنترلی', 'یخدان مسافرتی یونولیتی', 'بادکنک هلیومی', 'باربیکیو گازی',
-          'بالش پر غاز', 'بخاری نفتی علاءالدین', 'بوم نقاشی رنگ‌روغن', 'پتو گلبافت دورو', 'پنکه سقفی سه‌پره', 'ترازو دیجیتال آشپزخانه', 'تلویزیون منحنی هوشمند', 'تفنگ آب‌پاش پلاستیکی',
-          'جعبه ابزار فلزی', 'چتر بارانی تاشو', 'چشم‌بند خواب ابریشمی', 'چوب اسکی آلپاین', 'دستگاه بخور سرد', 'دستگیره در برنجی', 'دفتر خاطرات قفل‌دار', 'دوش حمام ماساژور',
-          'رادیو لامپی قدیمی', 'رنده چهارگوش استیل', 'زنگ اخبار مدرسه', 'سماور زغالی برنجی', 'سوپاپ اطمینان دیگ', 'سیخ کباب استیل', 'شانه چوبی ارگانیک', 'شمع معطر اسطوخودوس',
-          'صندلی گهواره‌ای مادربزرگ', 'سیبل دارت مغناطیسی', 'عینک آفتابی خلبانی', 'فندک اتمی زیپو', 'قابلمه مسی زنجان', 'قیچی باغبانی دسته بلند', 'کاسه بلور تراش‌خورده', 'کراوات ابریشمی دست‌دوز',
-          'کلید یدک ضدسرقت', 'کمربند چرمی مردانه', 'کنسول بازی پلی‌استیشن', 'کوسن مبل مخمل', 'کیسه خواب پر منفی ۱۰ درجه', 'گرامافون شیپوری عتیقه', 'گلدان سفالی لالجین', 'لوله پولیکا ساختمانی',
-          'مسواک برقی اولتراسونیک', 'موکاپات اسپرسو روگازی', 'میکروفون کندانسر استودیویی', 'نخ دندان نعنایی', 'کره زمین رومیزی', 'چراغ والور قدیمی', 'هاون برنجی قلم‌زنی', 'هونگ سنگی مشهد',
-          'پیپ چوبی دست‌ساز', 'تخت تاشو سفری', 'تلمبه دوچرخه پایی', 'تور والیبال ساحلی', 'جا قلمی چوبی خاتم', 'جعبه موسیقی کوکی', 'چراغ قوه پلیسی ضدآب', 'خط‌کش مهندسی تی',
-          'خمیردندان زغالی سفیدکننده', 'دمبل متغیر بدنسازی', 'ذره‌بین پایه‌دار کارگاهی', 'روروک کودک چرخ‌دار', 'ساک ورزشی باشگاهی', 'سرتاس بقالی استیل', 'سنباده لرزان نجاری', 'سوزن ته‌گرد خیاطی',
-          'سی‌دی خش‌دار نوستالژیک', 'شارژر فندکی فست ماشین', 'شلوارک ورزشی کشی', 'شومینه هیزمی مدرن', 'صندلی ماساژ تمام‌بدن', 'طناب کوهنوردی استاتیک', 'عطر گرمی جیبی', 'قایق بادی دو نفره',
-          'قفل کتابی فولادی', 'قلاب ماهیگیری اسپینینگ', 'کتری و قوری استیل سوت‌دار', 'کپسول آتش‌نشانی پودری', 'کیسه بوکس آویز چرمی', 'گیره لباس چوبی', 'لاستیک زاپاس خودرو', 'لباس غواصی نئوپرن',
-          'ماسک اکسیژن غواصی', 'دستگاه میخ‌کوب بادی', 'ننو مسافرتی دو نفره', 'ساز نی‌انبان جنوبی', 'همزن برقی کاسه‌دار', 'قوطی واکس کفش مشکی', 'ویلچر تاشو برقی', 'پرینتر سه‌بعدی رزینی',
-          'پرگار مهندسی دقیق', 'پیکسل سنجاقی کارتونی', 'تخته نرد چوب گردو', 'تخته گوشت چوبی بامبو', 'توستر نان دو خانه', 'جارو نپتون دستی دو محوره', 'جاسوییچی چرمی حکاکی‌شده', 'جوراب ساق‌بلند رنگین‌کمانی',
-          'چاقو ضامن‌دار زنجان', 'چوب‌لباسی ایستاده چوبی', 'حصیر ساحلی تاشو', 'ماشین خط‌زن مو شارژی', 'خاک‌انداز فلزی بادوام', 'دستمال مایکروفایبر نانو', 'دستگاه پاپ‌کورن‌ساز برقی', 'دوربین دید در شب نظامی',
-          'دیگ زودپز استیل دوقلو', 'راکت تنیس روی چمن', 'زیرسیگاری کریستال بوهمیا', 'سنگ پای قزوین', 'سنبه نجاری فولادی', 'شلنگ آب جمع‌شونده ژله‌ای', 'شیرجوش تفلون دسته‌دار', 'صافی چای استیل پایه‌دار',
-          'طبل کوچک مارش جنگی', 'عینک شنا ضدبخار حرفه‌ای', 'فرفره رنگی بادی', 'قاب عکس خانوادگی طلایی', 'قندان نقره اصفهان', 'دستگاه کارت‌خوان سیار بیسیم', 'کاغذ کادوی متالیک براق', 'کلمن آب یخ شیردار',
-          'کمربند ایمنی خودرو پراید', 'گاوصندوق رمزی ضدحریق', 'گوش‌گیر صدا برای خواب', 'لاستیک دور گلگیر ماشین', 'لنگ حمام سنتی یزد', 'لوستر کریستال چندطبقه', 'مت یوگا ضدلغزش تی‌پی‌ای', 'منگنه رومیزی بزرگ اداری',
-          'ناخن‌گیر استیل ذره‌بین‌دار', 'نمک‌پاش و فلفل‌پاش جفتی', 'وان حمام جکوزی‌دار', 'وردنه شیرینی‌پزی چوبی', 'یخ‌ساز خودکار حبه‌ای', 'پادری مخمل برجسته شیک', 'پارچ شیشه‌ای کریستالین', 'پاک‌کن عطری فانتزی'
+          'آچار فرانسه', 'آبمیوه‌گیری', 'آباژور', 'آسانسور', 'آینه قدی', 'اتو بخار', 'اره برقی', 'اسکوتر برقی',
+          'اسپیکر', 'هدفون', 'ساعت هوشمند', 'پاوربانک', 'تبلت', 'لپ‌تاپ', 'تردمیل', 'توپ والیبال',
+          'چرخ خیاطی', 'جاروبرقی', 'چمدان', 'دستکش بوکس', 'دمپایی', 'دوربین عکاسی', 'زودپز', 'سشوار',
+          'فلاسک', 'قوری', 'قلیان', 'کلاه کاسکت', 'کوله‌پشتی', 'گوشت‌کوب', 'مایکروفر', 'ماشین لباسشویی',
+          'ماگ', 'نردبان', 'واکمن', 'ویدئو پروژکتور', 'هلی‌کوپتر', 'یخدان', 'بادکنک', 'باربیکیو',
+          'بالش', 'بخاری نفتی', 'بوم نقاشی', 'پتو گلبافت', 'پنکه سقفی', 'ترازو دیجیتال', 'تلویزیون', 'تفنگ آب‌پاش',
+          'جعبه ابزار', 'چتر', 'چشم‌بند', 'چوب اسکی', 'دستگاه بخور', 'دستگیره در', 'دفتر خاطرات', 'دوش حمام',
+          'رادیو', 'رنده', 'زنگ اخبار', 'سماور زغالی', 'سوپاپ دیگ', 'سیخ کباب', 'شانه چوبی', 'شمع معطر',
+          'صندلی گهواره‌ای', 'سیبل دارت', 'عینک آفتابی', 'فندک اتمی', 'قابلمه مسی', 'قیچی باغبانی', 'کاسه بلور', 'کراوات',
+          'کلید یدک', 'کمربند چرمی', 'کنسول بازی', 'کوسن مبل', 'کیسه خواب', 'گرامافون', 'گلدان سفالی', 'لوله پولیکا',
+          'مسواک برقی', 'موکاپات', 'میکروفون', 'نخ دندان', 'کره زمین', 'چراغ والور', 'هاون برنجی', 'هونگ سنگی',
+          'پیپ چوبی', 'تخت تاشو', 'تلمبه باد', 'تور والیبال', 'جا قلمی', 'جعبه موسیقی', 'چراغ قوه', 'خط‌کش مهندسی',
+          'خمیردندان', 'دمبل بدنسازی', 'ذره‌بین', 'روروک کودک', 'ساک ورزشی', 'سرتاس بقالی', 'دستگاه سنباده', 'سوزن خیاطی',
+          'سی‌دی', 'شارژر فندکی', 'شلوارک', 'شومینه هیزمی', 'صندلی ماساژ', 'طناب بازی', 'عطر جیبی', 'قایق بادی',
+          'قفل کتابی', 'قلاب ماهیگیری', 'کتری استیل', 'کپسول آتش‌نشانی', 'کیسه بوکس', 'گیره لباس', 'لاستیک زاپاس', 'لباس غواصی',
+          'ماسک غواصی', 'میخ‌کوب بادی', 'ننو مسافرتی', 'ساز نی‌انبان', 'همزن برقی', 'واکس کفش', 'ویلچر برقی', 'پرینتر رنگی',
+          'پرگار', 'پیکسل سنجاقی', 'تخته نرد', 'تخته گوشت', 'توستر نان', 'جارو نپتون', 'جاسوییچی', 'جوراب ساق‌بلند',
+          'چاقو زنجان', 'چوب‌لباسی', 'حصیر ساحلی', 'ماشین ریش‌تراش', 'خاک‌انداز', 'دستمال نانو', 'پاپ‌کورن‌ساز', 'دوربین شکاری',
+          'دیگ مسی', 'راکت تنیس', 'زیرسیگاری', 'سنگ پا', 'سنبه فولادی', 'شلنگ آب', 'شیرجوش تفلون', 'صافی چای',
+          'طبل مارش', 'عینک شنا', 'فرفره رنگی', 'قاب عکس', 'قندان نقره', 'دستگاه پوز', 'کاغذ کادو', 'کلمن آب',
+          'کمربند ایمنی', 'گاوصندوق', 'گوش‌گیر', 'لنگ حمام', 'لوستر کریستال', 'مت یوگا', 'منگنه اداری', 'ناخن‌گیر',
+          'نمک‌پاش', 'وان حمام', 'وردنه چوبی', 'یخ‌ساز', 'پادری مخمل', 'پارچ شیشه‌ای', 'پاک‌کن فانتزی', 'سرخ‌کن بدون‌روغن',
+          'قهوه‌ساز کپسولی', 'غذاساز', 'چرخ‌گوشت', 'پلوپز دیجیتال', 'کتری برقی', 'ساندویچ‌ساز', 'آسیاب قهوه', 'شیکر برقی',
+          'قالب ژله', 'تخته پنیر', 'کارد سرآشپز', 'پوست‌کن', 'سیرله‌کن', 'قالب یخ', 'ظرف پیرکس', 'تابه دوبل',
+          'قابلمه گرانیتی', 'فرنچ‌پرس', 'دستمال کاغذی', 'وافل‌ساز', 'کولر گازی', 'بخاری برقی', 'پنکه پایه‌دار', 'جاروشارژی',
+          'بخارشوی خانگی', 'اتو پرسی', 'میز اتو', 'بند رخت', 'سبد حصیری', 'سطل پدالی', 'پرده حمام', 'شلف دیواری',
+          'ساعت دیواری', 'ریسه ال‌ای‌دی', 'پروژکتور سقفی', 'چراغ خواب', 'اسانس‌سوز', 'کابل شارژ', 'شارژر وایرلس', 'هولدر ماشین',
+          'کمپرسور باد', 'جعبه فیوز', 'دریل شارژی', 'متر لیزری', 'تراز بنایی', 'کمان‌اره آهن‌بر', 'انبردست', 'دم‌باریک',
+          'سیم‌چین', 'فازمتر دیجیتال', 'چسب تفنگی', 'هویه لحیم‌کاری', 'سیم لحیم', 'کش پیلاتس', 'فوم رولر', 'دستکش دوچرخه',
+          'عینک دوچرخه', 'کلاه ایمنی', 'اسکیت برد', 'کفش پاتیناژ', 'چوب هاکی', 'توپ بسکتبال', 'راکت بدمینتون', 'توپ پینگ‌پنگ',
+          'میز فوتبال‌دستی', 'صفحه شطرنج', 'دومینو', 'مکعب روبیک', 'خمیر اسلایم', 'سنتور گردو', 'تار یحیی', 'سه‌تار مشقی',
+          'کمانچه لری', 'تنبک چوبی', 'دف پوستی', 'ساز کاخن', 'هنگ‌درام', 'کالیمبا', 'اوکوله‌له', 'کیبورد مکانیکی',
+          'ماوس بی‌سیم', 'پد ماوس', 'کول‌پد لپ‌تاپ', 'وب‌کم استریم', 'رینگ‌لایت', 'سه‌پایه نقاشی', 'رنگ روغن', 'مدادرنگی',
+          'خودنویس نوک‌طلا', 'روان‌نویس ژله‌ای', 'جامدادی فلزی', 'دستگاه پانچ', 'پوشه دکمه‌دار', 'بارکدخوان لیزری', 'دوربین مداربسته'
         ],
         celebrities: [
-          'فردوسی توسی', 'حافظ شیرازی', 'سعدی شیرین‌سخن', 'عمر خیام نیشابوری', 'ابوعلی سینا', 'زکریای رازی', 'کوروش بزرگ هخامنشی', 'میرزا تقی‌خان امیرکبیر',
-          'ابوریحان بیرونی', 'دکتر محمد مصدق', 'پروین اعتصامی', 'سهراب سپهری', 'نیما یوشیج پدر شعر نو', 'فروغ فرخزاد', 'سیمین بهبهانی', 'صادق هدایت',
-          'استاد شهریار', 'جلال آل‌احمد', 'علی‌اکبر دهخدا', 'دکتر علی شریعتی', 'مهران مدیری', 'عادل فردوسی‌پور', 'علی دایی شهریار فوتبال', 'علی کریمی جادوگر فوتبال',
-          'جهان‌پهلوان تختی', 'علیرضا بیرانوند', 'جواد نکونام کاپیتان', 'هادی ساعی پرافتخار', 'حسن یزدانی پلنگ جویبار', 'مهدی طارمی آقای گل', 'بهداد سلیمی قوی‌ترین مرد', 'علیرضا دبیر',
-          'خسرو شکیبایی عمو خسرو', 'عزت‌الله انتظامی آقای بازیگر', 'علی نصیریان استاد بزرگ', 'داوود رشیدی', 'جمشید مشایخی کمال‌الملک', 'اصغر فرهادی برنده اسکار', 'عباس کیارستمی نخل طلا', 'شهاب حسینی نخل طلا',
-          'نوید محمدزاده ببر کردستان', 'ترانه علیدوستی', 'مریلا زارعی شیار ۱۴۳', 'رضا عطاران سلطان کمدی', 'جواد عزتی مالک زخم کاری', 'پیمان معادی', 'پژمان جمشیدی از فوتبال تا سینما', 'بهرام رادان سنتوری',
-          'لیلا حاتمی سیمین سینما', 'پرویز پرستویی حاج کاظم', 'اکبر عبدی مرد هزارچهره', 'هدیه تهرانی سوپراستار', 'فاطمه معتمدآریا سیمین', 'سحر دولتشاهی', 'محمدرضا شجریان خسرو آواز', 'همایون شجریان خداوندگار آواز',
-          'شهرام ناظری شوالیه آواز', 'محسن نامجو تلفیقی', 'محسن یگانه رگ خواب', 'شادمهر عقیلی ستاره پاپ', 'سیروان خسروی تنظیم‌کننده', 'رضا صادقی مشکی‌پوش', 'بهنام بانی قرص قمر', 'احسان خواجه‌امیری',
-          'آلبرت انیشتین فیزیکدان نسبیت', 'استیو جابز خالق اپل', 'بیل گیتس مایکروسافت', 'ایلان ماسک تسلا و اسپیس‌ایکس', 'لئوناردو داوینچی مونالیزا', 'پپ گواردیولا نابغه مربیگری', 'لیونل مسی قهرمان جهان', 'کریستیانو رونالدو سییی',
-          'دیگو مارادونا دست خدا', 'پله مروارید سیاه برزیل', 'مایکل جردن اسطوره بسکتبال', 'محمدعلی کلی اسطوره بوکس', 'رافائل نادال ماتادور تنیس', 'راجر فدرر استاد تنیس', 'چارلی چاپلین سلطان صامت', 'کریستوفر نولان نابغه سینما',
-          'کوئنتین تارانتینو فیلمساز خونین', 'استیون اسپیلبرگ ژوراسیک', 'آل پاچینو پدرخوانده دوم', 'رابرت دنیرو راننده تاکسی', 'لئوناردو دی‌کاپریو تایتانیک و گرگ', 'تام هنکس فارست گامپ', 'برد پیت باشگاه مشت‌زنی', 'جانی دپ کاپیتان جک اسپارو',
-          'آنجلینا جولی لاراکرافت', 'مریل استریپ ملکه اسکار', 'تام کروز ماموریت غیرممکن', 'کیانو ریوز نئو و جان ویک', 'ویلیام شکسپیر هملت', 'ارنست همینگوی پیرمرد و دریا', 'لئو تولستوی جنگ و صلح', 'فئودور داستایوفسکی جنایت و مکافات',
-          'گابریل گارسیا مارکز صد سال تنهایی', 'پابلو پیکاسو گرنیکا', 'ونسان ون‌گوگ شب پرستاره', 'لودویگ فان بتهوون سمفونی نهم', 'ولفگانگ آمادئوس موتزارت نابغه موسیقی', 'یوهان سباستین باخ پدر موسیقی', 'سر ایزاک نیوتون قانون جاذبه', 'توماس ادیسون مخترع لامپ',
-          'گالیلئو گالیله ستاره‌شناس', 'نیکولا تسلا برق متناوب', 'استیون هاوکینگ تاریخچه زمان', 'ماری کوری رادیواکتیو', 'چارلز داروین نظریه تکامل', 'زیگموند فروید پدر روانکاوی', 'نلسون ماندلا آپارتاید', 'مهاتما گاندی رهبر صلح هند',
-          'وینستون چرچیل نخست‌وزیر جنگ', 'ناپلئون بناپارت امپراتور فرانسه', 'ارسطو فیلسوف بزرگ یونان', 'افلاطون تمثیل غار', 'سقراط دانای رازها', 'ابن هیثم پدر نورشناسی', 'ابونصر فارابی معلم ثانی', 'خواجه نصیرالدین طوسی مراغه',
-          'ملاصدرا حکمت متعالیه', 'فریدالدین عطار نیشابوری منطق‌الطیر', 'باباطاهر عریان دوبیتی‌ها', 'سنایی غزنوی حدیقةالحقیقه', 'ناصرخسرو قبادیانی سفرنامه', 'مولانا جلال‌الدین رومی شمس', 'ناصر حجازی عقاب آسیا', 'احمدرضا عابدزاده عقاب خندان',
-          'خداداد عزیزی غزال تیزپا', 'کریم باقری شوت‌های مرگبار', 'مهدی مهدوی‌کیا موشک هامبورگ', 'سردار آزمون مهاجم تیم ملی', 'یحیی گل‌محمدی سرمربی', 'برانکو ایوانکوویچ پروفسور کروات', 'کارلوس کی‌روش سرمربی پرتغالی', 'سعید معروف پاسور طلایی',
-          'سید محمد موسوی مدافع روی تور', 'حمید سوریان نابغه کشتی فرنگی', 'امید نوروزی قهرمان المپیک', 'سهراب مرادی رکوردار وزنه‌برداری', 'کیمیا علیزاده مدال‌آور المپیک', 'الناز رکابی سنگ‌نورد ملی', 'سهراب پاکزاد خواننده نور چشمی', 'علیرضا قربانی روزگار غریب',
-          'محمد معتمدی آواز سنتی', 'رضا یزدانی کافه‌نادری', 'مازیار فلاحی یلدای غمگین', 'فرزاد فرزین مانکن و شوک', 'بابک جهانبخش سلطان احساس', 'بنیامین بهادری دنیا دیگه مثل تو نداره', 'فریدون فروغی آدمک و قوزک پا', 'فرهاد مهراد جمعه و مرد تنها'
+          'فردوسی', 'حافظ شیرازی', 'سعدی', 'عمر خیام', 'ابوعلی سینا', 'زکریای رازی', 'کوروش بزرگ', 'امیرکبیر',
+          'ابوریحان بیرونی', 'دکتر مصدق', 'پروین اعتصامی', 'سهراب سپهری', 'نیما یوشیج', 'فروغ فرخزاد', 'سیمین بهبهانی', 'صادق هدایت',
+          'استاد شهریار', 'جلال آل‌احمد', 'علی‌اکبر دهخدا', 'دکتر شریعتی', 'مهران مدیری', 'عادل فردوسی‌پور', 'علی دایی', 'علی کریمی',
+          'جهان‌پهلوان تختی', 'علیرضا بیرانوند', 'جواد نکونام', 'هادی ساعی', 'حسن یزدانی', 'مهدی طارمی', 'بهداد سلیمی', 'علیرضا دبیر',
+          'خسرو شکیبایی', 'عزت‌الله انتظامی', 'علی نصیریان', 'داوود رشیدی', 'جمشید مشایخی', 'اصغر فرهادی', 'عباس کیارستمی', 'شهاب حسینی',
+          'نوید محمدزاده', 'ترانه علیدوستی', 'مریلا زارعی', 'رضا عطاران', 'جواد عزتی', 'پیمان معادی', 'پژمان جمشیدی', 'بهرام رادان',
+          'لیلا حاتمی', 'پرویز پرستویی', 'اکبر عبدی', 'هدیه تهرانی', 'فاطمه معتمدآریا', 'سحر دولتشاهی', 'محمدرضا شجریان', 'همایون شجریان',
+          'شهرام ناظری', 'محسن نامجو', 'محسن یگانه', 'شادمهر عقیلی', 'سیروان خسروی', 'رضا صادقی', 'بهنام بانی', 'احسان خواجه‌امیری',
+          'آلبرت انیشتین', 'استیو جابز', 'بیل گیتس', 'ایلان ماسک', 'داوینچی', 'پپ گواردیولا', 'لیونل مسی', 'کریستیانو رونالدو',
+          'دیگو مارادونا', 'پله برزیلی', 'مایکل جردن', 'محمدعلی کلی', 'رافائل نادال', 'راجر فدرر', 'چارلی چاپلین', 'کریستوفر نولان',
+          'کوئنتین تارانتینو', 'استیون اسپیلبرگ', 'آل پاچینو', 'رابرت دنیرو', 'دی‌کاپریو', 'تام هنکس', 'برد پیت', 'جانی دپ',
+          'آنجلینا جولی', 'مریل استریپ', 'تام کروز', 'کیانو ریوز', 'ویلیام شکسپیر', 'ارنست همینگوی', 'لئو تولستوی', 'داستایوفسکی',
+          'گابریل گارسیا', 'پابلو پیکاسو', 'ون‌گوگ', 'لودویگ بتهوون', 'ولفگانگ موتزارت', 'باخ', 'ایزاک نیوتون', 'توماس ادیسون',
+          'گالیلئو گالیله', 'نیکولا تسلا', 'استیون هاوکینگ', 'ماری کوری', 'چارلز داروین', 'زیگموند فروید', 'نلسون ماندلا', 'مهاتما گاندی',
+          'وینستون چرچیل', 'ناپلئون بناپارت', 'ارسطو', 'افلاطون', 'سقراط', 'ابن هیثم', 'ابونصر فارابی', 'خواجه نصیر',
+          'ملاصدرا', 'عطار نیشابوری', 'باباطاهر', 'سنایی', 'ناصرخسرو', 'مولانا', 'ناصر حجازی', 'احمدرضا عابدزاده',
+          'خداداد عزیزی', 'کریم باقری', 'مهدی مهدوی‌کیا', 'سردار آزمون', 'یحیی گل‌محمدی', 'برانکو', 'کارلوس کی‌روش', 'سعید معروف',
+          'محمد موسوی', 'حمید سوریان', 'امید نوروزی', 'سهراب مرادی', 'کیمیا علیزاده', 'الناز رکابی', 'سهراب پاکزاد', 'علیرضا قربانی',
+          'محمد معتمدی', 'رضا یزدانی', 'مازیار فلاحی', 'فرزاد فرزین', 'بابک جهانبخش', 'بنیامین بهادری', 'فریدون فروغی', 'فرهاد مهراد',
+          'ستارخان', 'باقرخان', 'میرزا کوچک‌خان', 'رئیس‌علی دلواری', 'کلنل پسیان', 'یعقوب لیث', 'شاه عباس', 'کریم‌خان زند',
+          'لطفعلی‌خان زند', 'ابن بطوطه', 'عبید زاکانی', 'وحشی بافقی', 'محتشم کاشانی', 'صائب تبریزی', 'قاآنی', 'سیمین دانشور',
+          'بزرگ علوی', 'محمود دولت‌آبادی', 'احمد شاملو', 'مهدی اخوان‌ثالث', 'هوشنگ ابتهاج', 'قیصر امین‌پور', 'علی صالحی', 'جمال‌زاده',
+          'هوشنگ گلشیری', 'عباس معروفی', 'زویا پیرزاد', 'نادر ابراهیمی', 'داریوش مهرجویی', 'مسعود کیمیایی', 'ناصر تقوایی', 'بهرام بیضایی',
+          'کیومرث پوراحمد', 'رسول ملاقلی‌پور', 'کمال تبریزی', 'ابراهیم حاتمی‌کیا', 'مجید مجیدی', 'رخشان بنی‌اعتماد', 'پوران درخشنده', 'تهمینه میلانی',
+          'نرگس آبیار', 'سعید روستایی', 'محمدحسین مهدویان', 'هومن سیدی', 'شهرام مکری', 'حامد بهداد', 'محسن تنابنده', 'احمد مهران‌فر',
+          'علیرضا خمسه', 'سیامک انصاری', 'جواد رضویان', 'مهران غفوریان', 'حمید لولایی', 'یوسف تیموری', 'رضا شفیعی‌جم', 'بیژن بنفشه‌خواه',
+          'محمدرضا گلزار', 'امین حیایی', 'بهرام افشاری', 'هوتن شکیبا', 'نوید پورفرج', 'پردیس احمدیه', 'ساره بیات', 'طناز طباطبایی',
+          'الناز شاکردوست', 'شبنم مقدمی', 'پانته‌آ پناهی‌ها', 'پرویز یاحقی', 'علی تجویدی', 'همایون خرم', 'جلیل شهناز', 'حسن کسایی',
+          'حسین علیزاده', 'محمدرضا لطفی', 'کیهان کلهر', 'پرویز مشکاتیان', 'اردوان کامکار', 'ابوالحسن صبا', 'حبیب محبیان', 'کوروش یغمایی',
+          'فریدون زندی', 'اشکان دژاگه', 'وحید هاشمیان', 'رضا عنایتی', 'مجتبی محرمی', 'علیرضا منصوریان', 'فرهاد مجیدی', 'محمود فکری',
+          'حسین رضازاده', 'کیانوش رستمی', 'حسن تفتیان', 'احسان حدادی', 'حمید استیلی', 'آرش برهانی', 'رضا قوچان‌نژاد', 'اشکان خطیبی',
+          'استیون کینگ', 'آگاتا کریستی', 'آرتور کانن‌دویل', 'ژول ورن', 'جرج اورول', 'جی‌کی رولینگ', 'تالکین', 'هانس اندرسن'
         ],
         places: [
-          'میدان آزادی تهران', 'برج مخابراتی میلاد', 'تخت جمشید پرسپولیس', 'سی‌وسه‌پل زاینده‌رود', 'میدان نقش جهان اصفهان', 'پل خواجو اصفهان', 'آرامگاه حافظیه شیراز', 'آرامگاه سعدیه شیراز',
-          'آرامگاه حکیم ابوالقاسم فردوسی', 'قله سرافراز دماوند', 'دریاچه شور ارومیه', 'جنگل‌های باستانی هیرکانی', 'جزیره مرجانی کیش', 'جزیره پهناور قشم', 'دره شگفت‌انگیز ستارگان', 'روستای پلکانی ماسوله',
-          'روستای سرخ ابیانه نطنز', 'قلعه تاریخی رودخان فومن', 'کویر شنی مرنجاب کاشان', 'کویر سوزان لوت', 'بازار بزرگ سنتی تهران', 'کاخ موزه گلستان', 'پل طبیعت روی اتوبان مدرس', 'منطقه کوهستانی دربند',
-          'پیست اسکی توچال ایستگاه هفت', 'پیست اسکی بین‌المللی دیزین', 'گنبد فیروزه‌ای سلطانیه زنجان', 'آرامگاه کوروش در پاسارگاد', 'غار آبی شگفت‌انگیز علی‌صدر', 'باغ و حمام فین کاشان', 'خانه تاریخی بروجردی‌ها', 'آبشار زیبای مارگون سپیدان',
-          'تالاب بین‌المللی انزلی', 'دشت شقایق‌های لار دماوند', 'جنگل ابر تماشایی شاهرود', 'چشمه‌های پله‌ای باداب سورت', 'درکه و کلک‌چال تهران', 'دریاچه شهدای خلیج فارس چیتگر', 'مجموعه فرهنگی تاریخی سعدآباد', 'آثار تاریخی نقش رستم مرودشت',
-          'محوطه باستانی طاق بستان', 'سنگ‌نبشته جهانی بیستون کرمانشاه', 'ارگ خشتی بم کرمان', 'باغ مصفای شازده ماهان', 'سازه‌های آبی تاریخی شوشتر', 'زیگورات ایلامی چغازنبیل', 'کوه بیستون و فرهادتراش', 'دریاچه بکر زریبار مریوان',
-          'روستای صخره‌ای کندوان اسکو', 'تنگه شگفت‌انگیز هایقر فیروزآباد', 'گردنه مه‌آلود حیران آستارا', 'آبشار خروشان بیشه لرستان', 'تنگه اسرارآمیز شیرز کوهدشت', 'دریاچه نگین گهر دورود', 'برج آجری طغرل ری', 'کاخ موزه باشکوه نیاوران',
-          'موزه ملی ایران ایران‌باستان', 'قله آتشفشانی سبلان اردبیل', 'شهر چشمه‌های آبگرم سرعین', 'دریاچه تفریحی شورابیل اردبیل', 'جزیره خاک‌های سرخ هرمز', 'قله الوند سنگی همدان', 'غار آهکی کتله‌خور زنجان', 'مسجد نصیرالملک صورتی شیراز',
-          'باغ گیاه‌شناسی ارم شیراز', 'تخت سلیمان آتشکده آذرگشنسب', 'دشت سرسبز میشان الوند', 'کلیسای تاریخی وانک جلفا', 'منارجنبان لرزان اصفهان', 'کاخ چهل‌ستون نصف جهان', 'عمارت باشکوه عالی‌قاپو', 'آرامگاه حکیم عمر خیام',
-          'برج آجری قابوس گنبدکاووس', 'جنگل تونل درختی گیسوم تالش', 'دشت حاصلخیز مغان', 'گردنه اسدآباد همدان', 'بازار وکیل باصفای شیراز', 'دروازه قرآن ورودی شیراز', 'کلوت‌های بیابانی شهداد', 'کوه خواجه سیستان و زابل',
-          'آرامگاه فیلسوف بوعلی سینا همدان', 'کتیبه‌های تاریخی گنج‌نامه', 'غار تاریخی قوری‌قلعه روانسر', 'روستای هزارماسوله اورامان تخت', 'پل شاپوری شکسته خرم‌آباد', 'جنگل رویایی فندقلو نمین', 'چشمه آبگرم معدنی لاریجان', 'برج فلزی ایفل پاریس',
-          'مجسمه آزادی نیویورک منهتن', 'دیوار بزرگ و طولانی چین', 'اهرام ثلاثه و ابوالهول مصر', 'بنای مرمرین تاج محل آگرا', 'برج فوق‌بلند خلیفه دبی', 'آمفی‌تئاتر کولوسئوم رم', 'برج ساعت بیگ بن لندن', 'برج کج پیزا ایتالیا',
-          'شهر گمشده ماچو پیچو پرو', 'آبشارهای خروشان نیاگارا کانادا', 'بلندترین قله جهان اورست هیمالیا', 'آبراه استراتژیک کانال پاناما', 'دره شگفت‌انگیز گرند کانیون آمریکا', 'خانه اپرای بادبانی سیدنی استرالیا', 'کاخ کرملین میدان سرخ مسکو', 'موزه لوور و هرم شیشه‌ای',
-          'کشور کوچک شهر واتیکان', 'جزیره سفید و آبی سانتورینی یونان', 'جزیره رویایی و استوایی بالی', 'پارک ملی یلوستون چشمه آبگرم', 'جزایر مرجانی و مالدیو آبی', 'جنگل‌های بارانی آمازون برزیل', 'قاره یخ‌زده قطب جنوب', 'صحرای شنی بی‌پایان آفریقا',
-          'جزایر آتشفشانی هاوایی اقیانوس آرام', 'شهر روی آب و قایق‌های ونیز', 'برج‌های دوقلوی پتروناس کوالالامپور', 'بلوار معروف شانزلیزه فرانسه', 'آب‌های نیلگون خلیج همیشگی فارس', 'دریای پهناور خزر کاسپین', 'تنگه استراتژیک هرمز', 'جزیره بوموسی نگین خلیج فارس'
+          'میدان آزادی', 'برج میلاد', 'تخت جمشید', 'سی‌وسه‌پل', 'میدان نقش‌جهان', 'پل خواجو', 'حافظیه شیراز', 'سعدیه شیراز',
+          'آرامگاه فردوسی', 'قله دماوند', 'دریاچه ارومیه', 'جنگل هیرکانی', 'جزیره کیش', 'جزیره قشم', 'دره ستارگان', 'روستای ماسوله',
+          'روستای ابیانه', 'قلعه رودخان', 'کویر مرنجاب', 'کویر لوت', 'بازار تهران', 'کاخ گلستان', 'پل طبیعت', 'کوهستان دربند',
+          'پیست توچال', 'پیست دیزین', 'گنبد سلطانیه', 'پاسارگاد', 'غار علی‌صدر', 'باغ فین', 'خانه بروجردی‌ها', 'آبشار مارگون',
+          'تالاب انزلی', 'دشت لار', 'جنگل ابر', 'باداب سورت', 'منطقه درکه', 'دریاچه چیتگر', 'کاخ سعدآباد', 'نقش رستم',
+          'طاق بستان', 'بیستون کرمانشاه', 'ارگ بم', 'باغ شازده', 'سازه‌های شوشتر', 'زیگورات چغازنبیل', 'فرهادتراش', 'دریاچه زریبار',
+          'روستای کندوان', 'تنگه هایقر', 'گردنه حیران', 'آبشار بیشه', 'تنگه شیرز', 'دریاچه گهر', 'برج طغرل', 'کاخ نیاوران',
+          'موزه ملی', 'قله سبلان', 'چشمه سرعین', 'دریاچه شورابیل', 'جزیره هرمز', 'قله الوند', 'غار کتله‌خور', 'مسجد نصیرالملک',
+          'باغ ارم', 'تخت سلیمان', 'دشت میشان', 'کلیسای وانک', 'منارجنبان اصفهان', 'کاخ چهل‌ستون', 'عمارت عالی‌قاپو', 'آرامگاه خیام',
+          'برج قابوس', 'جنگل گیسوم', 'دشت مغان', 'گردنه اسدآباد', 'بازار وکیل', 'دروازه قرآن', 'کلوت شهداد', 'کوه خواجه',
+          'آرامگاه بوعلی', 'کتیبه گنج‌نامه', 'غار قوری‌قلعه', 'اورامان تخت', 'پل شاپوری', 'جنگل فندقلو', 'آبگرم لاریجان', 'برج ایفل',
+          'مجسمه آزادی', 'دیوار چین', 'اهرام مصر', 'تاج محل', 'برج خلیفه', 'آمفی‌تئاتر کولوسئوم', 'ساعت بیگ‌بن', 'برج پیزا',
+          'ماچو پیچو', 'آبشار نیاگارا', 'قله اورست', 'کانال پاناما', 'گرند کانیون', 'خانه اپرا', 'کاخ کرملین', 'موزه لوور',
+          'کشور واتیکان', 'جزیره سانتورینی', 'جزیره بالی', 'پارک یلوستون', 'جزایر مالدیو', 'جنگل آمازون', 'قطب جنوب', 'صحرای آفریقا',
+          'جزایر هاوایی', 'شهر ونیز', 'برج‌های پتروناس', 'بلوار شانزلیزه', 'خلیج فارس', 'دریای خزر', 'تنگه هرمز', 'جزیره ابوموسی',
+          'دریاچه سقالکسار', 'آبشار ویسادار', 'جنگل راش', 'دریاچه الندان', 'آبشار آب‌پری', 'دشت دریاسر', 'روستای مازیچال', 'دریاچه چورت',
+          'تنگه واشی', 'آبشار شاهاندشت', 'پیست دربندسر', 'پیست شمشک', 'غار یخ‌مراد', 'تالاب میقان', 'غار نخجیر', 'آسیاب‌خرابه',
+          'کلیسای سنت‌استپانوس', 'قلعه بابک', 'آبشار لاتون', 'قلعه فلک‌الافلاک', 'آبشار نوژیان', 'آبشار گریت', 'دره نی‌گاه', 'تونل برفی',
+          'تالاب چغاخور', 'چشمه دیمه', 'آبشار شیخ‌علی‌خان', 'لاله واژگون', 'پل زمان‌خان', 'کویر ریگ‌جن', 'روستای گرمه', 'کویر مصر',
+          'کویر کاراکال', 'باغ دولت‌آباد', 'مسجد جامع', 'میدان امیرچخماق', 'زندان اسکندر', 'آتشکده یزد', 'دخمه زرتشتیان', 'زیارتگاه چک‌چک',
+          'کویر ابوزیدآباد', 'قلعه کرشاهی', 'شهر نوش‌آباد', 'آبشار نیاسر', 'تپه‌های سیلک', 'کاروانسرای مرنجاب', 'حوض سلطان', 'آبشار شاه‌لولاک',
+          'کوه صفه', 'آتشگاه اصفهان', 'بازار قیصریه', 'مسجد شیخ‌لطف‌الله', 'مسجد امام', 'پل چوبی', 'دریاچه مهارلو', 'نقش رجب',
+          'شهر استخر', 'قلعه اژدهاپیکر', 'تنگه رغز', 'چشمه گلابی', 'آبشار تارم', 'کاخ اردشیر', 'قلعه دختر', 'تنگه چوگان',
+          'شهر بیشاپور', 'غار شاپور', 'دشت ارژن', 'جنگل حرا', 'غار خربس', 'تنگه چاهکوه', 'دره تندیس‌ها', 'جزایر ناز',
+          'غار نمکدان', 'بندر لافت', 'جزیره هنگام', 'جزیره لارک', 'قلعه پرتغالی‌ها', 'پل لاتیدان', 'معبد هندوها', 'عمارت کلاه‌فرنگی',
+          'آبگرم گنو', 'بندر سیراف', 'بندر کنگ', 'عمارت ملک', 'گنبد جاشک', 'نخلستان آبپخش', 'تالاب شادگان', 'رودخانه کارون',
+          'کاخ آپادانا', 'دانیال نبی', 'رود دز', 'پل ساسانی', 'آسیاب‌های دزفول', 'تنگه کول‌فرح', 'اشکفت سلمان'
         ],
         media: [
-          'جدایی نادر از سیمین اسکاری', 'فروشنده شهاب حسینی و ترانه', 'درباره الی لب دریا', 'مارمولک با بازی پرویز پرستویی', 'اخراجی‌های ده‌نمکی و مجید سوزوکی', 'سنتوری علی سنتوری و داریوش مهرجویی', 'شوکران بهروز افخمی', 'مهمان مامان دور سفره شام',
-          'سگ‌کشی بهرام بیضایی', 'دایره زنگی پشت‌بام تهران', 'بوتیک گلشیفته و محمدرضا گلزار', 'ابد و یک روز و نوید محمدزاده', 'متری شیش و نیم سعید روستایی', 'سرخ‌پوست زندان قدیمی', 'شنای پروانه جنوب شهر تهران', 'برادران لیلا و سکه طلا',
-          'سریال پوست شیر نعیم و ساحل', 'سریال زخم کاری مالک و سمیرا', 'سریال قورباغه هومن سیدی', 'سریال شهرزاد بزرگ‌آقا و قباد', 'سریال پایتخت نقی معمولی و ارسطو', 'سریال نون خ نورالدین خانزاده', 'سریال ساختمان پزشکان نیما افشار', 'سریال شب‌های برره شیرفرهاد',
-          'سریال پاورچین سپندار و داوود برره', 'سریال مرد هزارچهره اشتباهی شدم', 'سریال قهوه تلخ جهانگیرشاه و بلوتوث', 'سریال پژمان جمشیدی و خسرو حیدری', 'سریال لیسانسه‌ها حبیب و مازیار', 'سریال زیرخاکی فریبرز باغ‌پیشه', 'سریال هم‌گناه مصطفی کیایی', 'سریال خاتون در بحبوحه جنگ',
-          'سریال یاغی جاوید کشتی‌گیر', 'سریال جیران سوگلی ناصرالدین‌شاه', 'سریال دفتر یادداشت رضا عطاران', 'سریال گناه فرشته شهاب حسینی', 'سریال در حاشیه بیمارستان دکتر صحرایی', 'سریال مسافران بهرام و فرید', 'سریال خانه به دوش آقا ماشاالله', 'سریال متهم گریخت هاشم‌آقا و شازده',
-          'سریال بزنگاه نادر و صابر پرور', 'سریال سه در چهار سیروس املشی', 'سریال خاطره‌انگیز خوش‌رکاب آتقی', 'سریال پدرسالار اسدالله خان', 'سریال فاخر امام علی داریوش ارجمند', 'سریال ماندگار مختارنامه فریبرز عرب‌نیا', 'سریال یوسف پیامبر مصطفی زمانی', 'سریال ولایت عشق امام رضا',
-          'سریال در چشم باد بیژن ایرانی', 'سریال وضعیت سفید امیر و ناهید', 'سریال همسران کمال و مهین', 'سریال نوستالژیک خانه سبز رضا صباحی', 'فیلم آژانس شیشه‌ای خیبر یا ایرباس', 'فیلم بازمانده سلیمه و فرحان', 'فیلم بوی پیراهن یوسف مجید مجیدی', 'فیلم دیده‌بان حاتمی‌کیا',
-          'فیلم لیلی با من است صادق مشکینی', 'فیلم پرهزینه دوئل احمدرضا درویش', 'فیلم شیار ۱۴۳ الفت چشم‌انتظار', 'فیلم ماجرای نیمروز رد خون', 'فیلم لاتاری ساعد سهیلی و حمید فرخ‌نژاد', 'فیلم ایستاده در غبار احمد متوسلیان', 'فیلم جهان با من برقص علی مصفا', 'فیلم کمدی فسیل اسماعیل کرمی',
-          'فیلم کمدی هتل پژمان و محسن کیایی', 'فیلم گشت ارشاد حسن و عطا و عباس', 'فیلم ورود آقایان ممنوع رضا عطاران', 'کلاه‌قرمزی و پسرخاله آقای مجری', 'فیلم نهنگ عنبر ارژنگ صنوبر', 'فیلم مصادره سوراخ توالت', 'فیلم هزارپا رضا عطاران و جواد عزتی', 'فیلم رحمان ۱۴۰۰ منوچهر هادی',
-          'فیلم دینامیت طلاب و دختران همسایه', 'فیلم سگ‌بند امیر جعفری و بهرام افشاری', 'فیلم تمساح خونی جواد عزتی', 'کشتی تایتانیک جک و رز', 'سه‌گانه پدرخوانده دون ویتو کورلئونه', 'شوالیه تاریکی بتمن و جوکر هیث لجر', 'پالپ فیکشن عامه‌پسند تارانتینو', 'رستگاری در شاوشنک اندی دوفرین',
-          'تلقین اینسپشن فرفره در خواب', 'میان‌ستاره‌ای اینترستلار سیاهچاله گارگانتوا', 'اوپنهایمر بمب اتمی کریستوفر نولان', 'ماتریکس قرص آبی و قرمز نئو', 'ارباب حلقه‌ها یاران حلقه فرودو', 'هری پاتر هاگوارتز و ولدمورت', 'دزدان دریایی کارائیب جک اسپارو', 'آواتار پاندورا جیمز کامرون',
-          'سریال بازی تاج و تخت وایت‌واکرها', 'سریال بریکینگ بد هایزنبرگ و جسی پینکمن', 'سریال پیکی بلایندرز تامی شلبی', 'سریال فرار از زندان نقشه مایکل اسکوفیلد', 'سریال لاست گمشدگان جزیره دود سیاه', 'سریال شرلوک هلمز بندیکت کامبربچ', 'سریال چیزهای عجیب استرنجر تینگز الون', 'سریال سرقت پول لاکاسا دپاپل پروفسور',
-          'سریال بازی مرکب چراغ سبز چراغ قرمز', 'سریال چرنوبیل انفجار رآکتور هسته‌ای', 'سریال وایکینگ‌ها رگنار لاثبروک', 'سریال فرندز چندلر و جوئی و مونیکا', 'انیمیشن پاندای کونگ‌فوکار پو اژدها', 'انیمیشن شیرشاه سیمبا و موفاسا', 'انیمیشن شرک و خر سخنگو در باتلاق', 'انیمیشن داستان اسباب‌بازی وودی و بازلایتر',
-          'انیمیشن در جستجوی نمو دلقک‌ماهی', 'انیمیشن شگفت‌انگیزان آقای شگفت‌انگیز', 'انیمیشن عصر یخبندان سید و مندی و سنجاب', 'انیمیشن راتاتویی موش سرآشپز رمی', 'انیمیشن وال-ای روبات عاشق ایوا', 'انیمیشن بالا خانه بادکنکی پیرمرد', 'انیمیشن کارخانه هیولاها سالیوان و مایک', 'انیمیشن من نفرت‌انگیز گرو و مینیون‌ها',
-          'انیمیشن فروزن السا و آنا آدم‌برفی', 'انیمیشن زوتوپیا خرگوش جودی هاپس', 'انیمیشن کوکو سرزمین مردگان گیتار', 'انیمیشن روح سول نوازنده پیانو', 'انیمیشن گربه چکمه‌پوش چشمان ملتمس', 'انیمیشن ماداگاسکار شیر الکس و گورخر مارتی', 'انیمیشن دیو و دلبر بل و شاهزاده', 'انیمیشن علاءالدین غول چراغ جادو آبی',
-          'انیمیشن پینوکیو و پدر ژپتو در شکم نهنگ', 'تام و جری موش و گربه نوستالژیک', 'پلنگ صورتی و بازرس کلوزو', 'باب اسفنجی شلوارمکعبی و پاتریک', 'کارتون فوتبالیست‌ها سوباسا و کاکرو', 'کارتون میتی کومان علامت مخصوص حاکم بزرگ', 'کارتون چوبین و برونکا شبح خبیث', 'کارتون هاچ زنبور عسل در جستجوی مادر'
+          'جدایی نادر', 'فیلم فروشنده', 'درباره الی', 'فیلم مارمولک', 'اخراجی‌ها', 'علی سنتوری', 'فیلم شوکران', 'مهمان مامان',
+          'فیلم سگ‌کشی', 'دایره زنگی', 'فیلم بوتیک', 'ابد و یک روز', 'متری شیش‌ونیم', 'فیلم سرخ‌پوست', 'شنای پروانه', 'برادران لیلا',
+          'پوست شیر', 'زخم کاری', 'سریال قورباغه', 'سریال شهرزاد', 'سریال پایتخت', 'سریال نون خ', 'ساختمان پزشکان', 'شب‌های برره',
+          'سریال پاورچین', 'مرد هزارچهره', 'قهوه تلخ', 'سریال پژمان', 'سریال لیسانسه‌ها', 'سریال زیرخاکی', 'سریال هم‌گناه', 'سریال خاتون',
+          'سریال یاغی', 'سریال جیران', 'دفتر یادداشت', 'گناه فرشته', 'در حاشیه', 'سریال مسافران', 'خانه به دوش', 'متهم گریخت',
+          'سریال بزنگاه', 'سه در چهار', 'خوش‌رکاب', 'سریال پدرسالار', 'سریال امام علی', 'مختارنامه', 'یوسف پیامبر', 'ولایت عشق',
+          'در چشم باد', 'وضعیت سفید', 'سریال همسران', 'خانه سبز', 'آژانس شیشه‌ای', 'فیلم بازمانده', 'بوی پیراهن یوسف', 'فیلم دیده‌بان',
+          'لیلی با من است', 'فیلم دوئل', 'شیار ۱۴۳', 'ماجرای نیمروز', 'فیلم لاتاری', 'ایستاده در غبار', 'فیلم فسیل', 'فیلم هتل',
+          'گشت ارشاد', 'ورود آقایان ممنوع', 'کلاه‌قرمزی', 'نهنگ عنبر', 'فیلم مصادره', 'فیلم هزارپا', 'رحمان ۱۴۰۰', 'فیلم دینامیت',
+          'فیلم سگ‌بند', 'تمساح خونی', 'فیلم تایتانیک', 'پدرخوانده', 'شوالیه تاریکی', 'پالپ فیکشن', 'رستگاری شاوشنک', 'اینسپشن',
+          'فیلم اینترستلار', 'فیلم اوپنهایمر', 'فیلم ماتریکس', 'ارباب حلقه‌ها', 'هری پاتر', 'دزدان دریایی', 'فیلم آواتار', 'بازی تاج و تخت',
+          'بریکینگ بد', 'پیکی بلایندرز', 'فرار از زندان', 'سریال لاست', 'شرلوک هلمز', 'استرنجر تینگز', 'سرقت پول', 'بازی مرکب',
+          'سریال چرنوبیل', 'وایکینگ‌ها', 'سریال فرندز', 'کونگ‌فو پاندا', 'انیمیشن شیرشاه', 'انیمیشن شرک', 'داستان اسباب‌بازی', 'در جستجوی نمو',
+          'شگفت‌انگیزان', 'عصر یخبندان', 'راتاتویی', 'انیمیشن وال-ای', 'انیمیشن بالا', 'کارخانه هیولاها', 'من نفرت‌انگیز', 'انیمیشن فروزن',
+          'انیمیشن زوتوپیا', 'انیمیشن کوکو', 'انیمیشن روح', 'گربه چکمه‌پوش', 'ماداگاسکار', 'دیو و دلبر', 'کارتون علاءالدین', 'پینوکیو',
+          'تام و جری', 'پلنگ صورتی', 'باب اسفنجی', 'فوتبالیست‌ها', 'میتی کومان', 'کارتون چوبین', 'هاچ زنبور عسل', 'ناخدا خورشید',
+          'فیلم گاو', 'فیلم هامون', 'فیلم مادر', 'سوته‌دلان', 'فیلم قیصر', 'فیلم گوزن‌ها', 'فیلم کندو', 'فیلم دونده',
+          'باشو', 'فیلم کلوزآپ', 'طعم گیلاس', 'رنگ خدا', 'زیر پوست شهر', 'شب یلدا', 'خیلی دور خیلی نزدیک', 'به همین سادگی',
+          'رخ دیوانه', 'فیلم بارکد', 'عرق سرد', 'شبی که ماه کامل شد', 'درخت گردو', 'فیلم خورشید', 'ملاقات خصوصی', 'دایی‌جان ناپلئون',
+          'هزاردستان', 'سلطان و شبان', 'سریال سربداران', 'کوچک جنگلی', 'روزی روزگاری', 'تفنگ سرپر', 'آرایشگاه زیبا', 'پهلوانان نمی‌میرند',
+          'کیف انگلیسی', 'شب دهم', 'مدار صفر درجه', 'کلاه پهلوی', 'روزگار قریب', 'او یک فرشته بود', 'خط قرمز', 'مسافری از هند',
+          'سریال دلنوازان', 'آوای باران', 'برنامه همرفیق', 'برنامه مهمونی', 'برنامه جوکر', 'شب‌های مافیا', 'عصر جدید', 'برنامه نود',
+          'فوتبال ۳۶۰', 'صندلی داغ', 'مسابقه هفته', 'سیا ساکتی', 'انیمیشن شکرستان', 'پهلوانان', 'لئون حرفه‌ای', 'باشگاه مشت‌زنی',
+          'فهرست شیندلر', 'مکس دیوانه', 'فیلم کازابلانکا', 'همشهری کین', 'فیلم روانی'
         ],
         proverbs: [
-          'آشپز که دوتا شد غذا یا شور میشه یا بی‌نمک', 'آب در کوزه و ما تشنه‌لبان می‌گردیم', 'آش نخورده و دهن سوخته', 'از این ستون به آن ستون فرج است',
-          'از کوزه همان برون تراود که در اوست', 'از ماست که بر ماست', 'با دم شیر بازی نکن', 'با یک دست نمیشه دوتا هندوانه برداشت',
-          'با یک گل بهار نمیشه', 'بادمجون بم آفت نداره', 'بالاخره دستش برای همه رو شد', 'بالاتر از سیاهی هیچ رنگی نیست',
-          'بزک نمیر بهار میاد کمبزه با خیار میاد', 'بعد از نسترن بوی گل نیاید', 'به مرگ می‌گیره تا به تب راضی بشه', 'پا توی یک کفش کردن و اصرار ورزیدن',
-          'پایش لب گور و دهنش بوی حلوا میده', 'پیاز هم قاطی میوه‌ها شد', 'تا تنور گرم است باید نان را چسباند', 'تعارف شاه‌عبدالعظیمی تکه‌پاره کردن',
-          'تیرش به سنگ سفت خورد', 'جوجه را آخر پاییز می‌شمارند', 'چاه‌کن همیشه خودش ته چاه است', 'چراغی که به خانه رواست به مسجد حرام است',
-          'چشمش از این کار اصلاً آب نمی‌خورد', 'با حلوا حلوا گفتن دهن شیرین نمیشه', 'خر ما از کرگی دم نداشت', 'خود را به کوچه علی‌چپ زدن',
-          'خود کرده را تدبیر نیست', 'خون طرف را توی شیشه کردن', 'خیاط هم در کوزه افتاد', 'دست بالای دست بسیار است برادر',
-          'دست پیش را گرفتن که پس نیفتد', 'دل به دریا زدن و ریسک کردن', 'دندان روی جگر گذاشتن و صبر کردن', 'دیگ به دیگ میگه روت سیاه قابلمه میگه فدات',
-          'دیوار موش داره موش هم گوش داره', 'رودربایستی شدید گیر افتادن', 'زاغ سیاه کسی را چوب زدن', 'زبان سرخ سر سبز می‌دهد بر باد',
-          'زیر پای کسی نشستن و هوایی کردن', 'سالی که نکوست از بهارش پیداست', 'سر به زنگاه درست رسیدن', 'سر بی‌گناه پای دار میره اما بالای دار نمیره',
-          'سرش محکم به سنگ لحد خورده', 'سرنا را از سر گشادش باد زدن', 'سواره از پیاده خبر نداره سیر از گرسنه', 'سوزن توی انبار کاه بزرگ گشتن',
-          'شتر دیدی ندیدی اصلاً هیچی نگو', 'شاهنامه آخرش خوشه خواهیم دید', 'شتر در خواب بیند پنبه‌دانه گهی لپ‌لپ خورد', 'شترسواری دولا دولا هیچ‌وقت نمیشه',
-          'شیر یا خط انداختن برای تصمیم‌گیری', 'صابون طرف به تن ما هم خورده', 'صورتش را با سیلی سرخ نگه می‌داره', 'طبل توخالی بودن و ادعا داشتن',
-          'طوطی‌وار تکرار کردن بدون فهمیدن', 'عاقبت جوینده همیشه یابنده بود', 'عدو شود سبب خیر اگر خدا خواهد', 'فیلش دوباره یاد هندوستان کرده',
-          'کارد به استخوان مظلوم رسیدن', 'کاسه داغ‌تر از آش شدن بی‌مورد', 'کبکش بدجوری خروس می‌خونه این روزها', 'کفگیرش به ته دیگ خورده بی‌پول شده',
-          'کلاغ خواست راه رفتن کبک را یاد بگیره', 'کلاه خودت را قاضی کن و وجدان داشته باش', 'کلاه گشاد سر فلانی گذاشتن', 'کوه به کوه نمیرسه آدم به آدم میرسه',
-          'گاومان زایید و مصیبت شروع شد', 'گر صبر کنی ز غوره حلوا سازی', 'گرگ بالان‌دیده و سرد و گرم‌چشیده', 'گربه دستش به گوشت نمیرسه میگه بو میده',
-          'گربه را باید دم حجله کشت تا حساب ببرند', 'گل پشت و رو نداره عزیزم', 'گنجشک را رنگ می‌کنه جای قناری می‌فروشه', 'لنگه کفش کهنه در بیابان نعمت است',
-          'مار گزیده از ریسمان سیاه و سفید می‌ترسه', 'ماهی را هر وقت از آب بگیری تازه است', 'مرغ همسایه همیشه غازه برای بعضی‌ها', 'مشت نمونه خروار و نشانه کل است',
-          'مگه سر آوردی این‌قدر هول می‌زنی', 'موش تو سوراخ نمیرفت جارو به دمبش می‌بست', 'نان به نرخ روز خوردن و ریاکاری', 'نان کسی را آجر کردن نامردیه',
-          'نخود هر آشی شدن و دخالت کردن', 'نوشدارو بعد از مرگ سهراب چه فایده داره', 'هر گردی گردو نیست گول نخور', 'هر که بامش بیش برفش بیشتر است',
-          'هر که طاووس خواهد جور هندوستان کشد', 'هندوانه زیر بغل کسی گذاشتن با چرب‌زبانی', 'یکی به نعل و یکی به میخ زدن', 'یک دست صدا نداره باید متحد باشیم',
-          'یک کلاغ چهل کلاغ کردن شایعات', 'آب از آب تکان نخوردن بعد از ماجرا', 'آب پاکی روی دست منتظر ریختن', 'آب زیر کاه بودن و موذی‌گری',
-          'آتش بیار معرکه شدن و دعوا راه انداختن', 'از خجالت آب شدن و زمین رفتن', 'از سیر تا پیاز قضیه را با جزئیات گفتن', 'از کوره در رفتن و داد و بیداد کردن',
-          'با پنبه سر بریدن با سیاست نرم', 'بوی کباب شنیدن ولی خر داغ کردن', 'پوست خربزه زیر پای رفیق انداختن', 'پیه همه‌چیز را به تن خود مالیدن',
-          'تر و خشک را با هم سوزاندن در قضاوت', 'چشم‌بسته غیب گفتن شاهکار کردی', 'حساب حساب است کاکا برادر شوخی نداریم', 'خط و نشان کشیدن و تهدید توخالی',
-          'دست روی دست گذاشتن و بی‌عملی', 'دندان گرد کردن برای پول زیاد', 'دوری و دوستی برای حفظ احترام', 'رگ خواب کسی را پیدا کردن و نرم کردن',
-          'ریگی به کفش داشتن و پنهان‌کاری', 'زیر کاسه نیم‌کاسه‌ای مشکوک بودن', 'شستش زودتر از همه خبردار شد', 'غوره نشده مویز شدن و ادعای بزرگی',
-          'فوت کوزه‌گری را به هیچ‌کس یاد ندادن', 'قند توی دلش آب شدن از ذوق', 'کار هر بز نیست خرمن کوفتن کاردانه', 'کاسه کوزه را سر مظلوم شکستن'
+          'دسته‌گل', 'آب‌زیرکاه', 'پاچه‌خواری', 'ماست‌مالی', 'زیرآب‌زنی', 'سوتی دادن', 'دور زدن', 'گاف دادن',
+          'زاغ سیاه', 'کاسه کوزه', 'دم شیر', 'کلاهبردار', 'کلاه گشاد', 'نخود هر آش', 'بادمجان بم', 'کارد به استخوان',
+          'مار گزیده', 'فوت کوزه‌گری', 'سنگ مفت', 'توبه گرگ', 'شیر یا خط', 'خروس بی‌محل', 'کفگیر ته دیگ', 'زبان سرخ',
+          'پوست خربزه', 'حساب حساب', 'ریگی به کفش', 'طبل توخالی', 'دندان روی جگر', 'دم‌بخت', 'دست‌ودلباز', 'چشم‌روشنی',
+          'پاپیچ', 'زبون‌باز', 'دست‌به‌نقد', 'سنگ‌رویخ', 'پارسنگ', 'سرشاخ', 'گنده‌دماغ', 'دودره‌باز',
+          'چراغ‌سبز', 'پا‌به‌رکاب', 'دم‌بریده', 'چشم‌چرانی', 'گربه‌رقصانی', 'دست‌گرمی', 'ناخن‌خشک', 'زیرمیزی',
+          'سرسنگین', 'پاپوش', 'سماق‌مکیدن', 'دهن‌لق', 'سفیدبخت', 'کارد و پنیر', 'زبان‌دراز', 'چشم‌سفید',
+          'دست‌پاک', 'پرچانه', 'زودرنج', 'شیرین‌زبان', 'تلخ‌کلام', 'دندان‌گرد', 'هفت‌خط', 'چترباز',
+          'تیغ‌زن', 'شاخ‌وشانه', 'چشم‌بسته', 'پاشنه‌آشیل', 'گوش‌تیز', 'سیه‌روز', 'دستپاچه', 'دل‌چرکین',
+          'یک‌دنده', 'لجباز', 'سرتق', 'مفت‌خور', 'ولخرج', 'خسیس', 'چرب‌زبان', 'بلوف',
+          'زیرپایی', 'دست‌به‌عصا', 'ضرب‌شست', 'رو‌سفید', 'سیاه‌رو', 'چشم‌زخم', 'نظر‌قربانی', 'بز‌بیاری',
+          'پا‌قدم', 'خوش‌رکاب', 'بد‌قلق', 'خوش‌دست', 'بد‌پیله', 'گیر‌دادن', 'کل‌کل', 'کم‌رو',
+          'پر‌رو', 'گوشه‌گیر', 'آب‌بندی', 'نمک‌گیر', 'چشم‌داشت', 'دست‌تنگ', 'دل‌مرده', 'رو‌به‌راه',
+          'ساز‌مخالف', 'چوب‌خط', 'رد‌پا', 'سنگ‌اندازی', 'تودار', 'دهن‌بین', 'چشم‌هم‌چشمی', 'دل‌نگران',
+          'دست‌رنج', 'پا‌درمیانی', 'ریش‌سفیدی', 'رو‌انداختن', 'ناز‌کشیدن', 'چانه زدن', 'لنگ انداختن', 'کم آوردن',
+          'جا زدن', 'توفیق اجباری', 'قال‌گذاشتن', 'پیچاندن', 'سوت‌زدن', 'تابلو‌شدن', 'دل‌سوخته', 'دست‌تنها',
+          'چشم‌انتظار', 'گوش‌به‌زنگ', 'پا‌به‌فرار', 'کله‌شق', 'آش نخورده', 'مرغ همسایه', 'کاسه داغ‌تر', 'سنگ پا',
+          'پیازداغ زیاد', 'آب پاکی', 'آش دهن‌سوز', 'پز عالی', 'رگ خواب', 'پشت‌پا', 'شاهنامه آخرش', 'آمد زیر ابرو',
+          'از دنده‌چپ', 'از هول حلیم', 'اسب پیشکشی', 'باد آورده', 'دستمال قیصریه', 'گرگ بالان‌دیده', 'کبوتر با کبوتر', 'وقت گل نی',
+          'چشم‌زده', 'آب‌رو', 'دل‌نازک', 'خودنما', 'نمک‌نشناس', 'خون‌سرد', 'خون‌گرم', 'سر‌به‌هوا',
+          'خوش‌خیال', 'چشم‌پوشی', 'دم‌غنیمت', 'پرچمدار', 'سرشناس', 'بی‌کله', 'باد به غبغب', 'گوشه‌کنایه',
+          'زیرجلکی', 'چشم‌روشن', 'دست‌بردار', 'خودرأی', 'پا‌به‌جفت', 'دل‌زده', 'دل‌باخته', 'رگ‌غیرت',
+          'چشم‌غره', 'چرت‌وپرت', 'حرف‌مفت', 'ماست‌بند', 'جاروجنجال', 'بگیروببند', 'دادوبیداد', 'قال‌وقیل',
+          'چشم‌بندی', 'زیرچشمی', 'سر‌به‌راه', 'دست‌انداختن', 'پا‌پس‌کشیدن', 'دل‌دادن', 'قلوه‌گرفتن', 'سر‌شاخ‌شدن',
+          'پا‌پی‌شدن', 'دم‌پر‌کسی', 'سیم‌ثانیه‌زدن', 'کف‌بر‌شدن', 'شاخ‌درآوردن', 'دود‌شدن', 'آب‌شدن', 'باد‌کردن'
         ],
         general: [
-          'پانتومیم ادابازی', 'ته‌دیگ زعفرانی برشته سیب‌زمینی', 'خورشت قورمه‌سبزی جاافتاده', 'دیزی سنگی با نان سنگک و ترشی', 'خورشت فسنجان ملس گردو و انار', 'باقالی‌پلو با ماهیچه مجلسی', 'کباب کوبیده دوبل زعفرانی', 'جوجه کباب با استخوان زغالی',
-          'آش رشته داغ با کشک و نعناداغ', 'میرزاقاسمی دودی گیلان', 'کشک بادمجان لذیذ با گردو', 'کله‌پاچه با چشم و زبان و بناگوش', 'سیرابی و شیردان فلفلی', 'سوهان گل کره‌ای اعلای قم', 'گز انگبین آردی اصفهان', 'نان خامه‌ای قنادی تازه',
-          'باقلوا لوز عسلی یزد', 'زولبیا و بامیه ماه رمضان', 'فالوده شیرازی با آبلیموی تازه', 'بستنی سنتی زعفرانی با خامه خشک', 'لواشک ترش انار و زرشک بازاری', 'ترشی هفت‌بیجار تند سنتی', 'آجیل چهارمغز شب یلدا', 'سبزه عید نوروز روبان‌پیچ',
-          'سفره هفت‌سین با سنجد و سیب', 'حاجی فیروز دایره‌زنگی به دست', 'عمو نوروز با ریش سفید و کلاه نمدی', 'چهارشنبه‌سوری و پریدن از روی آتش', 'قاشق‌زنی با چادر در تاریکی کوچه', 'سیزده‌بدر و گره زدن سبزه‌ها', 'فال حافظ شب چله', 'کرسی داغ زمستانی مادربزرگ',
-          'رقص محلی لری با دستمال‌های رنگی', 'چای دبش قندپهلو در استکان کمرباریک', 'نان بربری داغ خشخاشی کنجدی', 'نان سنگک دوآتیشه برشته', 'پنیر لیقوان اصیل تبریز', 'دوغ آبعلی گازدار ترش خنک', 'تخمه آفتابگردان شور شکستن', 'قاچ هندوانه خنک شب یلدا',
-          'دیپلمات کارکشته سازمان ملل', 'فضانورد معلق در ایستگاه بین‌المللی', 'غریق‌نجات تیزبین لب ساحل دریا', 'آتش‌نشان فداکار وسط شعله‌های آتش', 'باستان‌شناس جویای گنجینه‌های باستانی', 'کارآگاه خصوصی با ذره‌بین و پالتو', 'خلبان هواپیمای جنگی مافوق‌صوت', 'شعبده‌باز خرگوش از کلاه درآور',
-          'بندباز ماهر وسط رینگ سیرک', 'بدلکار سینما پریدن از ساختمان', 'زیردریایی اتمی غول‌پیکر در عمق اقیانوس', 'بالن هوای گرم بر فراز کوهستان', 'سفینه فضایی راهی مریخ', 'شهاب‌سنگ آتشین در حال سقوط', 'منظومه شمسی و سیارات هشتگانه', 'سیاه‌چاله مرموز بلعنده نور',
-          'مثلث برمودا ناپدیدکننده کشتی‌ها', 'طلوع دل‌انگیز آفتاب در کویر طلایی', 'شفق قطبی سبز در آسمان شب شمال', 'طوفان شن غافلگیرکننده بیابان', 'سونامی سهمگین در سواحل اقیانوس', 'بهمن برفی مهیب در دره‌های البرز', 'آتشفشان فعال مواد مذاب پرتاب‌کننده', 'زلزله شدید تکان‌دهنده زمین',
-          'گردباد پیچنده خانه خراب‌کننده', 'اسب تک‌شاخ یال‌طلایی افسانه‌ای', 'اژدهای هفت‌سر آتش‌نفس غارنشین', 'سیمرغ افسانه‌ای بر فراز کوه قاف', 'دیو سپید پای در بند دماوند', 'ققنوس برخاسته از خاکستر شعله‌ور', 'غول چراغ جادو با سه آرزو', 'پری دریایی نشسته روی صخره اقیانوس',
-          'مومیایی باستانی مومی‌شده در تابوت', 'دزد دریایی با چشم‌بند و طوطی', 'شوالیه زره‌پوش قرون وسطایی با سپر', 'سامورایی کاتانا به دست ژاپن باستان', 'گلادیاتور شمشیرزن کولوسئوم رم', 'نینجای سایه‌رو با ستاره پرتابی', 'دایناسور تیرانوسوروس رکس شکارچی', 'ماموت پشمالوی غول‌پیکر عصر یخبندان',
-          'نهنگ آبی بزرگ‌ترین موجود تاریخ کره زمین', 'کوسه سفید بزرگ اقیانوس‌نورد', 'پلنگ برفی خالدار کوهستان‌های هیمالیا', 'خرس قطبی شناگر ماهر میان یخ‌ها', 'یوزپلنگ تیزپای آسیایی دشت توران', 'شاهین تیزپرواز شکارچی آسمان‌ها', 'جغد شب‌بیدار دانا روی درخت کهنسال', 'طاووس هزاررنگ مغرور باغ بهشت',
-          'فلامینگوی صورتی ایستاده روی یک پا', 'آفتاب‌پرست تغییر رنگ‌دهنده روی شاخه', 'اختاپوس هشت‌پای هوشمند استتارگر', 'مار زنگی زهرآگین بیابان‌های خشک', 'عقرب سیاه کشنده زیر سنگ‌ها', 'کرگدن شاخ‌دار زره‌پوش آفریقایی', 'زرافه گردن‌دراز چراکننده از سر شاخه', 'کانگوروی استرالیایی بچه‌درکیسه',
-          'کوالای خواب‌آلود در آغوش اکالیپتوس', 'پنگوئن امپراتور سرمای منهای پنجاه درجه', 'وال گوژپشت خواننده اعماق آب‌ها', 'دلفین باهوش بازیگوش نمایش‌دهنده', 'شیر نر یال‌دار سلطان جنگل ساوانا', 'ببر بنگال راه‌راه خط‌دار شکارچی', 'گرگ خاکستری زوزه‌کش در شب مهتابی', 'روباه مکار با دم پشمالو نارنجی',
-          'خارپشت تیغ‌پرتاب‌کننده محافظ خود', 'لاک‌پشت دریایی صدساله اقیانوس‌پیما', 'سمور آبی ماهر سدساز رودخانه', 'سنجاب پرجنب‌وجوش پنهان‌کننده گردو', 'دارکوب پرصدا منقارزن به تنه درخت', 'عروس دریایی درخشان شفاف سمی', 'ستاره دریایی پنج‌پر کف صخره‌ها', 'حلزون بی‌صدای خانه‌به‌دوش شاخک‌دار',
-          'کرم شب‌تاب چراغ‌روشن‌کننده بوته‌ها', 'زنبور عسل گل‌نشین شهدآور پرکار', 'پروانه بال‌ابریشمی هزاررنگ باغ', 'عنکبوت هنرمند تارزن گوشه دیوار', 'اسب آبی دهان‌بزرگ خشمگین رودخانه', 'گورخر راه‌راه مشکی‌سفید آفریقایی', 'شتر دوکوهانه باربر جاده ابریشم', 'بوفالوی وحشی شاخ‌بلند دشت‌های دور',
-          'عقاب طلایی تیزچنگال حاکم صخره‌ها', 'لک‌لک سفید لانه‌ساز بر نوک گلدسته‌ها', 'قوی بال‌شکسته عاشق برکه آرام', 'پلاتیپوس نوک‌اردکی عجیب استرالیایی', 'پاندا غول‌پیکر بامبوجو چینی تنبل', 'میمون بازیگوش آویزان از شاخه‌های جنگل', 'گوریل پشت‌نقره‌ای قدرتمند مهربان', 'اورانگوتان متفکر جنگل‌های بارانی سوماترا',
-          'لمور دم‌حلقه‌ای جست‌وخیزکننده ماداگاسکار', 'چکش تخریب هیدرولیکی پر سر و صدا', 'بیل مکانیکی خاکبرداری گودبرداری عمیق', 'جرثقیل غول‌آسای برج‌ساز آسمان‌خراش', 'لودر راه‌سازی جاده‌های کوهستانی', 'بولدوزر پرقدرت تسطیح‌کننده زمین‌ها', 'تله‌کابین معلق روی کوهستان برفی', 'کشتی تفریحی کروز مجلل اقیانوس‌پیما',
-          'ترن هوایی سریع و جیغ‌آور شهربازی', 'چرخ و فلک غول‌پیکر دیدبان کل شهر', 'سرسره آبی پیچ‌درپیچ هیجان‌انگیز پارک', 'تاب زنجیری هوایی چرخان در آسمان', 'قایق پدالی دونفره دریاچه چیتگر', 'اسب‌سواری چوگان و پرش از مانع', 'تیراندازی با کمان کمانگیران باستانی', 'شمشیربازی المپیکی سابر و فلوره سریع'
+          'پانتومیم', 'قورمه‌سبزی', 'پیتزا', 'دیزی سنگی', 'کباب کوبیده', 'خورشت فسنجان', 'باقالی‌پلو', 'جوجه کباب',
+          'آش رشته', 'میرزاقاسمی', 'کشک بادمجان', 'کله‌پاچه', 'سیرابی', 'سوهان قم', 'گز اصفهان', 'نان خامه‌ای',
+          'باقلوا', 'زولبیا بامیه', 'فالوده شیرازی', 'بستنی سنتی', 'لواشک ترش', 'ترشی هفت‌بیجار', 'آجیل شب‌یلدا', 'سبزه عید',
+          'سفره هفت‌سین', 'حاجی فیروز', 'عمو نوروز', 'چهارشنبه‌سوری', 'قاشق‌زنی', 'سیزده‌بدر', 'فال حافظ', 'کرسی داغ',
+          'رقص محلی', 'چای قندپهلو', 'نان بربری', 'نان سنگک', 'پنیر لیقوان', 'دوغ آبعلی', 'تخمه آفتابگردان', 'هندوانه شب‌یلدا',
+          'فضانورد', 'غریق‌نجات', 'آتش‌نشان', 'باستان‌شناس', 'کارآگاه', 'خلبان', 'شعبده‌باز', 'بندباز سیرک',
+          'بدلکار سینما', 'زیردریایی اتمی', 'بالن', 'سفینه فضایی', 'شهاب‌سنگ', 'منظومه شمسی', 'سیاه‌چاله', 'مثلث برمودا',
+          'شفق قطبی', 'طوفان شن', 'سونامی', 'بهمن برفی', 'آتشفشان', 'زلزله شدید', 'گردباد', 'اسب تک‌شاخ',
+          'اژدها', 'سیمرغ', 'دیو سپید', 'ققنوس', 'غول چراغ', 'پری دریایی', 'مومیایی', 'دزد دریایی',
+          'شوالیه زره‌پوش', 'سامورایی', 'گلادیاتور', 'نینجا', 'دایناسور', 'ماموت پشمالو', 'نهنگ آبی', 'کوسه سفید',
+          'پلنگ برفی', 'خرس قطبی', 'یوزپلنگ ایرانی', 'شاهین', 'پرنده جغد', 'طاووس', 'فلامینگو', 'آفتاب‌پرست',
+          'اختاپوس', 'مار زنگی', 'عقرب سیاه', 'کرگدن', 'زرافه', 'کانگورو', 'کوالا', 'پنگوئن امپراتور',
+          'وال گوژپشت', 'دلفین', 'شیر جنگل', 'ببر بنگال', 'گرگ خاکستری', 'روباه مکار', 'خارپشت', 'لاک‌پشت دریایی',
+          'سمور آبی', 'سنجاب', 'دارکوب', 'عروس دریایی', 'ستاره دریایی', 'حلزون', 'کرم شب‌تاب', 'زنبور عسل',
+          'پروانه', 'عنکبوت', 'اسب آبی', 'گورخر', 'شتر دوکوهانه', 'بوفالو', 'عقاب طلایی', 'لک‌لک سفید',
+          'قوی زیبا', 'پلاتیپوس', 'خرس پاندا', 'میمون بازیگوش', 'گوریل', 'اورانگوتان', 'لمور ماداگاسکار', 'چکش تخریب',
+          'بیل مکانیکی', 'جرثقیل غول‌آسا', 'ماشین لودر', 'بولدوزر', 'تله‌کابین', 'کشتی کروز', 'ترن هوایی', 'چرخ و فلک',
+          'سرسره آبی', 'تاب زنجیری', 'قایق پدالی', 'ورزش چوگان', 'تیراندازی با کمان', 'شمشیربازی', 'قیمه‌نثار', 'کلم‌پلو شیرازی',
+          'مرصع‌پلو', 'آلبالوپلو', 'ته‌چین مرغ', 'دلمه برگ‌مو', 'کوفته تبریزی', 'کتلت گوشت', 'شامی کباب', 'کوکو سبزی',
+          'کوکو سیب‌زمینی', 'کشک کدو', 'خورشت بامیه', 'قلیه‌ماهی', 'ماهی سفید', 'میگو پلو', 'آش شله‌قلمکار', 'آش دوغ',
+          'سوپ جو', 'اشکنه', 'کله‌جوش', 'حلیم گندم', 'فرنی', 'شله‌زرد', 'حلوا خرمایی', 'رنگینک خرما',
+          'مسقطی لاری', 'لوز بادام', 'قرابیه تبریز', 'شیرینی نخودچی', 'نان برنجی', 'سوهان عسلی', 'نان خرمایی', 'ترشی سیر',
+          'شور مخلوط', 'زیتون پرورده', 'ترشی کلم', 'سس انبه', 'نان تافتون', 'نان لواش', 'سرشیر عسل', 'ارده شیره',
+          'پنیر کوزه', 'کره محلی', 'آب‌زرشک', 'شربت خاکشیر', 'شربت سکنجبین', 'شربت بهارنارنج', 'چای کوهی', 'دمنوش گل‌گاوزبان',
+          'قهوه قجری', 'آیس‌پک', 'شیرپسته', 'معجون ویژه', 'فلافل بندری', 'سوسیس بندری', 'جگرکی', 'صاحب‌خانه',
+          'مستأجر', 'راننده اسنپ', 'شاگرد شوفر', 'قصاب محله', 'شاطر نانوا', 'تعمیرکار خودرو', 'بقال قدیمی', 'دست‌فروش مترو',
+          'نگهبان شیفت', 'کارگر فصلی', 'رفتگر شهرداری', 'کارمند بایگانی', 'استاد دانشگاه', 'دانشجوی پزشکی', 'پزشک جراح', 'پرستار اورژانس',
+          'داروساز', 'راننده اتوبوس', 'کاپیتان خلبان', 'ناخدای کشتی', 'صیاد ماهی', 'چوپان گله', 'باغبان پیر', 'کشاورز شالیکار',
+          'نجار کارگاه', 'آهنگر کوره', 'سفالگر چرخ‌پا', 'قالیباف فرش', 'زرگر تیزبین', 'ساعت‌ساز کهنه‌کار', 'عکاس پرتره', 'خیاط ماهر',
+          'آرایشگر', 'مکانیک خودرو', 'لوله‌کش ساختمان', 'برق‌کار ساختمان', 'گچ‌کار ماهر', 'کاشی‌کار تراز', 'نقاش ساختمان', 'بنای سنتی',
+          'مقنی چاه‌کن', 'دیده‌بان محیط‌زیست'
         ]
       };
 
@@ -1123,10 +1265,10 @@
       const CATEGORY_META = {
         objects: { name: 'اشیاء و لوازم', en: 'Objects & Tools', icon: '📦', color: 'from-blue-600 to-indigo-600' },
         celebrities: { name: 'مشاهیر و افراد معروف', en: 'Celebrities & Icons', icon: '🌟', color: 'from-amber-500 to-orange-600' },
-        places: { name: 'مکان‌ها و کشورها', en: 'Places & Countries', icon: '🌍', color: 'from-emerald-600 to-teal-600' },
+        places: { name: 'مکان‌ها و شهرها', en: 'Places & Cities', icon: '🌍', color: 'from-emerald-600 to-teal-600' },
         media: { name: 'فیلم، سریال و انیمیشن', en: 'Movies, Shows & Cartoons', icon: '🎬', color: 'from-pink-600 to-rose-600' },
-        proverbs: { name: 'ضرب‌المثل‌ها و اصطلاحات', en: 'Idioms & Proverbs', icon: '💬', color: 'from-purple-600 to-violet-700' },
-        general: { name: 'عمومی و کلمات ترکیبی', en: 'General & Concepts', icon: '🔮', color: 'from-cyan-600 to-blue-700' },
+        proverbs: { name: 'اصطلاحات و کنایه‌ها', en: 'Slang & Idioms', icon: '💬', color: 'from-purple-600 to-violet-700' },
+        general: { name: 'عمومی و خوراکی‌ها', en: 'General & Foods', icon: '🔮', color: 'from-cyan-600 to-blue-700' },
       };
 
       // Default Team Colors Palette
@@ -1210,10 +1352,7 @@
           notes.forEach((freq, idx) => {
             this.playTone(freq, 'sine', 0.22, idx * 0.07, 0.22);
           });
-          // Haptic Feedback if supported
-          if (navigator.vibrate) {
-            try { navigator.vibrate([35, 30, 45]); } catch(e){}
-          }
+          triggerHaptic('success');
         }
 
         playPass() {
@@ -1264,9 +1403,7 @@
             osc1.stop(start + 1.2);
             osc2.stop(start + 1.2);
           } catch(e){}
-          if (navigator.vibrate) {
-            try { navigator.vibrate([200, 100, 400]); } catch(e){}
-          }
+          triggerHaptic('buzzer');
         }
 
         playFanfare() {
@@ -1614,6 +1751,7 @@
         remainingSeconds: 90,
         passPenalty: 0, // 0 or -1
         selectedCategories: ['objects', 'celebrities', 'places', 'media', 'proverbs', 'general'],
+        vibrationIntensity: 'medium', // 'off', 'soft', 'medium', 'strong'
         
         // Active Game Flow
         timerId: null,
@@ -1630,6 +1768,80 @@
         // Stats & History
         roundHistory: [], // [{ word, category, teamIndex, guessedBy, passed }]
       };
+
+      // Vibration / Haptic Feedback Engine with Custom Intensity
+      const VIBE_DESCRIPTIONS = {
+        off: 'حالت خاموش: لرزش گوشی کاملاً غیرفعال است (مناسب برای محیط‌های ساکت یا صرفه‌جویی باتری).',
+        soft: 'حالت ملایم: تپش‌های کوتاه و بسیار نرم (مناسب موتورهای ویبره حساس).',
+        medium: 'حالت متوسط: لرزش استاندارد و دلنشین، هماهنگ با انواع گوشی‌ها.',
+        strong: 'حالت قوی: لرزش مشخص و پرانرژی برای محیط‌های شلوغ دورهمی.'
+      };
+
+      function triggerHaptic(type = 'tap') {
+        if (!navigator.vibrate) return;
+        const level = gameState.vibrationIntensity || 'medium';
+        if (level === 'off') return;
+
+        let scale = 1.0;
+        if (level === 'soft') scale = 0.45;
+        if (level === 'strong') scale = 1.55;
+
+        let pattern = [30];
+        if (type === 'success') {
+          pattern = [35, 25, 50];
+        } else if (type === 'pass') {
+          pattern = [30];
+        } else if (type === 'tick') {
+          pattern = [22];
+        } else if (type === 'buzzer') {
+          pattern = [180, 80, 260];
+        } else if (type === 'ready') {
+          pattern = [40];
+        } else if (type === 'test') {
+          pattern = [45, 30, 45];
+        }
+
+        const scaledPattern = pattern.map(ms => Math.max(10, Math.round(ms * scale)));
+        try {
+          navigator.vibrate(scaledPattern);
+        } catch (e) {}
+      }
+
+      function initVibrationSetting() {
+        try {
+          const saved = localStorage.getItem('party_game_vibration_intensity');
+          if (saved && ['off', 'soft', 'medium', 'strong'].includes(saved)) {
+            gameState.vibrationIntensity = saved;
+          }
+        } catch (e) {}
+        updateVibrationUI();
+      }
+
+      function setVibrationIntensity(level) {
+        if (!['off', 'soft', 'medium', 'strong'].includes(level)) return;
+        gameState.vibrationIntensity = level;
+        try {
+          localStorage.setItem('party_game_vibration_intensity', level);
+        } catch (e) {}
+        updateVibrationUI();
+        triggerHaptic('test');
+      }
+
+      function updateVibrationUI() {
+        const level = gameState.vibrationIntensity || 'medium';
+        const buttons = document.querySelectorAll('.vibe-btn');
+        buttons.forEach(btn => {
+          if (btn.dataset.vibe === level) {
+            btn.className = 'vibe-btn py-2 px-1 rounded-xl text-xs font-bold bg-purple-600 text-white border border-purple-500 shadow-md shadow-purple-600/30 transition-all text-center';
+          } else {
+            btn.className = 'vibe-btn py-2 px-1 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all text-center';
+          }
+        });
+        const descEl = document.getElementById('vibe-desc');
+        if (descEl && VIBE_DESCRIPTIONS[level]) {
+          descEl.textContent = VIBE_DESCRIPTIONS[level];
+        }
+      }
 
       // Default Team Presets Generator
       function buildDefaultTeams(count) {
@@ -1902,6 +2114,17 @@
             s.classList.add('hidden');
           }
         });
+
+        // Toggle sticky header exit button visibility (active in gameplay and seating check)
+        const headerBtnQuit = document.getElementById('header-btn-quit');
+        if (headerBtnQuit) {
+          if (target === screenGameplay || target === screenSeatingReady) {
+            headerBtnQuit.classList.remove('hidden');
+          } else {
+            headerBtnQuit.classList.add('hidden');
+          }
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -2011,8 +2234,8 @@
           ring.style.stroke = '#ef4444';
           box.classList.add('timer-critical');
           // Subtle heartbeat vibration on mobile
-          if (gameState.remainingSeconds <= 5 && navigator.vibrate) {
-            try { navigator.vibrate(25); } catch(e){}
+          if (gameState.remainingSeconds <= 5) {
+            triggerHaptic('tick');
           }
         } else if (gameState.remainingSeconds <= 25) {
           ring.style.stroke = '#f59e0b';
@@ -2028,18 +2251,32 @@
         const nextSeat = gameState.seatingCircle[(gameState.currentSeatIndex + 1) % gameState.seatingCircle.length];
 
         const holderBadge = document.getElementById('current-holder-badge');
-        holderBadge.textContent = `${curSeat.playerName} (${curSeat.teamName})`;
-        holderBadge.className = `px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-black truncate max-w-[140px] sm:max-w-none border ${curSeat.color.border} ${curSeat.color.bg} ${curSeat.color.text}`;
+        if (holderBadge) {
+          holderBadge.textContent = curSeat.playerName;
+          holderBadge.className = `px-2 py-0.5 rounded-lg text-xs font-bold border ${curSeat.color.border} ${curSeat.color.bg} ${curSeat.color.text}`;
+        }
+
+        const holderTeam = document.getElementById('current-holder-team');
+        if (holderTeam) {
+          holderTeam.textContent = `(${curSeat.teamName})`;
+        }
 
         const targetBadge = document.getElementById('current-target-badge');
-        targetBadge.innerHTML = `<span>🎯 فقط برای <strong>${curSeat.partnerName}</strong> توضیح بده!</span>`;
+        if (targetBadge) {
+          targetBadge.innerHTML = `<span class="text-slate-400 font-medium">توضیح برای:</span> <strong class="text-emerald-400 font-black text-sm sm:text-base">${curSeat.partnerName}</strong>`;
+        }
 
         const nextPreview = document.getElementById('next-player-preview');
-        nextPreview.textContent = `${nextSeat.playerName} (${nextSeat.teamName})`;
+        if (nextPreview) {
+          nextPreview.textContent = `${nextSeat.playerName} (${nextSeat.teamName})`;
+        }
 
-        // Current team score counter on card
-        const teamObj = gameState.teams[curSeat.teamIndex];
-        document.getElementById('turn-correct-count').textContent = teamObj.correctCount;
+        // Current team score counter on card (if present)
+        const turnCountEl = document.getElementById('turn-correct-count');
+        if (turnCountEl) {
+          const teamObj = gameState.teams[curSeat.teamIndex];
+          turnCountEl.textContent = teamObj.correctCount;
+        }
       }
 
       let isWordShielded = false;
@@ -2062,9 +2299,7 @@
           if (wordText) wordText.classList.remove('blur-md', 'opacity-25');
           if (peekBtn) peekBtn.textContent = '👁️';
         }
-        if (navigator.vibrate) {
-          try { navigator.vibrate(20); } catch(e){}
-        }
+        triggerHaptic('tap');
       }
 
       function loadNewWordCard() {
@@ -2074,23 +2309,27 @@
         const catBadge = document.getElementById('word-category-text');
         const diffBadge = document.getElementById('word-difficulty-badge');
 
-        wordText.textContent = item.word;
-        catBadge.textContent = CATEGORY_META[item.category].name;
-        diffBadge.textContent = gameState.currentWordDifficulty;
+        if (wordText) wordText.textContent = item.word;
+        if (catBadge) catBadge.textContent = CATEGORY_META[item.category].name;
+        if (diffBadge) diffBadge.textContent = gameState.currentWordDifficulty;
 
-        // Fluid font-size scaling for longer phrases on mobile
-        if (item.word.length > 25) {
-          wordText.className = 'text-xl sm:text-3xl md:text-4xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
-        } else if (item.word.length > 15) {
-          wordText.className = 'text-2xl sm:text-4xl md:text-5xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
-        } else {
-          wordText.className = 'text-3xl sm:text-5xl md:text-6xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+        if (wordText) {
+          // Fluid font-size scaling for longer phrases on mobile
+          if (item.word.length > 25) {
+            wordText.className = 'text-xl sm:text-3xl md:text-4xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+          } else if (item.word.length > 15) {
+            wordText.className = 'text-2xl sm:text-4xl md:text-5xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+          } else {
+            wordText.className = 'text-3xl sm:text-5xl md:text-6xl font-black text-white leading-snug tracking-wide drop-shadow-md break-words transition-all duration-200';
+          }
         }
 
         // Subtle animation pop
         const container = document.getElementById('word-card-container');
-        container.classList.add('scale-[0.98]');
-        setTimeout(() => container.classList.remove('scale-[0.98]'), 150);
+        if (container) {
+          container.classList.add('scale-[0.98]');
+          setTimeout(() => container.classList.remove('scale-[0.98]'), 150);
+        }
       }
 
       function renderLiveScoreTicker() {
@@ -2113,9 +2352,7 @@
       function onWordCorrect() {
         if (gameState.remainingSeconds <= 0 || gameState.isPaused) return;
         sounds.playSuccess();
-        if (navigator.vibrate) {
-          try { navigator.vibrate([40, 25, 60]); } catch(e){}
-        }
+        triggerHaptic('success');
 
         const curSeat = gameState.seatingCircle[gameState.currentSeatIndex];
         const team = gameState.teams[curSeat.teamIndex];
@@ -2139,9 +2376,7 @@
       function onWordPass() {
         if (gameState.remainingSeconds <= 0 || gameState.isPaused) return;
         sounds.playPass();
-        if (navigator.vibrate) {
-          try { navigator.vibrate(30); } catch(e){}
-        }
+        triggerHaptic('pass');
 
         const curSeat = gameState.seatingCircle[gameState.currentSeatIndex];
         const team = gameState.teams[curSeat.teamIndex];
@@ -2180,9 +2415,7 @@
       function onPassModalReady() {
         passModal.classList.add('hidden');
         sounds.initContext();
-        if (navigator.vibrate) {
-          try { navigator.vibrate(35); } catch(e){}
-        }
+        triggerHaptic('ready');
         updateTurnDisplay();
         loadNewWordCard();
       }
@@ -2192,16 +2425,76 @@
         gameState.isPaused = !gameState.isPaused;
         const iconPause = document.getElementById('icon-pause');
         const iconResume = document.getElementById('icon-resume');
+        const labelPause = document.getElementById('label-pause-game');
+        const pauseBanner = document.getElementById('pause-banner-overlay');
 
         if (gameState.isPaused) {
           iconPause.classList.add('hidden');
           iconResume.classList.remove('hidden');
+          if (labelPause) labelPause.textContent = 'ادامه';
+          if (pauseBanner) pauseBanner.classList.remove('hidden');
           bgMusic.pause();
         } else {
           iconPause.classList.remove('hidden');
           iconResume.classList.add('hidden');
+          if (labelPause) labelPause.textContent = 'توقف';
+          if (pauseBanner) pauseBanner.classList.add('hidden');
           bgMusic.resume();
         }
+      }
+
+      // Quit Game & Return to Main / Home Screen
+      const modalConfirmQuit = document.getElementById('modal-confirm-quit');
+      let wasPausedBeforeQuitModal = false;
+
+      function openQuitConfirmModal() {
+        if (!modalConfirmQuit) return;
+        sounds.initContext();
+        wasPausedBeforeQuitModal = gameState.isPaused;
+        if (!gameState.isPaused) {
+          togglePauseGame();
+        }
+        modalConfirmQuit.classList.remove('hidden');
+      }
+
+      function cancelQuitGame() {
+        if (!modalConfirmQuit) return;
+        sounds.initContext();
+        modalConfirmQuit.classList.add('hidden');
+        if (!wasPausedBeforeQuitModal && gameState.isPaused) {
+          togglePauseGame();
+        }
+      }
+
+      function confirmQuitToHome() {
+        if (modalConfirmQuit) {
+          modalConfirmQuit.classList.add('hidden');
+        }
+        sounds.initContext();
+
+        // Clear active round timer
+        clearInterval(gameState.timerId);
+        gameState.timerId = null;
+        gameState.isPaused = false;
+
+        // Stop background music
+        bgMusic.stop();
+
+        // Hide pass modal & pause banner if open
+        if (passModal) passModal.classList.add('hidden');
+        const pauseBanner = document.getElementById('pause-banner-overlay');
+        if (pauseBanner) pauseBanner.classList.add('hidden');
+
+        // Reset pause button state
+        const iconPause = document.getElementById('icon-pause');
+        const iconResume = document.getElementById('icon-resume');
+        const labelPause = document.getElementById('label-pause-game');
+        if (iconPause) iconPause.classList.remove('hidden');
+        if (iconResume) iconResume.classList.add('hidden');
+        if (labelPause) labelPause.textContent = 'توقف';
+
+        // Return to main setup screen
+        switchScreen(screenSetup);
       }
 
       // ==========================================
@@ -2426,9 +2719,28 @@
           radio.addEventListener('change', (e) => {
             gameState.passPenalty = parseInt(e.target.value);
             const hint = document.getElementById('pass-penalty-hint');
-            hint.textContent = gameState.passPenalty === 0 ? 'بدون جریمه' : 'جریمه: -۱ امتیاز';
+            if (hint) hint.textContent = gameState.passPenalty === 0 ? 'بدون جریمه' : 'جریمه: -۱ امتیاز';
           });
         });
+
+        // Vibration intensity buttons & test trigger
+        document.querySelectorAll('.vibe-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            sounds.initContext();
+            setVibrationIntensity(btn.dataset.vibe);
+          });
+        });
+
+        const btnTestVibe = document.getElementById('btn-test-vibration');
+        if (btnTestVibe) {
+          btnTestVibe.addEventListener('click', () => {
+            sounds.initContext();
+            triggerHaptic('test');
+          });
+        }
+
+        // Initialize vibration setting from storage
+        initVibrationSetting();
 
         // Toggle Seating Diagram Visualizer
         document.getElementById('btn-toggle-seating-diagram').addEventListener('click', () => {
@@ -2462,6 +2774,43 @@
         document.getElementById('btn-pass-word').addEventListener('click', onWordPass);
         document.getElementById('btn-modal-ready').addEventListener('click', onPassModalReady);
         document.getElementById('btn-pause-game').addEventListener('click', togglePauseGame);
+
+        // Quit Game Buttons & Confirmation Modal
+        const btnQuitGame = document.getElementById('btn-quit-game');
+        if (btnQuitGame) {
+          btnQuitGame.addEventListener('click', openQuitConfirmModal);
+        }
+
+        // Header quick exit button (sticky top)
+        const headerBtnQuit = document.getElementById('header-btn-quit');
+        if (headerBtnQuit) {
+          headerBtnQuit.addEventListener('click', openQuitConfirmModal);
+        }
+
+        // Pass modal exit button
+        const btnQuitFromPass = document.getElementById('btn-quit-from-pass');
+        if (btnQuitFromPass) {
+          btnQuitFromPass.addEventListener('click', openQuitConfirmModal);
+        }
+
+        // Pause banner resume and quit buttons
+        const btnPauseResume = document.getElementById('btn-pause-resume');
+        if (btnPauseResume) {
+          btnPauseResume.addEventListener('click', togglePauseGame);
+        }
+        const btnPauseQuit = document.getElementById('btn-pause-quit');
+        if (btnPauseQuit) {
+          btnPauseQuit.addEventListener('click', openQuitConfirmModal);
+        }
+
+        const btnCancelQuit = document.getElementById('btn-cancel-quit');
+        if (btnCancelQuit) {
+          btnCancelQuit.addEventListener('click', cancelQuitGame);
+        }
+        const btnConfirmQuit = document.getElementById('btn-confirm-quit');
+        if (btnConfirmQuit) {
+          btnConfirmQuit.addEventListener('click', confirmQuitToHome);
+        }
 
         // Word Card Peek / Shield Toggle on tap for privacy
         const peekBtn = document.getElementById('btn-toggle-peek');
@@ -2579,7 +2928,7 @@
           }
         });
 
-        // Keyboard Shortcuts for desktop/host play: Space -> Correct, Right/Left Arrow -> Pass
+        // Keyboard Shortcuts for desktop/host play: Space -> Correct, Right/Left Arrow -> Pass, Escape -> Cancel Quit
         window.addEventListener('keydown', (e) => {
           if (screenGameplay.classList.contains('hidden')) return;
           if (e.code === 'Space') {
@@ -2592,6 +2941,10 @@
           } else if (e.code === 'ArrowRight' || e.code === 'ArrowLeft') {
             if (passModal.classList.contains('hidden')) {
               onWordPass();
+            }
+          } else if (e.code === 'Escape') {
+            if (modalConfirmQuit && !modalConfirmQuit.classList.contains('hidden')) {
+              cancelQuitGame();
             }
           }
         });
